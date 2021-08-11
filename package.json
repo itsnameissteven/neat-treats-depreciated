@@ -1,15 +1,30 @@
 {
-  "name": "neat-treats-2",
-  "version": "0.1.0",
-  "private": true,
+  "name": "neat-treats",
+  "version": "1.1.62",
+  "description": "A component library.",
+  "main": "./lib/cjs/src/index.js",
+  "module": "./lib/esm/src/index.js",
+  "types": "./lib/esm/src/index.d.ts",
+  "license": "MIT",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
+    "@open-wc/building-rollup": "^1.10.0",
+    "@rollup/plugin-node-resolve": "^13.0.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "@types/jest": "^26.0.15",
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "node-sass": "^5.0.0",
+    "copyfiles": "^2.4.1",
+    "deepmerge": "^4.2.2",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.56.1",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.0",
+    "rollup-plugin-scss": "3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
@@ -17,15 +32,30 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "compile": "yarn compile:esm && yarn compile:cjs",
+    "compile:esm": "tsc",
+    "compile:cjs": "tsc --module commonjs --outDir lib/cjs",
+    "clean": "rimraf dist lib",
+    "copy-files": "copyfiles src/**/*.scss lib/esm/",
+    "build": "tsc && rollup -c rollup.config.js",
+    "rollup": "yarn clean && yarn compile && yarn copy-files && yarn build",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
     ]
   },
   "browserslist": {
@@ -39,5 +69,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^6.3.7",
+    "@storybook/addon-essentials": "^6.3.7",
+    "@storybook/addon-links": "^6.3.7",
+    "@storybook/node-logger": "^6.3.7",
+    "@storybook/preset-create-react-app": "^3.2.0",
+    "@storybook/react": "^6.3.7"
+  },
+  "files": [
+    "/dist",
+    "/lib"
+  ]
 }
