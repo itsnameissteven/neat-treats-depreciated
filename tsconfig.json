@@ -15,7 +15,7 @@
     "noImplicitThis": true,
     "noImplicitAny": true,
     "noEmitOnError": true, ///look into it
-    "strict": false,
+    "strict": true,
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "allowSyntheticDefaultImports": true
