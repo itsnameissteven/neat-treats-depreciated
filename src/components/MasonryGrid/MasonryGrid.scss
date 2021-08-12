@@ -1,0 +1,40 @@
+.masonry-grid {
+  display: grid;
+  grid-gap: 20px;
+  grid-auto-rows: 20px;
+  grid-template-columns: repeat(auto-fill, 356px);
+  grid-auto-flow: row;
+  justify-content: center;
+  justify-items: center;
+  margin-bottom: 60px;
+  // @media screen and (max-width: 750px) {
+  //   display: flex;
+  //   flex-direction: column;
+  //   align-items: center;
+  // }
+}
+.masonry-grid__child {
+  background: #002133;
+  height: fit-content;
+  width: 356px;
+  // padding: 24px 16px 24px 24px;
+  border-radius: 4px;
+  // box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.5);
+  // opacity: 0;
+  // transform-origin: top;
+  // transition: opacity 0.2s ease-in;
+}
+
+//   @media screen and (max-width: 750px) {
+//     max-width: 356px;
+//     width: 90%;
+//     padding: 24px 16px;
+//     &__content {
+//       font-size: 16px;
+//     }
+//     &__button {
+//       width: 144px;
+//       height: 44px;
+//     }
+//   }
+// }

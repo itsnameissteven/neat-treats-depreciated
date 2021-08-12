@@ -1,13 +1,39 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, cloneElement, Children } from "react";
 
 import "./MasonryGrid.scss";
 
 interface IMasonryGrid {
-  children: HTMLElement[];
+  children: JSX.Element[];
 }
 
 const MasonryGrid = ({ children }: IMasonryGrid) => {
   const [width, setWidth] = useState(0);
+
+  const StyledChildren = () => {
+    return Children.map(children, (child) => {
+      return cloneElement(child, {
+        className: `${child.props.className} masonry-grid__child`,
+        children: styledGrandChildren(child.props.children),
+      });
+    });
+  };
+
+  const styledGrandChildren = (parent: JSX.Element) => {
+    if (!parent) {
+      return;
+    }
+
+    return Children.map(parent, (child) => {
+      if (child.type === "img") {
+        return cloneElement(child, {
+          className: `${child.props.className} masonry-grid__child__img`,
+        });
+      }
+      return child;
+    });
+  };
+
+  const babies = StyledChildren();
 
   useEffect(() => {
     const { innerWidth } = window;
@@ -28,7 +54,7 @@ const MasonryGrid = ({ children }: IMasonryGrid) => {
     const handleChildResize = () => {
       const elements = Array.from(
         document.getElementsByClassName(
-          "child-class-name"
+          "masonry-grid__child"
         ) as HTMLCollectionOf<HTMLElement>
       );
 
@@ -49,7 +75,7 @@ const MasonryGrid = ({ children }: IMasonryGrid) => {
     handleChildResize();
   }, [width]);
 
-  return <div className="masonry-grid">{children}</div>;
+  return <div className="masonry-grid">{babies}</div>;
 };
 
 export default MasonryGrid;
