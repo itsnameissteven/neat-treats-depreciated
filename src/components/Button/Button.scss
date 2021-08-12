@@ -1,7 +1,6 @@
 .nt-btn {
   font-size: 16px;
   font-family: inherit;
-  background: transparent;
   outline: none;
   border: none;
   border: 1px solid rgb(26, 122, 211);
@@ -16,6 +15,11 @@
     cursor: pointer;
     opacity: 0.9;
   }
+}
+
+.btn-outline {
+  background: transparent;
+  color: rgb(30, 141, 245);
 }
 
 .round {

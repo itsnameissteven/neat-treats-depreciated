@@ -7,7 +7,7 @@ export default {
   title: "Components/Button",
   argTypes: {
     type: {
-      options: ["primary", "secondary"],
+      options: ["primary", "secondary", "outline"],
       control: { type: "radio" },
       defaultValue: "primary",
     },
@@ -24,12 +24,8 @@ export default {
   },
 };
 
-export const Primary = ({ type, round, label }) => (
-  <Button type={type} round={round}>
+export const Primary = ({ type, round, label, backgroundColor }) => (
+  <Button type={type} round={round} backgroundColor={backgroundColor}>
     {label}
   </Button>
 );
-
-export const Secondary = () => <Button>Secondary</Button>;
-
-export const Round = () => <Button round={true}>Round</Button>;
