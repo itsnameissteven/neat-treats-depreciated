@@ -7,12 +7,21 @@ import range from "../../utils/range";
 import usePrefersReducedMotion from "../../hooks/usePrefersReducedMotion";
 import randomColor from "randomcolor";
 
+interface IGlitter {
+  color?: string;
+  rainbow?: boolean;
+  children: JSX.Element;
+  delegated?: {
+    [x: string]: any;
+  };
+}
+
 const Glitter = ({
   color = "#FFC700",
   rainbow = false,
   children,
   ...delegated
-}) => {
+}: IGlitter) => {
   const [sparkles, setSparkles] = useState(() => {
     return range(3).map(() => generateSparkle(color));
   });
