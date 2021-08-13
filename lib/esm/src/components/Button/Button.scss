@@ -1,0 +1,27 @@
+.nt-btn {
+  font-size: 16px;
+  font-family: inherit;
+  outline: none;
+  border: none;
+  border: 1px solid rgb(26, 122, 211);
+  color: #fff;
+  padding: 11px 30px;
+  border-radius: 5px;
+  min-width: 130px;
+  background-color: rgb(30, 141, 245);
+  transition: all 0.2s ease-in;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.9;
+  }
+}
+
+.btn-outline {
+  background: transparent;
+  color: rgb(30, 141, 245);
+}
+
+.round {
+  border-radius: 50px;
+}
