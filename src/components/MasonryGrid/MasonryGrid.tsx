@@ -13,27 +13,9 @@ const MasonryGrid = ({ children }: IMasonryGrid) => {
     return Children.map(children, (child) => {
       return cloneElement(child, {
         className: `${child.props.className} masonry-grid__child`,
-        children: styledGrandChildren(child.props.children),
       });
     });
   };
-
-  const styledGrandChildren = (parent: JSX.Element) => {
-    if (!parent) {
-      return;
-    }
-
-    return Children.map(parent, (child) => {
-      if (child.type === "img") {
-        return cloneElement(child, {
-          className: `${child.props.className} masonry-grid__child__img`,
-        });
-      }
-      return child;
-    });
-  };
-
-  const babies = StyledChildren();
 
   useEffect(() => {
     const { innerWidth } = window;
@@ -41,8 +23,8 @@ const MasonryGrid = ({ children }: IMasonryGrid) => {
     const handleResize = () => {
       if (innerWidth < 1200 && innerWidth > 750) {
         /* 1200 and 750 can be max/min width */
-        setWidth(innerWidth);
       }
+      setWidth(innerWidth);
     };
 
     window.addEventListener("resize", handleResize);
@@ -64,7 +46,7 @@ const MasonryGrid = ({ children }: IMasonryGrid) => {
           .getComputedStyle(child)
           .getPropertyValue("height");
         const rowSpan = Math.round(parseInt(height, 10) / 40) + 1;
-        child.style.cssText = `
+        child.style.cssText += `
           grid-row: span ${rowSpan};
           height: auto;
           opacity: 1;
@@ -75,7 +57,7 @@ const MasonryGrid = ({ children }: IMasonryGrid) => {
     handleChildResize();
   }, [width]);
 
-  return <div className="masonry-grid">{babies}</div>;
+  return <div className="masonry-grid">{StyledChildren()}</div>;
 };
 
 export default MasonryGrid;
