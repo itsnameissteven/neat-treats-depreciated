@@ -20,4 +20,4 @@ const useIncrementingNumber = (delay: number) => {
   return count;
 };
 
-module.exports = useIncrementingNumber;
+export default useIncrementingNumber;

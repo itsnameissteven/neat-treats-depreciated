@@ -20,6 +20,6 @@
     "suppressImplicitAnyIndexErrors": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src/**/*.ts", "src/utils/generateId.js"],
+  "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "lib"]
 }
