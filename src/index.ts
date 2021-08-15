@@ -1,3 +1,5 @@
-import SayHello from "./components/HelloWorld";
+import Button from "./components/Button";
+import Glitter from "./components/Glitter";
+import MagicRainbowButton from "./components/MagicRainbowButton";
 
-export {SayHello};
+export { Button, Glitter, MagicRainbowButton };
