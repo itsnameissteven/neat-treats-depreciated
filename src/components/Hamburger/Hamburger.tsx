@@ -7,9 +7,15 @@ interface IHamburger {
   size?: number;
   className?: string;
   isClicked?: boolean;
+  pipes?: 2 | 3;
 }
 
-const Hamburger = ({ size = 40, className, isClicked = false }: IHamburger) => {
+const Hamburger = ({
+  size = 40,
+  className,
+  isClicked = false,
+  pipes = 3,
+}: IHamburger) => {
   const [firstRender, setFirstRender] = useState(true);
   const topClass = classnames({
     ["animate-top"]: isClicked,
@@ -37,7 +43,9 @@ const Hamburger = ({ size = 40, className, isClicked = false }: IHamburger) => {
       width={size}
       height={size}
     >
-      <rect className={topClass} width="110" height="16" rx="8"></rect>
+      {pipes === 3 && (
+        <rect className={topClass} width="110" height="16" rx="8"></rect>
+      )}
       <rect
         className={middleClass}
         y="40"
