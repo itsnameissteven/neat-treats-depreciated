@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Hamburger from ".";
 
@@ -13,4 +13,11 @@ export default {
   },
 };
 
-export const Primary = ({ isClicked }) => <Hamburger isClicked={isClicked} />;
+export const Primary = ({ size }) => {
+  const [isClicked, setIsClicked] = useState(false);
+  return (
+    <div onClick={() => setIsClicked(!isClicked)}>
+      <Hamburger isClicked={isClicked} size={30} />
+    </div>
+  );
+};

@@ -5,7 +5,8 @@
   transition: all 0.2s ease-in;
 
   &:hover {
-    fill: rgb(122, 122, 122);
+    opacity: 0.7;
+    cursor: pointer;
   }
 
   .animate-top {
@@ -13,14 +14,32 @@
     animation: slideDownRotate 0.4s ease-in forwards;
   }
 
+  &__top {
+    transform-origin: 50% 10%;
+    transform: translateY(40%) rotate(45deg);
+    animation: reverseSlideDownRotate 0.4s ease-in forwards;
+  }
+
   .animate-middle {
     transform-origin: center;
     animation: rotate 0.4s ease-in forwards;
   }
 
+  &__middle {
+    transform: rotate(45deg);
+    transform-origin: center;
+    animation: ReverseRotate 0.4s ease-in forwards;
+  }
+
   .animate-bottom {
     transform-origin: 50% 90%;
     animation: slideUpRotate 0.4s ease-in forwards;
+  }
+
+  &__bottom {
+    transform: translateY(-40%) rotate(-45deg);
+    transform-origin: 50% 90%;
+    animation: ReverseSlideUpRotate 0.4s ease-in forwards;
   }
 
   &__top {
@@ -45,6 +64,21 @@
   }
 }
 
+@keyframes reverseSlideDownRotate {
+  0% {
+    transform: translateY(40%) rotate(45deg);
+  }
+  25% {
+    transform: translateY(40%) rotate(0deg);
+  }
+  50% {
+    transform: translateY(40%) rotate(0deg);
+  }
+  100% {
+    transform: translateY(0%) rotate(0deg);
+  }
+}
+
 @keyframes rotate {
   0% {
     transform: rotate(0deg);
@@ -57,6 +91,21 @@
   }
   100% {
     transform: rotate(45deg);
+  }
+}
+
+@keyframes ReverseRotate {
+  0% {
+    transform: rotate(45deg);
+  }
+  25% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(0deg);
   }
 }
 
@@ -75,17 +124,17 @@
   }
 }
 
-// @keyframes ReverseSlideUpRotate {
-//   0% {
-//     transform: translateY(0%);
-//   }
-//   25% {
-//     transform: translateY(-40%);
-//   }
-//   50% {
-//     transform: translateY(-40%);
-//   }
-//   100% {
-//     transform: translateY(-40%) rotate(-45deg);
-//   }
-// }
+@keyframes ReverseSlideUpRotate {
+  0% {
+    transform: translateY(-40%) rotate(-45deg);
+  }
+  25% {
+    transform: translateY(-40%) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-40%) rotate(0deg);
+  }
+  100% {
+    transform: translateY(0%) rotate(0deg);
+  }
+}
