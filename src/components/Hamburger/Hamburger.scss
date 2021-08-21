@@ -1,0 +1,91 @@
+.hamburger {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in;
+
+  &:hover {
+    fill: rgb(122, 122, 122);
+  }
+
+  .animate-top {
+    transform-origin: 50% 10%;
+    animation: slideDownRotate 0.4s ease-in forwards;
+  }
+
+  .animate-middle {
+    transform-origin: center;
+    animation: rotate 0.4s ease-in forwards;
+  }
+
+  .animate-bottom {
+    transform-origin: 50% 90%;
+    animation: slideUpRotate 0.4s ease-in forwards;
+  }
+
+  &__top {
+  }
+
+  &__bottom {
+  }
+}
+
+@keyframes slideDownRotate {
+  0% {
+    transform: translateY(0%);
+  }
+  25% {
+    transform: translateY(40%);
+  }
+  50% {
+    transform: translateY(40%);
+  }
+  100% {
+    transform: translateY(40%) rotate(45deg);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(45deg);
+  }
+}
+
+@keyframes slideUpRotate {
+  0% {
+    transform: translateY(0%);
+  }
+  25% {
+    transform: translateY(-40%);
+  }
+  50% {
+    transform: translateY(-40%);
+  }
+  100% {
+    transform: translateY(-40%) rotate(-45deg);
+  }
+}
+
+// @keyframes ReverseSlideUpRotate {
+//   0% {
+//     transform: translateY(0%);
+//   }
+//   25% {
+//     transform: translateY(-40%);
+//   }
+//   50% {
+//     transform: translateY(-40%);
+//   }
+//   100% {
+//     transform: translateY(-40%) rotate(-45deg);
+//   }
+// }
