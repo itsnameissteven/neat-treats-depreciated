@@ -16,6 +16,11 @@ export default {
       control: { type: "radio" },
       defaultValue: false,
     },
+    fancy: {
+      options: [true, false],
+      control: { type: "radio" },
+      defaultValue: false,
+    },
     label: {
       required: true,
       control: { type: "text" },
@@ -24,8 +29,21 @@ export default {
   },
 };
 
-export const Primary = ({ type, round, label, backgroundColor }) => (
-  <Button type={type} round={round} backgroundColor={backgroundColor}>
+export const Primary = ({
+  type,
+  round,
+  fancy,
+  label,
+  backgroundColor,
+  size,
+}) => (
+  <Button
+    type={type}
+    round={round}
+    fancy={fancy}
+    size={size}
+    backgroundColor={backgroundColor}
+  >
     {label}
   </Button>
 );

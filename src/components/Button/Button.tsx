@@ -6,6 +6,8 @@ import "./Button.scss";
 interface IButton {
   type?: "primary" | "secondary" | "outline";
   round?: boolean;
+  fancy?: boolean;
+  size?: "small" | "medium" | "large";
   backgroundColor?: string;
   children: string; //or any? or icon?
   className?: "string";
@@ -16,14 +18,18 @@ const Button = ({
   type = "primary",
   round = false,
   backgroundColor,
+  fancy = false,
+  size = "medium",
   children,
   className,
   onClick,
 }: IButton) => {
   const btnClass = classnames({
     "nt-btn": true,
-    [`btn-${type}`]: true,
+    [`nt-btn__${type}`]: true,
+    [`nt-btn__${size}`]: true,
     round: round,
+    fancy: fancy && type !== "outline",
   });
 
   const style =
