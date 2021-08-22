@@ -6,28 +6,32 @@ import "./Hamburger.scss";
 interface IHamburger {
   size?: number;
   className?: string;
-  isClicked?: boolean;
+  handleClick?: () => void;
+  isActive?: boolean;
   pipes?: 2 | 3;
 }
 
 const Hamburger = ({
   size = 40,
   className,
-  isClicked = false,
+  handleClick,
+  isActive,
   pipes = 3,
 }: IHamburger) => {
+  const [isClicked, setIsClicked] = useState(false);
   const [firstRender, setFirstRender] = useState(true);
+
   const topClass = classnames({
-    ["animate-top"]: isClicked,
-    ["hamburger__top"]: !isClicked && !firstRender,
+    ["animate-top"]: isClicked || isActive,
+    ["hamburger__top"]: !isClicked && !firstRender && !isActive,
   });
   const middleClass = classnames({
-    ["animate-middle"]: isClicked,
-    ["hamburger__middle"]: !isClicked && !firstRender,
+    ["animate-middle"]: isClicked || isActive,
+    ["hamburger__middle"]: !isClicked && !firstRender && !isActive,
   });
   const bottomClass = classnames({
-    ["animate-bottom"]: isClicked,
-    ["hamburger__bottom"]: !isClicked && !firstRender,
+    ["animate-bottom"]: isClicked || isActive,
+    ["hamburger__bottom"]: !isClicked && !firstRender && !isActive,
   });
 
   useEffect(() => {
@@ -42,6 +46,7 @@ const Hamburger = ({
       viewBox="0 0 110 100"
       width={size}
       height={size}
+      onClick={handleClick ? handleClick : () => setIsClicked(!isClicked)}
     >
       {pipes === 3 && (
         <rect className={topClass} width="110" height="16" rx="8"></rect>

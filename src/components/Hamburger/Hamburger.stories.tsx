@@ -1,23 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 
 import Hamburger from ".";
 
 export default {
   component: Hamburger,
   title: "Components/Hamburger",
-  argTypes: {
-    isClicked: {
-      options: [true, false],
-      control: { type: "radio" },
-    },
-  },
+  argTypes: {},
 };
 
-export const Primary = ({ size }) => {
-  const [isClicked, setIsClicked] = useState(false);
-  return (
-    <div onClick={() => setIsClicked(!isClicked)}>
-      <Hamburger isClicked={isClicked} size={30} />
-    </div>
-  );
+const Template = (args) => <Hamburger {...args} />;
+
+export const Primary = Template.bind({});
+Primary.args = {
+  size: "20px",
 };
