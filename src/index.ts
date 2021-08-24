@@ -1,3 +1,9 @@
-import { Glitter, MagicRainbowButton, Button, Hamburger } from "./components";
+import {
+  Glitter,
+  MagicRainbowButton,
+  Button,
+  Hamburger,
+  Menu,
+} from "./components";
 
-export { Button, Glitter, MagicRainbowButton, Hamburger };
+export { Button, Glitter, MagicRainbowButton, Hamburger, Menu };
