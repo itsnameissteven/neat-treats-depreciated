@@ -6,10 +6,24 @@ import "./Menu.scss";
 interface IMenu {
   isOpen: boolean;
   children: any;
+  width?: string;
+  position?: "left" | "right";
+  heightFromTop?: string;
 }
 
-const Menu = ({ isOpen, children }: IMenu) => {
+const Menu = ({
+  isOpen,
+  children,
+  width = "225px",
+  position = "left",
+  heightFromTop = "50px",
+}: IMenu) => {
   const [canOpen, setCanOpen] = useState(isOpen);
+
+  const styles = {
+    width,
+    top: heightFromTop,
+  };
 
   const containerClassName = classNames({
     menu: true,
@@ -18,9 +32,9 @@ const Menu = ({ isOpen, children }: IMenu) => {
   });
 
   const slideOutClassName = classNames({
-    ["menu__slide-out"]: true,
-    ["menu__slide-out-enter"]: isOpen,
-    ["menu__slide-out-exit"]: !isOpen,
+    [`menu__slide-out--${position}`]: true,
+    [`menu__slide-out-enter--${position}`]: isOpen,
+    [`menu__slide-out-exit--${position}`]: !isOpen,
   });
 
   useEffect(() => {
@@ -41,7 +55,9 @@ const Menu = ({ isOpen, children }: IMenu) => {
 
   return (
     <div className={containerClassName}>
-      <div className={slideOutClassName}>{children}</div>
+      <div className={slideOutClassName} style={styles}>
+        {children}
+      </div>
     </div>
   );
 };

@@ -7,12 +7,13 @@ export default {
   title: "Components/Menu",
   argTypes: {
     isOpen: { options: [true, false] },
+    position: { options: ["left", "right"] },
   },
   decorators: [(Story) => <Story />],
 };
 
-const Template = ({ isOpen }) => (
-  <Menu isOpen={isOpen}>
+const Template = ({ isOpen, position }) => (
+  <Menu isOpen={isOpen} position={position}>
     <p style={{ margin: "unset" }}>I am a child</p>
   </Menu>
 );
