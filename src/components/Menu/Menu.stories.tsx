@@ -5,17 +5,17 @@ import Menu from "./Menu";
 export default {
   component: Menu,
   title: "Components/Menu",
-  argTypes: {},
-  decorators: [
-    (Story) => (
-      <div style={{ height: "100vh" }}>
-        <Story />
-      </div>
-    ),
-  ],
+  argTypes: {
+    isOpen: { options: [true, false] },
+  },
+  decorators: [(Story) => <Story />],
 };
 
-const Template = (args) => <Menu {...args} />;
+const Template = ({ isOpen }) => (
+  <Menu isOpen={isOpen}>
+    <p style={{ margin: "unset" }}>I am a child</p>
+  </Menu>
+);
 
 export const Primary = Template.bind({});
 // Primary.args = {

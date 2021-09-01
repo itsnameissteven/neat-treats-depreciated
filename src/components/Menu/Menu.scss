@@ -1,20 +1,88 @@
-.menu {
-  height: 100%;
+.t-group {
+  height: 100vh;
   width: 100%;
+}
+.menu {
+  height: 100vh;
+  width: 100%;
+  left: 0;
+  top: 0;
   background-color: #0505051c;
+  position: absolute;
+  opacity: 0;
+
+  &__slide-out {
+    height: 100%;
+    width: 225px;
+    background-color: pink;
+    position: absolute;
+    top: 50px;
+    left: 0px;
+    transform: translateX(-100%);
+  }
 }
 
-.menu-transition-enter {
-  opacity: 0;
+@keyframes menu-cont-open {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
-.menu-transition-enter-active {
+@keyframes menu-cont-close {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slide-out-enter {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+@keyframes slide-out-exit {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.menu-container-enter {
+  animation: menu-cont-open 400ms ease-in forwards;
+}
+
+.menu-container-exit {
+  animation: menu-cont-close 400ms ease-out forwards;
+}
+
+.menu__slide-out-enter {
+  animation: slide-out-enter 300ms ease-in 100ms forwards;
+}
+
+.menu__slide-out-exit {
+  animation: slide-out-exit 200ms ease-out forwards;
+}
+
+.slide-enter {
+  transform: translateX(-100%);
+}
+.slide-enter-active {
+  transform: translateX(0%);
+  transition: all 200ms;
+}
+.slide-exit {
   opacity: 1;
-  transition: opacity 200ms;
 }
-.menu-transition-exit {
-  opacity: 1;
-}
-.menu-transition-exit-active {
-  opacity: 0;
-  transition: opacity 200ms;
+.slide-exit-active {
+  transform: translateX(-100%);
+  transition: all 200ms;
 }
