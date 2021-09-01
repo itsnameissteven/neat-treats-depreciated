@@ -7,6 +7,7 @@ interface IMenu {
   isOpen: boolean;
   children: any;
   width?: string;
+  setClose: React.Dispatch<React.SetStateAction<boolean>>;
   position?: "left" | "right";
   heightFromTop?: string;
   backgroundColor?: string;
@@ -18,6 +19,7 @@ interface IMenu {
 const Menu = ({
   isOpen,
   children,
+  setClose,
   width = "225px",
   position = "left",
   heightFromTop = "50px",
@@ -50,7 +52,7 @@ const Menu = ({
   useEffect(() => {
     const delayOpen = setTimeout(() => {
       setCanOpen(isOpen);
-    }, 2000);
+    }, 400);
 
     if (isOpen) {
       setCanOpen(isOpen);
@@ -67,6 +69,7 @@ const Menu = ({
     <div
       className={containerClassName}
       style={{ backgroundColor: containerColor }}
+      onClick={() => setClose(false)}
     >
       <div className={slideOutClassName} style={style ? style : styles}>
         {children}

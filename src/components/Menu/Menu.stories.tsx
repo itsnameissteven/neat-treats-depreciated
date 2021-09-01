@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Menu from "./Menu";
+import Hamburger from "../Hamburger";
 
 export default {
   component: Menu,
@@ -12,13 +13,37 @@ export default {
   decorators: [(Story) => <Story />],
 };
 
-const Template = ({ isOpen, position }) => (
-  <Menu isOpen={isOpen} position={position}>
-    <p style={{ margin: "unset" }}>I am a child</p>
-  </Menu>
-);
+// const Template = ({ isOpen, position }) => (
+//   <Menu isOpen={isOpen} position={position}>
+//     <p style={{ margin: "unset" }}>I am a child</p>
+//   </Menu>
+// );
 
-export const Primary = Template.bind({});
+export const Primary = ({ isOpen, position }) => {
+  const [isOpenTest, setIsOpenTest] = useState(isOpen);
+
+  return (
+    <Menu isOpen={isOpenTest} position={position} setClose={setIsOpenTest}>
+      <p style={{ margin: "unset" }}>I am a child</p>
+    </Menu>
+  );
+};
+
+export const WithBurger = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <div>
+      <Hamburger
+        handleClick={() => setIsOpen(!isOpen)}
+        isActive={isOpen}
+        size="25px"
+      />
+      <Menu isOpen={isOpen} setClose={setIsOpen}>
+        <p style={{ margin: "unset" }}>I am a child</p>
+      </Menu>
+    </div>
+  );
+};
 // Primary.args = {
 //   isOpen: true,
 // };

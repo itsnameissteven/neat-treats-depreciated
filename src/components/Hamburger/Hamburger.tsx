@@ -4,7 +4,7 @@ import classnames from "classnames";
 import "./Hamburger.scss";
 
 interface IHamburger {
-  size?: number;
+  size?: string;
   className?: string;
   handleClick?: () => void;
   isActive?: boolean;
@@ -12,7 +12,7 @@ interface IHamburger {
 }
 
 const Hamburger = ({
-  size = 40,
+  size = "40px",
   className,
   handleClick,
   isActive,
@@ -40,13 +40,22 @@ const Hamburger = ({
     }
   }, [isClicked]);
 
+  const passedClick = () => {
+    if (handleClick) {
+      handleClick();
+      setFirstRender(false);
+    } else {
+      setIsClicked(!isClicked);
+    }
+  };
+
   return (
     <svg
       className={`hamburger ${className}`}
       viewBox="0 0 110 100"
       width={size}
       height={size}
-      onClick={handleClick ? handleClick : () => setIsClicked(!isClicked)}
+      onClick={passedClick}
     >
       {pipes === 3 && (
         <rect className={topClass} width="110" height="16" rx="8"></rect>
