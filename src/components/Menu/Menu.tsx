@@ -9,6 +9,10 @@ interface IMenu {
   width?: string;
   position?: "left" | "right";
   heightFromTop?: string;
+  backgroundColor?: string;
+  boxShaddow?: string;
+  style?: object;
+  containerColor?: string;
 }
 
 const Menu = ({
@@ -17,12 +21,18 @@ const Menu = ({
   width = "225px",
   position = "left",
   heightFromTop = "50px",
+  backgroundColor = "#fff",
+  boxShaddow,
+  style,
+  containerColor = "#0505051c",
 }: IMenu) => {
   const [canOpen, setCanOpen] = useState(isOpen);
 
   const styles = {
     width,
     top: heightFromTop,
+    backgroundColor,
+    boxShaddow,
   };
 
   const containerClassName = classNames({
@@ -54,8 +64,11 @@ const Menu = ({
   }
 
   return (
-    <div className={containerClassName}>
-      <div className={slideOutClassName} style={styles}>
+    <div
+      className={containerClassName}
+      style={{ backgroundColor: containerColor }}
+    >
+      <div className={slideOutClassName} style={style ? style : styles}>
         {children}
       </div>
     </div>
