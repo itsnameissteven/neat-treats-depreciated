@@ -31,6 +31,7 @@ export const WithBurger = () => {
         handleClick={() => setIsOpen(!isOpen)}
         isActive={isOpen}
         size="25px"
+        animationTime="300ms"
       />
       <Menu isOpen={isOpen} setClose={setIsOpen}>
         <p style={{ margin: "unset" }}>I am a child</p>
