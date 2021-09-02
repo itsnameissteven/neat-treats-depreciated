@@ -11,7 +11,7 @@ interface IMenu {
   position?: "left" | "right";
   heightFromTop?: string;
   backgroundColor?: string;
-  boxShaddow?: string;
+  boxShadow?: string;
   style?: object;
   containerColor?: string;
 }
@@ -24,7 +24,7 @@ const Menu = ({
   position = "left",
   heightFromTop = "50px",
   backgroundColor = "#fff",
-  boxShaddow,
+  boxShadow,
   style,
   containerColor = "#0505051c",
 }: IMenu) => {
@@ -34,7 +34,7 @@ const Menu = ({
     width,
     top: heightFromTop,
     backgroundColor,
-    boxShaddow,
+    boxShadow,
   };
 
   const containerClassName = classNames({
@@ -68,7 +68,9 @@ const Menu = ({
   return (
     <div
       className={containerClassName}
-      style={{ backgroundColor: containerColor }}
+      style={{
+        backgroundColor: containerColor,
+      }}
       onClick={() => setClose(false)}
     >
       <div className={slideOutClassName} style={style ? style : styles}>

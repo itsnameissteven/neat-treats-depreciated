@@ -13,12 +13,6 @@ export default {
   decorators: [(Story) => <Story />],
 };
 
-// const Template = ({ isOpen, position }) => (
-//   <Menu isOpen={isOpen} position={position}>
-//     <p style={{ margin: "unset" }}>I am a child</p>
-//   </Menu>
-// );
-
 export const Primary = ({ isOpen, position }) => {
   const [isOpenTest, setIsOpenTest] = useState(isOpen);
 
@@ -44,6 +38,3 @@ export const WithBurger = () => {
     </div>
   );
 };
-// Primary.args = {
-//   isOpen: true,
-// };

@@ -79,27 +79,27 @@
 }
 
 .menu-container-enter {
-  animation: menu-cont-open 300ms ease-in forwards;
+  animation: menu-cont-open 300ms ease-out forwards;
 }
 
 .menu-container-exit {
-  animation: menu-cont-close 300ms ease-out forwards;
+  animation: menu-cont-close 300ms ease-in forwards;
 }
 
 .menu__slide-out-enter--left {
-  animation: slide-out-enter-left 200ms ease-in 100ms forwards;
+  animation: slide-out-enter-left 200ms ease-out 100ms forwards;
 }
 
 .menu__slide-out-exit--left {
-  animation: slide-out-exit-left 200ms ease-out forwards;
+  animation: slide-out-exit-left 200ms ease-in forwards;
 }
 
 .menu__slide-out-enter--right {
-  animation: slide-out-enter-right 200ms ease-in 100ms forwards;
+  animation: slide-out-enter-right 200ms ease-out 100ms forwards;
 }
 
 .menu__slide-out-exit--right {
-  animation: slide-out-exit-right 200ms ease-out forwards;
+  animation: slide-out-exit-right 200ms ease-in forwards;
 }
 
 .slide-enter {
