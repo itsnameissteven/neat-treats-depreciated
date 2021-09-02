@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Hamburger from ".";
 
@@ -8,9 +8,21 @@ export default {
   argTypes: {},
 };
 
-const Template = (args) => <Hamburger {...args} />;
+const Template = (args) => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <div>
+      <Hamburger
+        handleClick={() => setIsOpen(!isOpen)}
+        isActive={isOpen}
+        {...args}
+      />
+    </div>
+  );
+};
 
 export const Primary = Template.bind({});
 Primary.args = {
   size: "20px",
+  pipes: 2,
 };
