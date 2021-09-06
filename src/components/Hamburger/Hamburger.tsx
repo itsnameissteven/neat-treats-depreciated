@@ -4,34 +4,46 @@ import classnames from "classnames";
 import "./Hamburger.scss";
 
 interface IHamburger {
-  size?: number;
+  size?: string;
   className?: string;
-  handleClick?: () => void;
-  isActive?: boolean;
+  handleClick: () => void;
+  isActive: boolean;
   pipes?: 2 | 3;
+  animationTime?: string;
+  color?: string;
+  zIndex?: number;
+  position?: {
+    top: string;
+    left: string;
+    right: string;
+  };
 }
 
 const Hamburger = ({
-  size = 40,
+  size = "40px",
   className,
   handleClick,
   isActive,
   pipes = 3,
+  animationTime = "400ms",
+  color,
+  zIndex,
+  position,
 }: IHamburger) => {
   const [isClicked, setIsClicked] = useState(false);
   const [firstRender, setFirstRender] = useState(true);
 
   const topClass = classnames({
-    ["animate-top"]: isClicked || isActive,
-    ["hamburger__top"]: !isClicked && !firstRender && !isActive,
+    ["animate-top"]: isActive,
+    ["hamburger__top"]: !firstRender && !isActive,
   });
   const middleClass = classnames({
-    ["animate-middle"]: isClicked || isActive,
-    ["hamburger__middle"]: !isClicked && !firstRender && !isActive,
+    ["animate-middle"]: isActive,
+    ["hamburger__middle"]: !firstRender && !isActive,
   });
   const bottomClass = classnames({
-    ["animate-bottom"]: isClicked || isActive,
-    ["hamburger__bottom"]: !isClicked && !firstRender && !isActive,
+    ["animate-bottom"]: isActive,
+    ["hamburger__bottom"]: !firstRender && !isActive,
   });
 
   useEffect(() => {
@@ -40,16 +52,44 @@ const Hamburger = ({
     }
   }, [isClicked]);
 
+  const passedClick = () => {
+    if (handleClick) {
+      handleClick();
+      setFirstRender(false);
+    } else {
+      setIsClicked(!isClicked);
+    }
+  };
+
+  const { top, left, right } = position || {};
+
+  const styles = {
+    fill: color,
+    zIndex,
+    top,
+    left,
+    right,
+  };
+
+  const animationDuration = animationTime;
+
   return (
     <svg
       className={`hamburger ${className}`}
       viewBox="0 0 110 100"
       width={size}
       height={size}
-      onClick={handleClick ? handleClick : () => setIsClicked(!isClicked)}
+      style={styles}
+      onClick={passedClick}
     >
       {pipes === 3 && (
-        <rect className={topClass} width="110" height="16" rx="8"></rect>
+        <rect
+          className={topClass}
+          width="110"
+          height="16"
+          rx="8"
+          style={{ animationDuration }}
+        ></rect>
       )}
       <rect
         className={middleClass}
@@ -57,6 +97,7 @@ const Hamburger = ({
         width="110"
         height="16"
         rx="8"
+        style={{ animationDuration }}
       ></rect>
       <rect
         className={bottomClass}
@@ -64,6 +105,7 @@ const Hamburger = ({
         width="110"
         height="16"
         rx="8"
+        style={{ animationDuration }}
       ></rect>
     </svg>
   );
