@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import Menu from "./Menu";
 import Hamburger from "../Hamburger";
+import { useEffect } from "react";
 
 export default {
   component: Menu,
@@ -16,10 +17,20 @@ export default {
 export const Primary = ({ isOpen, position }) => {
   const [isOpenTest, setIsOpenTest] = useState(isOpen);
 
+  useEffect(() => {
+    setIsOpenTest(isOpen);
+  }, [isOpen]);
+
   return (
-    <Menu isOpen={isOpenTest} position={position} setClose={setIsOpenTest}>
-      <p style={{ margin: "unset" }}>I am a child</p>
-    </Menu>
+    <div style={{ height: "100vh", width: "100%" }}>
+      <Menu
+        isOpen={isOpenTest}
+        position={position}
+        handleClose={() => setIsOpenTest(false)}
+      >
+        <p style={{ margin: "unset" }}>I am a child</p>
+      </Menu>
+    </div>
   );
 };
 
@@ -33,7 +44,7 @@ export const WithBurger = () => {
         size="25px"
         animationTime="300ms"
       />
-      <Menu isOpen={isOpen} setClose={setIsOpen}>
+      <Menu isOpen={isOpen} handleClose={() => setIsOpen(false)}>
         <p style={{ margin: "unset" }}>I am a child</p>
       </Menu>
     </div>

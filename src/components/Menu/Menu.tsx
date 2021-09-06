@@ -7,7 +7,7 @@ interface IMenu {
   isOpen: boolean;
   children: any;
   width?: string;
-  setClose: React.Dispatch<React.SetStateAction<boolean>>;
+  handleClose: () => void;
   position?: "left" | "right";
   heightFromTop?: string;
   backgroundColor?: string;
@@ -19,7 +19,7 @@ interface IMenu {
 const Menu = ({
   isOpen,
   children,
-  setClose,
+  handleClose,
   width = "225px",
   position = "left",
   heightFromTop = "50px",
@@ -71,7 +71,7 @@ const Menu = ({
       style={{
         backgroundColor: containerColor,
       }}
-      onClick={() => setClose(false)}
+      onClick={handleClose}
     >
       <div className={slideOutClassName} style={style ? style : styles}>
         {children}

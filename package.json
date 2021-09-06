@@ -1,6 +1,6 @@
 {
   "name": "neat-treats",
-  "version": "1.1.62",
+  "version": "1.1.64",
   "description": "A component library.",
   "main": "./lib/cjs/src/index.js",
   "module": "./lib/esm/src/index.js",
@@ -40,7 +40,7 @@
     "compile:cjs": "tsc --module commonjs --outDir lib/cjs",
     "clean": "rimraf dist lib",
     "copy-files": "copyfiles src/**/*.scss lib/esm/",
-    "build": "tsc && rollup -c rollup.config.js",
+    "build": "rollup -c rollup.config.js",
     "rollup": "yarn clean && yarn compile && yarn copy-files && yarn build",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"

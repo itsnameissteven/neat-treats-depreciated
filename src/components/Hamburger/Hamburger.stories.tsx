@@ -24,5 +24,5 @@ const Template = (args) => {
 export const Primary = Template.bind({});
 Primary.args = {
   size: "20px",
-  pipes: 2,
+  // pipes: 2,
 };
