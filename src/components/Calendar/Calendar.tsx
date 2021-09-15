@@ -1,0 +1,137 @@
+import React, { useEffect, useState } from "react";
+
+import "./Calendar.scss";
+
+enum Day {
+  Sunday,
+  Monday,
+  Tuesday,
+  Wednesday,
+  Thursday,
+  Friday,
+  Saturday,
+}
+
+enum Month {
+  January,
+  February,
+  March,
+  April,
+  May,
+  June,
+  July,
+  August,
+  September,
+  October,
+  November,
+  December,
+}
+
+interface ITime {
+  monthStr: string | null;
+  monthNum: number | null;
+  year: number | null;
+  lastMonth: number | null;
+}
+
+const Calendar = () => {
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [date, setDate] = useState(selectedDate.getDate());
+  const [day, setDay] = useState(Day[selectedDate.getDay()]);
+  // const [year, setYear] = useState(selectedDate.getFullYear());
+  // const [month, setMonth] = useState(Month[selectedDate.getMonth()]);
+  // const monthNum = selectedDate.getMonth() + 1;
+  // const lastMonth = selectedDate.getMonth();
+  const [time, setTime] = useState({
+    monthStr: Month[selectedDate.getMonth()],
+    monthNum: selectedDate.getMonth() + 1,
+    year: selectedDate.getFullYear(),
+    lastMonth: selectedDate.getMonth(),
+  });
+
+  useEffect(() => {
+    setTime({
+      monthStr: Month[selectedDate.getMonth()],
+      monthNum: selectedDate.getMonth() + 1,
+      year: selectedDate.getFullYear(),
+      lastMonth: selectedDate.getMonth() - 1,
+    });
+  }, [selectedDate]);
+
+  const { monthStr, monthNum, year, lastMonth } = time;
+
+  const getDaysOfMonth = (month: number, year: number) => {
+    return new Date(year, month, 0).getDate();
+  };
+
+  const startOfMonthDay = new Date(year, monthNum - 1, 1).getDay();
+
+  const onNextMonth = () => {
+    setSelectedDate(new Date(year, monthNum));
+  };
+
+  const onPrevMonth = () => {
+    setSelectedDate(new Date(year, lastMonth));
+  };
+
+  const renderDays = () => {
+    const totalDays = getDaysOfMonth(monthNum, year);
+    let prevMonth = getDaysOfMonth(lastMonth, year);
+    const priorMonth: JSX.Element[] = [];
+    const emptySpots = 7 - ((startOfMonthDay + totalDays) % 7);
+    console.log(year, monthNum, startOfMonthDay);
+    for (let i = startOfMonthDay; i > 0; i--) {
+      const cell = (
+        <div className="cells__day">
+          <div className="cells__day__date--out">
+            <p>{prevMonth.toString()}</p>
+          </div>
+        </div>
+      );
+      prevMonth--;
+      priorMonth.unshift(cell);
+    }
+
+    const cells = [...priorMonth];
+    for (let i = 1; i <= totalDays; i++) {
+      const cell = (
+        <div className="cells__day">
+          <div className="cells__day__date">
+            <p>{i.toString()}</p>
+          </div>
+        </div>
+      );
+      cells.push(cell);
+    }
+
+    for (let i = 1; cells.length < 42; i++) {
+      const cell = (
+        <div className="cells__day">
+          <div className="cells__day__date--out">
+            <p>{i.toString()}</p>
+          </div>
+        </div>
+      );
+      cells.push(cell);
+    }
+
+    return <div className="cells">{cells}</div>;
+  };
+
+  return (
+    <div className="calendar">
+      <div className="calendar__month">
+        <button onClick={onPrevMonth}>prev</button>
+        <p>
+          {monthStr} {year}
+        </p>
+        <button onClick={onNextMonth}>next</button>
+      </div>
+      {renderDays()}
+      {/* {day} {month} {date}, {year}
+      days of month {getDaysOfMonth(monthNum, 2020)} */}
+    </div>
+  );
+};
+
+export default Calendar;

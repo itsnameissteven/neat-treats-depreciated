@@ -1,0 +1,40 @@
+.calendar {
+  border: 2px solid black;
+  width: fit-content;
+
+  &__month {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.cells {
+  display: grid;
+  grid-template-columns: repeat(7, 50px);
+
+  &__day {
+    border: 1px solid rgb(82, 82, 82);
+    box-sizing: border-box;
+    position: relative;
+    height: 50px;
+    width: 50px;
+
+    &__date {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+    }
+
+    &__date--out {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      color: gray;
+    }
+  }
+}
+
+p {
+  margin: unset;
+}
