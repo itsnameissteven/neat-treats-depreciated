@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+import { Icon } from "../index";
+
 import "./Calendar.scss";
 
 enum Day {
@@ -119,18 +121,22 @@ const Calendar = () => {
   };
 
   return (
-    <div className="calendar">
-      <div className="calendar__month">
-        <button onClick={onPrevMonth}>prev</button>
-        <p>
-          {monthStr} {year}
-        </p>
-        <button onClick={onNextMonth}>next</button>
-      </div>
-      {renderDays()}
-      {/* {day} {month} {date}, {year}
+    <>
+      <div className="calendar">
+        <div className="calendar__month">
+          <button onClick={onPrevMonth}>
+            <Icon name="chevron-left" size={20} />
+          </button>
+          <p>
+            {monthStr} {year}
+          </p>
+          <button onClick={onNextMonth}>next</button>
+        </div>
+        {renderDays()}
+        {/* {day} {month} {date}, {year}
       days of month {getDaysOfMonth(monthNum, 2020)} */}
-    </div>
+      </div>
+    </>
   );
 };
 
