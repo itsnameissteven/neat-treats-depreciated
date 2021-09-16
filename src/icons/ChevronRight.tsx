@@ -2,7 +2,7 @@ import React from "react";
 
 import { IIcon } from "../types";
 
-const ChevronLeft = ({ size = 48, props, className }: IIcon) => {
+const ChevronRight = ({ size = 48, props, className }: IIcon) => {
   return (
     <svg
       className={className}
@@ -13,9 +13,9 @@ const ChevronLeft = ({ size = 48, props, className }: IIcon) => {
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-      <path d="M32 7L15 24L32 41" stroke="black" stroke-width="6" />
+      <path d="M16 41L33 24L16 7" stroke="black" stroke-width="6" />
     </svg>
   );
 };
 
-export default ChevronLeft;
+export default ChevronRight;

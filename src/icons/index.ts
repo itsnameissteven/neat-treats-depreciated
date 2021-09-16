@@ -1,3 +1,5 @@
 import ChevronLeft from "./ChevronLeft";
+import ChevronRight from "./ChevronRight";
+import ChevronDown from "./ChevronDown";
 
-export { ChevronLeft };
+export { ChevronLeft, ChevronRight, ChevronDown };

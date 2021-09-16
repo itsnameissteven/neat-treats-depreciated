@@ -2,10 +2,13 @@
   border: 2px solid black;
   width: fit-content;
 
-  &__month {
+  &__header {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+  }
+  p {
+    margin: unset;
   }
 }
 
@@ -35,6 +38,12 @@
   }
 }
 
-p {
-  margin: unset;
+// global reset styles? where to put them
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  border: none;
+  padding: 0;
 }

@@ -123,19 +123,22 @@ const Calendar = () => {
   return (
     <>
       <div className="calendar">
-        <div className="calendar__month">
+        <div className="calendar__header">
           <button onClick={onPrevMonth}>
             <Icon name="chevron-left" size={20} />
           </button>
           <p>
             {monthStr} {year}
           </p>
-          <button onClick={onNextMonth}>next</button>
+          <button onClick={onNextMonth}>
+            <Icon name="chevron-right" size={20} />
+          </button>
         </div>
         {renderDays()}
         {/* {day} {month} {date}, {year}
       days of month {getDaysOfMonth(monthNum, 2020)} */}
       </div>
+      <Icon name="chevron-down" size={20} />
     </>
   );
 };
