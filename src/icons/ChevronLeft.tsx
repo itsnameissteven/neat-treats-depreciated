@@ -2,10 +2,9 @@ import React from "react";
 
 import { IIcon } from "../types";
 
-const ChevronLeft = ({ size = 48, props, className }: IIcon) => {
+const ChevronLeft = ({ size = 48, color = "black", props }: IIcon) => {
   return (
     <svg
-      className={className}
       width={size}
       height={size}
       viewBox="0 0 48 48"
@@ -13,7 +12,12 @@ const ChevronLeft = ({ size = 48, props, className }: IIcon) => {
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-      <path d="M32 7L15 24L32 41" stroke="black" stroke-width="6" />
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M12.3319 24.4775C12.4234 24.7868 12.5913 25.0783 12.8353 25.3223L15.6638 28.1508L30.513 43L34.7556 38.7574L19.9064 23.9081L34.7556 9.05887L30.513 4.81623L15.6638 19.6655L12.8353 22.4939C12.4408 22.8884 12.2456 23.4067 12.2496 23.9237C12.251 24.1104 12.2785 24.297 12.3319 24.4775Z"
+        fill={color}
+      />
     </svg>
   );
 };

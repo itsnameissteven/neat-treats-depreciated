@@ -135,10 +135,8 @@ const Calendar = () => {
           </button>
         </div>
         {renderDays()}
-        {/* {day} {month} {date}, {year}
-      days of month {getDaysOfMonth(monthNum, 2020)} */}
       </div>
-      <Icon name="chevron-down" size={20} />
+      <Icon name="chevron-up" size={20} className="icon" />
     </>
   );
 };

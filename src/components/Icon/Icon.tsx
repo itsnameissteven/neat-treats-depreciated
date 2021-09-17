@@ -1,10 +1,11 @@
 import React from "react";
-import { ChevronLeft, ChevronRight, ChevronDown } from "../../icons";
+import { ChevronLeft, ChevronRight, ChevronDown, ChevronUp } from "../../icons";
 
 const icons = {
   "chevron-left": ChevronLeft,
   "chevron-right": ChevronRight,
   "chevron-down": ChevronDown,
+  "chevron-up": ChevronUp,
 };
 
 interface IconProps {
