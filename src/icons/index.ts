@@ -19,6 +19,18 @@ import XCircleF from "./XCircleF";
 import HamburgerRound from "./HamburgerRound";
 import HamburgerSquare from "./HamburgerSquare";
 import HamburgerShort from "./HamburgerShort";
+import ArrowUp from "./ArrowUp";
+import ArrowRight from "./ArrowRight";
+import ArrowLeft from "./ArrowLeft";
+import ArrowDown from "./ArrowDown";
+import ArrowCircleUp from "./ArrowCircleUp";
+import ArrowCircleRight from "./ArrowCircleRight";
+import ArrowCircleLeft from "./ArrowCircleLeft";
+import ArrowCircleDown from "./ArrowCircleDown";
+import ArrowCircleUpF from "./ArrowCircleUpF";
+import ArrowCircleRightF from "./ArrowCircleRightF";
+import ArrowCircleLeftF from "./ArrowCircleLeftF";
+import ArrowCircleDownF from "./ArrowCircleDownF";
 
 export {
   ChevronLeft,
@@ -42,4 +54,16 @@ export {
   HamburgerRound,
   HamburgerSquare,
   HamburgerShort,
+  ArrowUp,
+  ArrowRight,
+  ArrowDown,
+  ArrowLeft,
+  ArrowCircleUp,
+  ArrowCircleRight,
+  ArrowCircleDown,
+  ArrowCircleLeft,
+  ArrowCircleUpF,
+  ArrowCircleRightF,
+  ArrowCircleDownF,
+  ArrowCircleLeftF,
 };

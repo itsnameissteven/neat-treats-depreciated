@@ -21,6 +21,18 @@ import {
   HamburgerRound,
   HamburgerSquare,
   HamburgerShort,
+  ArrowUp,
+  ArrowRight,
+  ArrowDown,
+  ArrowLeft,
+  ArrowCircleUp,
+  ArrowCircleRight,
+  ArrowCircleDown,
+  ArrowCircleLeft,
+  ArrowCircleUpF,
+  ArrowCircleRightF,
+  ArrowCircleDownF,
+  ArrowCircleLeftF,
 } from "../../icons";
 
 const icons = {
@@ -45,19 +57,32 @@ const icons = {
   "hamburger-round": HamburgerRound,
   "hamburger-square": HamburgerSquare,
   "hamburger-short": HamburgerShort,
+  "arrow-up": ArrowUp,
+  "arrow-right": ArrowRight,
+  "arrow-down": ArrowDown,
+  "arrow-left": ArrowLeft,
+  "arrow-circle-up": ArrowCircleUp,
+  "arrow-circle-right": ArrowCircleRight,
+  "arrow-circle-down": ArrowCircleDown,
+  "arrow-circle-left": ArrowCircleLeft,
+  "arrow-circle-up-f": ArrowCircleUpF,
+  "arrow-circle-right-f": ArrowCircleRightF,
+  "arrow-circle-down-f": ArrowCircleDownF,
+  "arrow-circle-left-f": ArrowCircleLeftF,
 };
 
 export const iconKeys = Object.keys(icons);
 
 interface IconProps {
   name: string;
+  color?: string;
   size?: number;
   className?: string;
 }
 
-const Icon = ({ name, size, className }: IconProps) => {
+const Icon = ({ name, size, color, className }: IconProps) => {
   if (typeof icons[name] !== "undefined") {
-    return React.createElement(icons[name], { size, className });
+    return React.createElement(icons[name], { size, color, className });
   }
   return null;
 };
