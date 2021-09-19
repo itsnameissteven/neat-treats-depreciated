@@ -29,13 +29,6 @@ enum Month {
   December,
 }
 
-interface ITime {
-  monthStr: string | null;
-  monthNum: number | null;
-  year: number | null;
-  lastMonth: number | null;
-}
-
 const Calendar = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [date, setDate] = useState(selectedDate.getDate());
