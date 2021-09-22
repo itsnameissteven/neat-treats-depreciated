@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { Icon } from "../index";
 
+import "../../styles/global.scss";
 import "./Calendar.scss";
 
 enum Day {
@@ -69,6 +70,18 @@ const Calendar = () => {
     setSelectedDate(new Date(year, lastMonth));
   };
 
+  const daysOfWeek = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+
+  const renderDaysOfWeek = () => {
+    return daysOfWeek.map((day, i) => {
+      return (
+        <p className="calendar__day-of-week__name" key={i}>
+          {day}
+        </p>
+      );
+    });
+  };
+
   const renderDays = () => {
     const totalDays = getDaysOfMonth(monthNum, year);
     let prevMonth = getDaysOfMonth(lastMonth, year);
@@ -114,23 +127,21 @@ const Calendar = () => {
   };
 
   return (
-    <>
-      <div className="calendar">
-        <div className="calendar__header">
-          <button onClick={onPrevMonth}>
-            <Icon name="chevron-left" size={20} />
-          </button>
-          <p>
-            {monthStr} {year}
-          </p>
-          <button onClick={onNextMonth}>
-            <Icon name="chevron-right" size={20} />
-          </button>
-        </div>
-        {renderDays()}
+    <div className="calendar">
+      <div className="calendar__header">
+        <button onClick={onPrevMonth}>
+          <Icon name="chevron-left" size={24} />
+        </button>
+        <p className="calendar__header__month">
+          {monthStr} {year}
+        </p>
+        <button onClick={onNextMonth}>
+          <Icon name="chevron-right" size={24} />
+        </button>
       </div>
-      <Icon name="chevron-up" size={20} className="icon" />
-    </>
+      <div className="calendar__day-of-week">{renderDaysOfWeek()}</div>
+      {renderDays()}
+    </div>
   );
 };
 
