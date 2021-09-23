@@ -63,6 +63,9 @@
         background: #7b4efe;
       }
 
+      &--middle {
+        background: #7b4efe;
+      }
       &--end {
         // border: 1px solid black;
         border-radius: 0 50px 50px 0;
@@ -72,8 +75,16 @@
         background: #7b4efe;
       }
 
-      &--middle {
-        background: #7b4efe;
+      &--out {
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+        // height: 35px;
+        // width: 35px;
+        // background: #1be2af;
+        // border-radius: 50px;
+
+        color: rgb(90, 90, 90);
       }
     }
 
@@ -91,18 +102,6 @@
 
     &__date--two-day {
       background: #7b4efe;
-    }
-
-    &__date--out {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 35px;
-      width: 35px;
-      background: #1be2af;
-      border-radius: 50px;
-
-      color: rgb(90, 90, 90);
     }
   }
 }

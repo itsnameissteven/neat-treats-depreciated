@@ -59,6 +59,10 @@ const Calendar = () => {
     });
   }, [selectedDate]);
 
+  useEffect(() => {
+    console.log(startDate, endDate);
+  }, [startDate, endDate]);
+
   const { monthStr, monthNum, year, lastMonth, thisMonth } = time;
 
   const getDaysOfMonth = (month: number, year: number) => {
@@ -88,16 +92,24 @@ const Calendar = () => {
   };
 
   const handleDateClick = (dayValue: number) => {
+    if (startDate && endDate) {
+      setStartDate(dayValue);
+      setEndDate(null);
+      return;
+    }
+    if (startDate === dayValue) {
+      setStartDate(null);
+    }
+
     if (!startDate || startDate > dayValue) {
       setStartDate(dayValue);
     } else if (startDate < dayValue) {
       setEndDate(dayValue);
     }
-    console.log(startDate);
   };
 
   const activeDayClass = (dayValue: number) => {
-    console.log(dayValue === startDate);
+    // console.log(dayValue === startDate);
     return classNames({
       cells__day__date: true,
       "cells__day__date--one-day":
@@ -107,16 +119,16 @@ const Calendar = () => {
     });
   };
 
-  const activeDayContainerClass = (dayValue: number) => {
+  const activeDayContainerClass = (dayValue: number, out?: true) => {
+    // console.log(startDate && endDate && dayValue === startDate);
     return classNames({
       cells__day__container: true,
-      "cells__day__container--start": dayValue === startDate,
-      "cells__day__container--end": dayValue === endDate,
+      "cells__day__container--out": out,
+      "cells__day__container--start": endDate && dayValue === startDate,
+      "cells__day__container--end":
+        startDate && endDate && dayValue === endDate,
       "cells__day__container--middle":
         startDate && endDate && dayValue > startDate && dayValue < endDate,
-
-      // "cells__day__date--two-day":
-      //   startDate && endDate && dayValue >= startDate && dayValue <= endDate,
     });
   };
 
@@ -125,13 +137,14 @@ const Calendar = () => {
     let prevMonth = getDaysOfMonth(lastMonth, year);
     const priorMonth: JSX.Element[] = [];
     const emptySpots = 7 - ((startOfMonthDay + totalDays) % 7);
-    console.log(year, monthNum, startOfMonthDay);
+    // console.log(year, monthNum, startOfMonthDay);
     for (let i = startOfMonthDay; i > 0; i--) {
+      const dayValue = new Date(year, thisMonth, i).valueOf();
       const cell = (
-        <div className="cells__day">
-          <div className="cells__day__date--out">
-            <p>{prevMonth.toString()}</p>
-          </div>
+        <div className="cells__day" key={`last-month${i}`}>
+          <button className={activeDayContainerClass(dayValue, true)}>
+            {prevMonth.toString()}
+          </button>
         </div>
       );
       prevMonth--;
@@ -142,7 +155,7 @@ const Calendar = () => {
     for (let i = 1; i <= totalDays; i++) {
       const dayValue = new Date(year, thisMonth, i).valueOf();
       const cell = (
-        <div className="cells__day">
+        <div className="cells__day" key={`this-month${i}`}>
           <div className={activeDayContainerClass(dayValue)}>
             <button
               className={activeDayClass(dayValue)}
@@ -158,7 +171,7 @@ const Calendar = () => {
 
     for (let i = 1; cells.length < 42; i++) {
       const cell = (
-        <div className="cells__day">
+        <div className="cells__day" key={`next-month${i}`}>
           <div className="cells__day__date--out">
             <p>{i.toString()}</p>
           </div>
