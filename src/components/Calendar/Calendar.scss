@@ -8,7 +8,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 40px;
+    height: 60px;
     padding: 0 5px;
     color: #7b4efe;
 
@@ -16,7 +16,7 @@
       display: flex;
       justify-content: center;
       font-weight: bold;
-      font-size: 24px;
+      font-size: 27px;
       width: 250px;
     }
   }
@@ -48,15 +48,49 @@
     height: 50px;
     width: 50px;
 
-    &__date {
+    &__container {
       display: flex;
       justify-content: center;
-      align-items: center;
-      height: 35px;
-      width: 35px;
+      // border: 1px solid red;
+      width: 100%;
+
+      &--start {
+        // border: 1px solid black;
+        border-radius: 50px 0 0 50px;
+        width: unset;
+        padding-right: 8px;
+        margin-left: auto;
+        background: #7b4efe;
+      }
+
+      &--end {
+        // border: 1px solid black;
+        border-radius: 0 50px 50px 0;
+        width: unset;
+        padding-left: 8px;
+        margin-right: auto;
+        background: #7b4efe;
+      }
+
+      &--middle {
+        background: #7b4efe;
+      }
+    }
+
+    &__date {
+      height: 34px;
+      width: 34px;
       border-radius: 50px;
-      background: #1be2af;
+      // background: #1be2af;
       color: #000;
+    }
+
+    &__date--one-day {
+      background: #1be2af;
+    }
+
+    &__date--two-day {
+      background: #7b4efe;
     }
 
     &__date--out {
@@ -80,4 +114,8 @@ button {
   background: transparent;
   border: none;
   padding: 0;
+
+  &:hover {
+    cursor: pointer;
+  }
 }

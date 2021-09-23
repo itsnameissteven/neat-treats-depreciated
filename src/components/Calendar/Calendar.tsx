@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import classNames from "classnames";
 
 import { Icon } from "../index";
 
@@ -34,6 +35,8 @@ const Calendar = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [date, setDate] = useState(selectedDate.getDate());
   const [day, setDay] = useState(Day[selectedDate.getDay()]);
+  const [startDate, setStartDate] = useState<number | null>(null);
+  const [endDate, setEndDate] = useState<number | null>(null);
   // const [year, setYear] = useState(selectedDate.getFullYear());
   // const [month, setMonth] = useState(Month[selectedDate.getMonth()]);
   // const monthNum = selectedDate.getMonth() + 1;
@@ -41,6 +44,7 @@ const Calendar = () => {
   const [time, setTime] = useState({
     monthStr: Month[selectedDate.getMonth()],
     monthNum: selectedDate.getMonth() + 1,
+    thisMonth: selectedDate.getMonth(),
     year: selectedDate.getFullYear(),
     lastMonth: selectedDate.getMonth(),
   });
@@ -49,12 +53,13 @@ const Calendar = () => {
     setTime({
       monthStr: Month[selectedDate.getMonth()],
       monthNum: selectedDate.getMonth() + 1,
+      thisMonth: selectedDate.getMonth(),
       year: selectedDate.getFullYear(),
       lastMonth: selectedDate.getMonth() - 1,
     });
   }, [selectedDate]);
 
-  const { monthStr, monthNum, year, lastMonth } = time;
+  const { monthStr, monthNum, year, lastMonth, thisMonth } = time;
 
   const getDaysOfMonth = (month: number, year: number) => {
     return new Date(year, month, 0).getDate();
@@ -82,6 +87,39 @@ const Calendar = () => {
     });
   };
 
+  const handleDateClick = (dayValue: number) => {
+    if (!startDate || startDate > dayValue) {
+      setStartDate(dayValue);
+    } else if (startDate < dayValue) {
+      setEndDate(dayValue);
+    }
+    console.log(startDate);
+  };
+
+  const activeDayClass = (dayValue: number) => {
+    console.log(dayValue === startDate);
+    return classNames({
+      cells__day__date: true,
+      "cells__day__date--one-day":
+        dayValue === startDate || dayValue === endDate,
+      // "cells__day__date--two-day":
+      //   startDate && endDate && dayValue >= startDate && dayValue <= endDate,
+    });
+  };
+
+  const activeDayContainerClass = (dayValue: number) => {
+    return classNames({
+      cells__day__container: true,
+      "cells__day__container--start": dayValue === startDate,
+      "cells__day__container--end": dayValue === endDate,
+      "cells__day__container--middle":
+        startDate && endDate && dayValue > startDate && dayValue < endDate,
+
+      // "cells__day__date--two-day":
+      //   startDate && endDate && dayValue >= startDate && dayValue <= endDate,
+    });
+  };
+
   const renderDays = () => {
     const totalDays = getDaysOfMonth(monthNum, year);
     let prevMonth = getDaysOfMonth(lastMonth, year);
@@ -102,10 +140,16 @@ const Calendar = () => {
 
     const cells = [...priorMonth];
     for (let i = 1; i <= totalDays; i++) {
+      const dayValue = new Date(year, thisMonth, i).valueOf();
       const cell = (
         <div className="cells__day">
-          <div className="cells__day__date">
-            <p>{i.toString()}</p>
+          <div className={activeDayContainerClass(dayValue)}>
+            <button
+              className={activeDayClass(dayValue)}
+              onClick={() => handleDateClick(dayValue)}
+            >
+              {i.toString()}
+            </button>
           </div>
         </div>
       );
