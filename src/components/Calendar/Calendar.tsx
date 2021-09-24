@@ -5,6 +5,13 @@ import { Icon } from "../index";
 
 import "../../styles/global.scss";
 import "./Calendar.scss";
+interface IRenderDayArgs {
+  key: string;
+  i: number;
+  monthNum: number;
+  out?: boolean;
+  altDate?: number;
+}
 
 enum Day {
   Sunday,
@@ -37,14 +44,12 @@ const Calendar = () => {
   const [day, setDay] = useState(Day[selectedDate.getDay()]);
   const [startDate, setStartDate] = useState<number | null>(null);
   const [endDate, setEndDate] = useState<number | null>(null);
-  // const [year, setYear] = useState(selectedDate.getFullYear());
-  // const [month, setMonth] = useState(Month[selectedDate.getMonth()]);
-  // const monthNum = selectedDate.getMonth() + 1;
-  // const lastMonth = selectedDate.getMonth();
+
   const [time, setTime] = useState({
     monthStr: Month[selectedDate.getMonth()],
     monthNum: selectedDate.getMonth() + 1,
     thisMonth: selectedDate.getMonth(),
+    nextMonth: selectedDate.getMonth() + 1,
     year: selectedDate.getFullYear(),
     lastMonth: selectedDate.getMonth(),
   });
@@ -54,6 +59,7 @@ const Calendar = () => {
       monthStr: Month[selectedDate.getMonth()],
       monthNum: selectedDate.getMonth() + 1,
       thisMonth: selectedDate.getMonth(),
+      nextMonth: selectedDate.getMonth() + 1,
       year: selectedDate.getFullYear(),
       lastMonth: selectedDate.getMonth() - 1,
     });
@@ -63,7 +69,7 @@ const Calendar = () => {
     console.log(startDate, endDate);
   }, [startDate, endDate]);
 
-  const { monthStr, monthNum, year, lastMonth, thisMonth } = time;
+  const { monthStr, monthNum, year, lastMonth, thisMonth, nextMonth } = time;
 
   const getDaysOfMonth = (month: number, year: number) => {
     return new Date(year, month, 0).getDate();
@@ -108,76 +114,82 @@ const Calendar = () => {
     }
   };
 
-  const activeDayClass = (dayValue: number) => {
-    // console.log(dayValue === startDate);
+  const activeDayClass = (dayValue: number, out?: boolean) => {
     return classNames({
       cells__day__date: true,
+      "cells__day__date--out": out,
       "cells__day__date--one-day":
         dayValue === startDate || dayValue === endDate,
-      // "cells__day__date--two-day":
-      //   startDate && endDate && dayValue >= startDate && dayValue <= endDate,
     });
   };
 
-  const activeDayContainerClass = (dayValue: number, out?: true) => {
-    // console.log(startDate && endDate && dayValue === startDate);
+  const activeDayContainerClass = (dayValue: number, i: number) => {
+    const isMiddle =
+      startDate && endDate && dayValue > startDate && dayValue < endDate;
     return classNames({
       cells__day__container: true,
-      "cells__day__container--out": out,
-      "cells__day__container--start": endDate && dayValue === startDate,
+      "cells__day__container--start":
+        (endDate && dayValue === startDate) ||
+        i === 0 ||
+        (i % 7 === 1 && isMiddle),
       "cells__day__container--end":
-        startDate && endDate && dayValue === endDate,
-      "cells__day__container--middle":
-        startDate && endDate && dayValue > startDate && dayValue < endDate,
+        (startDate && endDate && dayValue === endDate) ||
+        (i % 7 === 0 && i !== 0 && isMiddle),
+      "cells__day__container--middle": isMiddle,
     });
   };
 
   const renderDays = () => {
     const totalDays = getDaysOfMonth(monthNum, year);
-    let prevMonth = getDaysOfMonth(lastMonth, year);
-    const priorMonth: JSX.Element[] = [];
-    const emptySpots = 7 - ((startOfMonthDay + totalDays) % 7);
-    // console.log(year, monthNum, startOfMonthDay);
-    for (let i = startOfMonthDay; i > 0; i--) {
-      const dayValue = new Date(year, thisMonth, i).valueOf();
-      const cell = (
-        <div className="cells__day" key={`last-month${i}`}>
-          <button className={activeDayContainerClass(dayValue, true)}>
-            {prevMonth.toString()}
-          </button>
-        </div>
-      );
-      prevMonth--;
-      priorMonth.unshift(cell);
-    }
+    let prevMonthDays = getDaysOfMonth(lastMonth, year);
+    const cells: JSX.Element[] = [];
 
-    const cells = [...priorMonth];
-    for (let i = 1; i <= totalDays; i++) {
-      const dayValue = new Date(year, thisMonth, i).valueOf();
-      const cell = (
-        <div className="cells__day" key={`this-month${i}`}>
-          <div className={activeDayContainerClass(dayValue)}>
+    const renderDay = ({ key, i, monthNum, out, altDate }: IRenderDayArgs) => {
+      const dayValue = new Date(year, monthNum, i).valueOf();
+      return (
+        <div className="cells__day" key={`${key}-${i}`}>
+          <div className={activeDayContainerClass(dayValue, cells.length + 1)}>
             <button
-              className={activeDayClass(dayValue)}
+              className={activeDayClass(dayValue, out)}
               onClick={() => handleDateClick(dayValue)}
             >
-              {i.toString()}
+              {altDate ? altDate.toString() : i.toString()}
             </button>
           </div>
         </div>
       );
-      cells.push(cell);
+    };
+
+    for (let i = 0; i < startOfMonthDay; i++) {
+      const lastDaysOfMonth = prevMonthDays - (startOfMonthDay - 1) + i;
+      const args = {
+        key: "last-month",
+        i,
+        monthNum: lastMonth,
+        out: true,
+        altDate: lastDaysOfMonth,
+      };
+      cells.push(renderDay(args));
+    }
+
+    for (let i = 1; i <= totalDays; i++) {
+      const args = {
+        key: "this-month",
+        i,
+        monthNum: thisMonth,
+      };
+      cells.push(renderDay(args));
     }
 
     for (let i = 1; cells.length < 42; i++) {
-      const cell = (
-        <div className="cells__day" key={`next-month${i}`}>
-          <div className="cells__day__date--out">
-            <p>{i.toString()}</p>
-          </div>
-        </div>
-      );
-      cells.push(cell);
+      const args = {
+        key: "next-month",
+        i,
+        monthNum: nextMonth,
+        out: true,
+      };
+
+      cells.push(renderDay(args));
     }
 
     return <div className="cells">{cells}</div>;
