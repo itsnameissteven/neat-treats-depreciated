@@ -61,12 +61,7 @@ const Calendar = () => {
     });
   }, [selectedDate]);
 
-  useEffect(() => {
-    console.log(startDate, endDate);
-  }, [startDate, endDate]);
-
   const { monthStr, year, lastMonth, thisMonth, nextMonth } = time;
-  console.log(time);
 
   const getDaysOfMonth = (month: number, year: number) => {
     return new Date(year, month, 0).getDate();
@@ -142,7 +137,11 @@ const Calendar = () => {
     const cells: JSX.Element[] = [];
 
     const renderDay = ({ key, i, monthNum, out, altDate }: IRenderDayArgs) => {
-      const dayValue = new Date(year, monthNum, i).valueOf();
+      const dayValue = new Date(
+        year,
+        monthNum,
+        altDate ? altDate : i
+      ).valueOf();
       return (
         <div className="cells__day" key={`${key}-${i}`}>
           <div className={activeDayContainerClass(dayValue, cells.length + 1)}>
