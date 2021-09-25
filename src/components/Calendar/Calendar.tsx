@@ -40,14 +40,11 @@ enum Month {
 
 const Calendar = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [date, setDate] = useState(selectedDate.getDate());
-  const [day, setDay] = useState(Day[selectedDate.getDay()]);
   const [startDate, setStartDate] = useState<number | null>(null);
   const [endDate, setEndDate] = useState<number | null>(null);
 
   const [time, setTime] = useState({
     monthStr: Month[selectedDate.getMonth()],
-    monthNum: selectedDate.getMonth() + 1,
     thisMonth: selectedDate.getMonth(),
     nextMonth: selectedDate.getMonth() + 1,
     year: selectedDate.getFullYear(),
@@ -57,11 +54,10 @@ const Calendar = () => {
   useEffect(() => {
     setTime({
       monthStr: Month[selectedDate.getMonth()],
-      monthNum: selectedDate.getMonth() + 1,
-      thisMonth: selectedDate.getMonth(),
-      nextMonth: selectedDate.getMonth() + 1,
+      thisMonth: selectedDate.getMonth() + 1,
+      nextMonth: selectedDate.getMonth() + 2,
       year: selectedDate.getFullYear(),
-      lastMonth: selectedDate.getMonth() - 1,
+      lastMonth: selectedDate.getMonth(),
     });
   }, [selectedDate]);
 
@@ -69,20 +65,21 @@ const Calendar = () => {
     console.log(startDate, endDate);
   }, [startDate, endDate]);
 
-  const { monthStr, monthNum, year, lastMonth, thisMonth, nextMonth } = time;
+  const { monthStr, year, lastMonth, thisMonth, nextMonth } = time;
+  console.log(time);
 
   const getDaysOfMonth = (month: number, year: number) => {
     return new Date(year, month, 0).getDate();
   };
 
-  const startOfMonthDay = new Date(year, monthNum - 1, 1).getDay();
+  const startOfMonthDay = new Date(year, thisMonth - 1, 1).getDay();
 
   const onNextMonth = () => {
-    setSelectedDate(new Date(year, monthNum));
+    setSelectedDate(new Date(year, nextMonth, 0));
   };
 
   const onPrevMonth = () => {
-    setSelectedDate(new Date(year, lastMonth));
+    setSelectedDate(new Date(year, lastMonth, 0));
   };
 
   const daysOfWeek = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
@@ -140,7 +137,7 @@ const Calendar = () => {
   };
 
   const renderDays = () => {
-    const totalDays = getDaysOfMonth(monthNum, year);
+    const totalDays = getDaysOfMonth(thisMonth, year);
     let prevMonthDays = getDaysOfMonth(lastMonth, year);
     const cells: JSX.Element[] = [];
 
