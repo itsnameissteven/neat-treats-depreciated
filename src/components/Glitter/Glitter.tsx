@@ -65,7 +65,6 @@ const Glitter = ({
 const Wrapper = styled.span`
   position: relative;
   display: inline-block;
-  border: 2px solid blue;
 `;
 
 const ChildWrapper = styled.strong`
