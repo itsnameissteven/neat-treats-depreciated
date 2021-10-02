@@ -15,7 +15,9 @@ export default {
 };
 
 export const Text = ({ rainbow }) => (
-  <Glitter rainbow={rainbow}>
-    <p>This is what it looks like when you glit</p>
-  </Glitter>
+  <div className="" style={{ border: "2px solid red" }}>
+    <Glitter rainbow={rainbow}>
+      <p>This is what it looks like when you glit</p>
+    </Glitter>
+  </div>
 );

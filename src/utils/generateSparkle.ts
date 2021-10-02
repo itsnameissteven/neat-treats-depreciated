@@ -7,8 +7,8 @@ const generateSparkle = (color: string) => {
     color,
     size: random(10, 20),
     style: {
-      top: random(0, 100) + "%",
-      left: random(0, 100) + "%",
+      top: random(-50, 75) + "%",
+      left: random(-3, 98) + "%",
     },
   };
   return sparkle;
