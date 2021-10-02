@@ -23,6 +23,6 @@ const Template = (args) => {
 
 export const Primary = Template.bind({});
 Primary.args = {
-  size: "20px",
-  // pipes: 2,
+  size: "100px",
+  pipes: 2,
 };

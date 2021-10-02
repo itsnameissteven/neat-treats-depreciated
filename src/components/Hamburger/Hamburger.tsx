@@ -45,6 +45,14 @@ const Hamburger = ({
     ["animate-bottom"]: isActive,
     ["hamburger__bottom"]: !firstRender && !isActive,
   });
+  const topClassTwoPipe = classnames({
+    ["animate-top--two"]: isActive,
+    ["hamburger__top--two"]: !firstRender && !isActive,
+  });
+  const bottomClassTwoPipe = classnames({
+    ["animate-bottom--two"]: isActive,
+    ["hamburger__bottom--two"]: !firstRender && !isActive,
+  });
 
   useEffect(() => {
     if (isClicked) {
@@ -73,40 +81,83 @@ const Hamburger = ({
 
   const animationDuration = animationTime;
 
+  if (pipes === 2) {
+    return (
+      <svg
+        className={`hamburger ${className}`}
+        width={size}
+        height={size}
+        style={styles}
+        onClick={passedClick}
+        viewBox="0 0 48 48"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          className={topClassTwoPipe}
+          x="2"
+          y="14"
+          width="44"
+          height="6"
+          rx="3"
+          fill="black"
+          style={{ animationDuration }}
+        />
+        <rect
+          className={bottomClassTwoPipe}
+          x="2"
+          y="28"
+          width="44"
+          height="6"
+          rx="3"
+          fill="black"
+          style={{ animationDuration }}
+        />
+      </svg>
+    );
+  }
+
   return (
     <svg
       className={`hamburger ${className}`}
-      viewBox="0 0 110 100"
+      viewBox="0 0 48 48"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
       width={size}
       height={size}
       style={styles}
       onClick={passedClick}
     >
-      {pipes === 3 && (
-        <rect
-          className={topClass}
-          width="110"
-          height="16"
-          rx="8"
-          style={{ animationDuration }}
-        ></rect>
-      )}
+      <rect
+        className={topClass}
+        x="2"
+        y="6"
+        width="44"
+        height="6"
+        rx="3"
+        fill="black"
+        style={{ animationDuration }}
+      />
       <rect
         className={middleClass}
-        y="40"
-        width="110"
-        height="16"
-        rx="8"
+        x="2"
+        y="21"
+        width="44"
+        height="6"
+        rx="3"
+        fill="black"
         style={{ animationDuration }}
-      ></rect>
+      />
       <rect
         className={bottomClass}
-        y="80"
-        width="110"
-        height="16"
-        rx="8"
+        x="2"
+        y="36"
+        width="44"
+        height="6"
+        rx="3"
+        fill="black"
         style={{ animationDuration }}
-      ></rect>
+      />
     </svg>
   );
 };
