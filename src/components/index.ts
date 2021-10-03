@@ -4,5 +4,15 @@ import Hamburger from "./Hamburger";
 import MagicRainbowButton from "./MagicRainbowButton";
 import MasonryGrid from "./MasonryGrid";
 import Menu from "./Menu";
+import Calendar from "./Calendar";
+import Icon from "./Icon";
 
-export { Button, Hamburger, Glitter, MagicRainbowButton, MasonryGrid, Menu };
+export {
+  Button,
+  Hamburger,
+  Glitter,
+  MagicRainbowButton,
+  MasonryGrid,
+  Menu,
+  Icon,
+};
