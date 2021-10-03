@@ -1,0 +1,12 @@
+.carousel {
+  display: flex;
+  align-items: center;
+  &__slide {
+    width: 400px;
+    height: fit-content;
+
+    &__content {
+      width: 100%;
+    }
+  }
+}
