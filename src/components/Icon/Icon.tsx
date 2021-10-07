@@ -78,13 +78,28 @@ interface IconProps {
   color?: string;
   size?: number;
   className?: string;
+  onClick?: () => void;
 }
 
-const Icon = ({ name, size, color, className }: IconProps) => {
-  if (typeof icons[name] !== "undefined") {
-    return React.createElement(icons[name], { size, color, className });
+const Icon = ({ name, size, color, className, onClick }: IconProps) => {
+  if (!icons[name]) {
+    return null;
   }
-  return null;
+  const CreatedItem = () => {
+    return React.createElement(icons[name], {
+      size,
+      color,
+      className,
+    });
+  };
+  if (onClick) {
+    return (
+      <button onClick={onClick}>
+        <CreatedItem />
+      </button>
+    );
+  }
+  return <CreatedItem />;
 };
 
 export default Icon;

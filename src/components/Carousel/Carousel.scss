@@ -1,6 +1,7 @@
 .carousel {
   display: flex;
   align-items: center;
+  border: 2px solid red;
   &__slide {
     width: 400px;
     height: fit-content;
