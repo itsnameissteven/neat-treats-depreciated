@@ -11,6 +11,7 @@
     left: 0;
     top: 50%;
     transform: translateY(-50%);
+    z-index: 10;
   }
 
   &__next {
@@ -26,22 +27,30 @@
       width: 100%;
 
       &--right {
-        transition: all 1000ms ease-out;
-        transform: translateX(100%);
+        // transition: all 1000ms ease-out;
+        animation: leftSlide 1000ms ease-out;
       }
       &--left {
-        transition: all 1000ms ease-out;
-        transform: translateX(-100%);
+        animation: rightSlide 1000ms ease-out;
       }
     }
   }
 }
 
-// @keyframes enterLeft {
-//   from {
-//     transform: scaleX(0);
-//   }
-//   to {
-//     transform: scaleX(1);
-//   }
-// }
+@keyframes leftSlide {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes rightSlide {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}

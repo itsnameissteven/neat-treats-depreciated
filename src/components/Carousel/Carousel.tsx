@@ -37,40 +37,37 @@ const Carousel = ({ slides = imagesPlaceholders }: ICarousel) => {
       </div>
     );
   });
-  // useEffect(() => {
-  //   setSlidePanels(allSlides);
-  // }, [allSlides]);
 
   useEffect(() => {
     if (direction === 'right') {
       const resetDirection = setTimeout(() => {
         setDirection('');
-        const lastSlide = slidePanels.pop();
-        if (lastSlide) {
-          setSlidePanels((slides) => [lastSlide, ...slides]);
-        }
       }, 1000);
       return () => clearTimeout(resetDirection);
     }
     if (direction === 'left') {
       const resetDirection = setTimeout(() => {
         setDirection('');
-        const firstSlide = slidePanels.shift();
-        if (firstSlide) {
-          setSlidePanels((slides) => [...slides, firstSlide]);
-        }
       }, 1000);
       return () => clearTimeout(resetDirection);
     }
     return;
-  }, [direction, slidePanels]);
+  }, [direction]);
 
   const onNext = () => {
     setDirection('right');
+    const firstSlide = slidePanels.shift();
+    if (firstSlide) {
+      setSlidePanels((slides) => [...slides, firstSlide]);
+    }
   };
 
   const onPrev = () => {
     setDirection('left');
+    const lastSlide = slidePanels.pop();
+    if (lastSlide) {
+      setSlidePanels((slides) => [lastSlide, ...slides]);
+    }
   };
 
   return (
