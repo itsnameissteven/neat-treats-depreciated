@@ -1,13 +1,47 @@
 .carousel {
+  position: relative;
   display: flex;
   align-items: center;
   border: 2px solid red;
+  width: fit-content;
+
+  &__prev,
+  &__next {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &__next {
+    right: 0;
+    left: unset;
+  }
+
   &__slide {
     width: 400px;
     height: fit-content;
 
     &__content {
       width: 100%;
+
+      &--right {
+        transition: all 1000ms ease-out;
+        transform: translateX(100%);
+      }
+      &--left {
+        transition: all 1000ms ease-out;
+        transform: translateX(-100%);
+      }
     }
   }
 }
+
+// @keyframes enterLeft {
+//   from {
+//     transform: scaleX(0);
+//   }
+//   to {
+//     transform: scaleX(1);
+//   }
+// }
