@@ -22,18 +22,16 @@ const Carousel = ({ slides = imagesPlaceholders }: ICarousel) => {
   const [slidePanels, setSlidePanels] = useState<JSX.Element[]>(slides);
   const [direction, setDirection] = useState<'left' | 'right' | ''>('');
 
-  const slideClassNames = (i: number) => {
-    return classNames({
-      carousel__slide__content: true,
-      'carousel__slide__content--left': direction === 'left',
-      'carousel__slide__content--right': direction === 'right',
-    });
-  };
+  const slideClassNames = classNames({
+    carousel__slide__content: true,
+    'carousel__slide__content--left': direction === 'left',
+    'carousel__slide__content--right': direction === 'right',
+  });
 
   const allSlides = slidePanels.map((slide, i) => {
     return (
       <div className="carousel__slide" key={i}>
-        <div className={slideClassNames(i)}>{slide}</div>
+        <div className={slideClassNames}>{slide}</div>
       </div>
     );
   });

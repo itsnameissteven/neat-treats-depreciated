@@ -3,8 +3,8 @@
   display: flex;
   align-items: center;
   border: 2px solid red;
-  width: fit-content;
-
+  width: 400px;
+  overflow: hidden;
   &__prev,
   &__next {
     position: absolute;
@@ -22,6 +22,7 @@
   &__slide {
     width: 400px;
     height: fit-content;
+    flex-shrink: 0;
 
     &__content {
       width: 100%;
