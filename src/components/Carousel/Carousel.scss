@@ -30,6 +30,7 @@
       &--right {
         // transition: all 1000ms ease-out;
         animation: leftSlide 1000ms ease-out;
+        transform-origin: left;
       }
       &--left {
         animation: rightSlide 1000ms ease-out;
@@ -40,10 +41,10 @@
 
 @keyframes leftSlide {
   from {
-    transform: translateX(100%);
+    transform: translateX(0);
   }
   to {
-    transform: translateX(0);
+    transform: translateX(-100%);
   }
 }
 

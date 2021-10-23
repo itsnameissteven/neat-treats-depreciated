@@ -3,7 +3,6 @@ import React from 'react';
 import { IIcon } from '../types';
 
 const ChevronLeft = ({ size = 48, color = 'black', props }: IIcon) => {
-  console.log(props);
   return (
     <svg
       width={size}

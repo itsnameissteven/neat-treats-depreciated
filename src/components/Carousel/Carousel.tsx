@@ -39,6 +39,8 @@ const Carousel = ({ slides = imagesPlaceholders }: ICarousel) => {
   useEffect(() => {
     if (direction === 'right') {
       const resetDirection = setTimeout(() => {
+        // fix this to reset state
+        slidePanels.shift();
         setDirection('');
       }, 1000);
       return () => clearTimeout(resetDirection);
@@ -53,14 +55,13 @@ const Carousel = ({ slides = imagesPlaceholders }: ICarousel) => {
   }, [direction]);
 
   const onNext = () => {
+    setDirection('');
     setDirection('right');
-    const firstSlide = slidePanels.shift();
-    if (firstSlide) {
-      setSlidePanels((slides) => [...slides, firstSlide]);
-    }
+    setSlidePanels((slides) => [...slides, slides[0]]);
   };
 
   const onPrev = () => {
+    setDirection('');
     setDirection('left');
     const lastSlide = slidePanels.pop();
     if (lastSlide) {
@@ -70,9 +71,19 @@ const Carousel = ({ slides = imagesPlaceholders }: ICarousel) => {
 
   return (
     <div className="carousel">
-      <Icon className="carousel__prev" name="chevron-left" onClick={onPrev} />
+      <Icon
+        className="carousel__prev"
+        name="chevron-left"
+        onClick={onPrev}
+        disabled={direction.length > 0}
+      />
       {allSlides}
-      <Icon className="carousel__next" name="chevron-right" onClick={onNext} />
+      <Icon
+        className="carousel__next"
+        name="chevron-right"
+        onClick={onNext}
+        disabled={direction.length > 0}
+      />
     </div>
   );
 };
