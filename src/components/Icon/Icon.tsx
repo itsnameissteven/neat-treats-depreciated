@@ -79,9 +79,17 @@ interface IconProps {
   size?: number;
   className?: string;
   onClick?: () => void;
+  disabled?: boolean;
 }
 
-const Icon = ({ name, size, color, className, onClick }: IconProps) => {
+const Icon = ({
+  name,
+  size,
+  color,
+  className,
+  onClick,
+  disabled,
+}: IconProps) => {
   if (!icons[name]) {
     return null;
   }
@@ -94,7 +102,7 @@ const Icon = ({ name, size, color, className, onClick }: IconProps) => {
   };
   if (onClick) {
     return (
-      <button onClick={onClick} className={className}>
+      <button onClick={onClick} className={className} disabled={disabled}>
         <CreatedItem />
       </button>
     );
