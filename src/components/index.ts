@@ -5,6 +5,7 @@ import MagicRainbowButton from "./MagicRainbowButton";
 import MasonryGrid from "./MasonryGrid";
 import Menu from "./Menu";
 import Calendar from "./Calendar";
+import Carousel from "./Carousel";
 import Icon from "./Icon";
 
 export {
@@ -15,4 +16,6 @@ export {
   MasonryGrid,
   Menu,
   Icon,
+  Calendar,
+  Carousel,
 };

@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import { IIcon } from "../types";
+import { IIcon } from '../types';
 
-const ChevronLeft = ({ size = 48, color = "black", props }: IIcon) => {
+const ChevronLeft = ({ size = 48, color = 'black', props }: IIcon) => {
   return (
     <svg
       width={size}
