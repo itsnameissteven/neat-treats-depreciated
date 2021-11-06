@@ -1,9 +1,10 @@
 import React from "react";
+import { Icon } from "..";
 
 const Confetti = () => {
   return (
     <div className="confetti">
-      <h1>confetti</h1>
+      <Icon className="confetti__icon" name="chevron-circle-up" />
     </div>
   );
 };
