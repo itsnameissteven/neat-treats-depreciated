@@ -4,7 +4,7 @@ import { IIcon } from "../types";
 
 import "./icon.scss";
 
-const ChevronCircleDownF = ({ size = 48, color = "#000", props }: IIcon) => {
+const ChevronCircleDownF = ({ size = 48, color = "#000", ...props }: IIcon) => {
   return (
     <svg
       width={size}

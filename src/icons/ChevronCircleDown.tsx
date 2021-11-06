@@ -2,7 +2,7 @@ import React from "react";
 
 import { IIcon } from "../types";
 
-const ChevronCircleDown = ({ size = 48, color = "black", props }: IIcon) => {
+const ChevronCircleDown = ({ size = 48, color = "black", ...props }: IIcon) => {
   return (
     <svg
       width={size}

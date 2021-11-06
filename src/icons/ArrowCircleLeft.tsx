@@ -2,7 +2,7 @@ import React from "react";
 
 import { IIcon } from "../types";
 
-const ArrowCircleLeft = ({ size = 48, color = "black", props }: IIcon) => {
+const ArrowCircleLeft = ({ size = 48, color = "black", ...props }: IIcon) => {
   return (
     <svg
       width={size}

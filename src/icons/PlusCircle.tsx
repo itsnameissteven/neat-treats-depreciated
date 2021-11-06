@@ -2,7 +2,7 @@ import React from "react";
 
 import { IIcon } from "../types";
 
-const PlusCircle = ({ size = 48, color = "black", props }: IIcon) => {
+const PlusCircle = ({ size = 48, color = "black", ...props }: IIcon) => {
   return (
     <svg
       width={size}

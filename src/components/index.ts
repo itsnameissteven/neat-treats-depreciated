@@ -7,6 +7,7 @@ import Menu from "./Menu";
 import Calendar from "./Calendar";
 import Carousel from "./Carousel";
 import Icon from "./Icon";
+import DropDownBox from "./DropDownBox";
 
 export {
   Button,
@@ -18,4 +19,5 @@ export {
   Icon,
   Calendar,
   Carousel,
+  DropDownBox,
 };
