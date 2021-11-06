@@ -10,5 +10,11 @@ export default {
 
 export const Primary = () => {
   const [value, setValue] = useState('');
-  return <Input value={value} onChange={(e) => setValue(e.target.value)} />;
+  return (
+    <Input
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+      label={'legend'}
+    />
+  );
 };

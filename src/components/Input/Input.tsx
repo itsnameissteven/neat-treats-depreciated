@@ -23,8 +23,8 @@ const Input = ({
   ...rest
 }: IInput) => {
   return (
-    <div className={`neat-input ${className}`}>
-      {label && <label className="neat-input__label">label</label>}
+    <fieldset className={`neat-input ${className}`}>
+      {label && <legend className="neat-input__label">label</legend>}
       <input
         className="neat-input__input"
         placeholder={placeholder}
@@ -34,7 +34,7 @@ const Input = ({
         id={id}
         {...rest}
       />
-    </div>
+    </fieldset>
   );
 };
 
