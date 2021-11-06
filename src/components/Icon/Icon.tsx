@@ -94,11 +94,12 @@ const Icon = ({
   if (!icons[name]) {
     return null;
   }
-  const CreatedItem = () => {
+  const CreatedItem = ({ ...props }) => {
     return React.createElement(icons[name], {
       size,
       color,
       className,
+      ...props,
     });
   };
   if (onClick) {
@@ -108,7 +109,7 @@ const Icon = ({
         className={classNames(className)}
         disabled={disabled}
       >
-        <CreatedItem />
+        <CreatedItem className={null} />
       </button>
     );
   }
