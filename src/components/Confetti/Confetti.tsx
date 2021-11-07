@@ -1,5 +1,6 @@
 import React from "react";
 import { Icon } from "..";
+import "./Confetti.scss";
 
 const Confetti = () => {
   return (
