@@ -13,10 +13,10 @@ export const Primary = () => {
   const [isActive, setIsActive] = useState(false);
 
   const fireConfetti = () => {
-    setIsActive(false);
+    setIsActive(!isActive);
     setTimeout(() => {
       setIsActive(false);
-    }, 2000);
+    }, 3000);
   };
   return (
     <>
