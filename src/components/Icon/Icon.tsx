@@ -1,80 +1,43 @@
 import React from "react";
 import classNames from "classnames";
-import {
-  ChevronLeft,
-  ChevronRight,
-  ChevronDown,
-  ChevronUp,
-  ChevronCircleUp,
-  ChevronCircleDown,
-  ChevronCircleLeft,
-  ChevronCircleRight,
-  ChevronCircleUpF,
-  ChevronCircleDownF,
-  ChevronCircleLeftF,
-  ChevronCircleRightF,
-  Plus,
-  PlusCircle,
-  PlusCircleF,
-  X,
-  XCircle,
-  XCircleF,
-  HamburgerRound,
-  HamburgerSquare,
-  HamburgerShort,
-  ArrowUp,
-  ArrowRight,
-  ArrowDown,
-  ArrowLeft,
-  ArrowCircleUp,
-  ArrowCircleRight,
-  ArrowCircleDown,
-  ArrowCircleLeft,
-  ArrowCircleUpF,
-  ArrowCircleRightF,
-  ArrowCircleDownF,
-  ArrowCircleLeftF,
-  Moon,
-} from "../../icons";
 
-const icons = {
-  "chevron-left": ChevronLeft,
-  "chevron-right": ChevronRight,
-  "chevron-down": ChevronDown,
-  "chevron-up": ChevronUp,
-  "chevron-circle-up": ChevronCircleUp,
-  "chevron-circle-down": ChevronCircleDown,
-  "chevron-circle-left": ChevronCircleLeft,
-  "chevron-circle-right": ChevronCircleRight,
-  "chevron-circle-up-f": ChevronCircleUpF,
-  "chevron-circle-down-f": ChevronCircleDownF,
-  "chevron-circle-left-f": ChevronCircleLeftF,
-  "chevron-circle-right-f": ChevronCircleRightF,
-  plus: Plus,
-  "plus-circle": PlusCircle,
-  "plus-circle-f": PlusCircleF,
-  x: X,
-  "x-circle": XCircle,
-  "x-circle-f": XCircleF,
-  "hamburger-round": HamburgerRound,
-  "hamburger-square": HamburgerSquare,
-  "hamburger-short": HamburgerShort,
-  "arrow-up": ArrowUp,
-  "arrow-right": ArrowRight,
-  "arrow-down": ArrowDown,
-  "arrow-left": ArrowLeft,
-  "arrow-circle-up": ArrowCircleUp,
-  "arrow-circle-right": ArrowCircleRight,
-  "arrow-circle-down": ArrowCircleDown,
-  "arrow-circle-left": ArrowCircleLeft,
-  "arrow-circle-up-f": ArrowCircleUpF,
-  "arrow-circle-right-f": ArrowCircleRightF,
-  "arrow-circle-down-f": ArrowCircleDownF,
-  "arrow-circle-left-f": ArrowCircleLeftF,
-  moon: Moon,
-};
-
-export const iconKeys = Object.keys(icons);
+export const iconKeys = [
+  "chevron-left",
+  "chevron-right",
+  "chevron-down",
+  "chevron-up",
+  "chevron-circle-up",
+  "chevron-circle-down",
+  "chevron-circle-left",
+  "chevron-circle-right",
+  "chevron-circle-up-f",
+  "chevron-circle-down-f",
+  "chevron-circle-left-f",
+  "chevron-circle-right-f",
+  "plus",
+  "plus-circle",
+  "plus-circle-f",
+  "x",
+  "x-circle",
+  "x-circle-f",
+  "hamburger-round",
+  "hamburger-square",
+  "hamburger-short",
+  "arrow-up",
+  "arrow-right",
+  "arrow-down",
+  "arrow-left",
+  "arrow-circle-up",
+  "arrow-circle-right",
+  "arrow-circle-down",
+  "arrow-circle-left",
+  "arrow-circle-up-f",
+  "arrow-circle-right-f",
+  "arrow-circle-down-f",
+  "arrow-circle-left-f",
+  "moon",
+  "sun",
+];
 
 interface IconProps {
   name: string;
@@ -93,11 +56,28 @@ const Icon = ({
   onClick,
   disabled,
 }: IconProps) => {
-  if (!icons[name]) {
+  // started logic for dynamic import
+
+  let Component: any = null;
+  try {
+    const iconName = name
+      .split("-")
+      .map((string) => {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+      })
+      .join("");
+
+    Component = require(`../../icons/${iconName}.tsx`).default;
+  } catch {
+    console.log(`Icon ${name} does not exist.`);
+  }
+
+  if (!Component) {
     return null;
   }
+
   const CreatedItem = ({ ...props }) => {
-    return React.createElement(icons[name], {
+    return React.createElement(Component, {
       size,
       color,
       className,
