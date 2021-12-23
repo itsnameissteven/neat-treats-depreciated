@@ -8,7 +8,6 @@ import Calendar from "./Calendar";
 import Carousel from "./Carousel";
 import Icon from "./Icon";
 import DropDownBox from "./DropDownBox";
-import Confetti from "./Confetti";
 
 export {
   Button,
@@ -21,5 +20,4 @@ export {
   Calendar,
   Carousel,
   DropDownBox,
-  Confetti,
 };
