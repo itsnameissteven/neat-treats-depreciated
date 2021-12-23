@@ -34,6 +34,7 @@ import {
   ArrowCircleRightF,
   ArrowCircleDownF,
   ArrowCircleLeftF,
+  Moon,
 } from "../../icons";
 
 const icons = {
@@ -70,6 +71,7 @@ const icons = {
   "arrow-circle-right-f": ArrowCircleRightF,
   "arrow-circle-down-f": ArrowCircleDownF,
   "arrow-circle-left-f": ArrowCircleLeftF,
+  moon: Moon,
 };
 
 export const iconKeys = Object.keys(icons);
