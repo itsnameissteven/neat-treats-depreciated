@@ -1,0 +1,11 @@
+.action-btn {
+  border-radius: 100%;
+  width: fit-content;
+  height: fit-content;
+  &__progress-ring {
+    transform: rotate(-90deg);
+    &__circle {
+      transition: stroke-dashoffset 0.35s ease-in;
+    }
+  }
+}
