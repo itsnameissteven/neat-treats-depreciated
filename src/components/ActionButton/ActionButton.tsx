@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import "./ActionButton.scss";
+import { preventAnimation } from "../../utils";
 interface IActionButton {
   size: number;
   stroke: number;
@@ -19,6 +20,8 @@ const ActionButton = ({
 }: IActionButton) => {
   const circleRef = useRef<SVGCircleElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
+
+  const { noAnimation } = preventAnimation(!isLoaded);
 
   const width = size;
   const strokeWidth = stroke;
@@ -81,11 +84,7 @@ const ActionButton = ({
           onMouseLeave={() => setProgress(0)}
         />
       </svg>
-      <div
-        className={`action-btn__content ${animationClass} ${
-          !isLoaded ? "no-animation" : ""
-        }`}
-      >
+      <div className={`action-btn__content ${animationClass} ${noAnimation}`}>
         {children}
       </div>
     </button>
