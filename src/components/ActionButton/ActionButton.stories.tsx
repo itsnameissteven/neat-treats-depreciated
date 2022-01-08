@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 
 import ActionButton from "./ActionButton";
+import { Icon } from "..";
 
 export default {
   component: ActionButton,
@@ -12,7 +13,9 @@ export default {
 export const Primary = () => {
   return (
     <div>
-      <ActionButton />
+      <ActionButton size={75} stroke={4} animationDirection="right">
+        <Icon name="arrow-right" size={40} />
+      </ActionButton>
     </div>
   );
 };

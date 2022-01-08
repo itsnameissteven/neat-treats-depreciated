@@ -1,15 +1,40 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import "./ActionButton.scss";
+interface IActionButton {
+  size: number;
+  stroke: number;
+  border?: string;
+  activeBorder?: string;
+  animationDirection?: "up" | "down" | "left" | "right";
+  children: JSX.Element | string;
+}
 
-const ActionButton = () => {
+const ActionButton = ({
+  size,
+  stroke,
+  border = "grey",
+  activeBorder = "black",
+  animationDirection,
+  children,
+}: IActionButton) => {
   const circleRef = useRef<SVGCircleElement>(null);
+  const [isLoaded, setIsLoaded] = useState(false);
 
-  const width = 120;
-  const strokeWidth = 4;
+  const width = size;
+  const strokeWidth = stroke;
   const radius = width / 2 - strokeWidth * 2;
+
+  const animationClass = animationDirection
+    ? `animation-${animationDirection}`
+    : "";
+
+  useEffect(() => {
+    setTimeout(() => setIsLoaded(true), 500);
+  }, []);
 
   useEffect(() => {
     const { current } = circleRef;
+
     if (!current) {
       return;
     }
@@ -17,7 +42,7 @@ const ActionButton = () => {
 
     const circumference = radius * 2 * Math.PI;
 
-    current.style.strokeDasharray = `${circumference} ${circumference}`;
+    current.style.strokeDasharray = `${0} ${circumference}`;
     current.style.strokeDashoffset = `${circumference}`;
   }, [circleRef.current]);
 
@@ -27,6 +52,7 @@ const ActionButton = () => {
     const radius = current.r.baseVal.value;
     const circumference = radius * 2 * Math.PI;
     const offset = circumference - (percent / 100) * circumference;
+    current.style.strokeDasharray = `${circumference} ${circumference}`;
     current.style.strokeDashoffset = offset.toString();
   };
 
@@ -35,7 +61,7 @@ const ActionButton = () => {
       <svg className="action-btn__progress-ring" height={width} width={width}>
         <circle
           className="action-btn__progress-ring__circle"
-          stroke="grey"
+          stroke={border}
           strokeWidth={strokeWidth}
           fill="transparent"
           r={radius}
@@ -44,8 +70,8 @@ const ActionButton = () => {
         />
         <circle
           ref={circleRef}
-          className="action-btn__progress-ring__circle"
-          stroke="black"
+          className={`action-btn__progress-ring__circle`}
+          stroke={activeBorder}
           strokeWidth={strokeWidth}
           fill="transparent"
           r={radius}
@@ -55,6 +81,13 @@ const ActionButton = () => {
           onMouseLeave={() => setProgress(0)}
         />
       </svg>
+      <div
+        className={`action-btn__content ${animationClass} ${
+          !isLoaded ? "no-animation" : ""
+        }`}
+      >
+        {children}
+      </div>
     </button>
   );
 };

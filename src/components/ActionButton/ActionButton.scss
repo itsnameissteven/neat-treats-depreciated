@@ -1,11 +1,145 @@
 .action-btn {
+  position: relative;
   border-radius: 100%;
   width: fit-content;
   height: fit-content;
+
   &__progress-ring {
     transform: rotate(-90deg);
     &__circle {
       transition: stroke-dashoffset 0.35s ease-in;
     }
+
+    &:hover + .animation-up {
+      animation: up 0.5s ease-out forwards;
+    }
+    &:hover + .animation-down {
+      animation: down 0.5s ease-out forwards;
+    }
+    &:hover + .animation-left {
+      animation: left 0.5s ease-out forwards;
+    }
+    &:hover + .animation-right {
+      animation: right 0.5s ease-out forwards;
+    }
+  }
+
+  .animation-up {
+    animation: upReverse 0.3s ease forwards;
+  }
+
+  .animation-down {
+    animation: downReverse 0.3s ease forwards;
+  }
+  .animation-left {
+    animation: leftReverse 0.3s ease forwards;
+  }
+  .animation-right {
+    animation: rightReverse 0.3s ease forwards;
+  }
+
+  &__content {
+    position: absolute;
+    pointer-events: none;
+  }
+}
+
+.no-animation {
+  animation-duration: 0s !important;
+}
+
+@keyframes up {
+  0% {
+    transform: translateY(0px);
+  }
+  30% {
+    transform: translateY(-4px);
+  }
+  60% {
+    transform: translateY(-1px);
+  }
+  100% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes upReverse {
+  from {
+    transform: translateY(-3px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes down {
+  0% {
+    transform: translateY(0px);
+  }
+  30% {
+    transform: translateY(4px);
+  }
+  60% {
+    transform: translateY(1px);
+  }
+  100% {
+    transform: translateY(3px);
+  }
+}
+
+@keyframes downReverse {
+  from {
+    transform: translateY(3px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes left {
+  0% {
+    transform: translateX(0px);
+  }
+  30% {
+    transform: translateX(-4px);
+  }
+  60% {
+    transform: translateX(-1px);
+  }
+  100% {
+    transform: translateX(-3px);
+  }
+}
+
+@keyframes leftReverse {
+  from {
+    transform: translateX(-3px);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes right {
+  0% {
+    transform: translateX(0px);
+  }
+  30% {
+    transform: translateX(4px);
+  }
+  60% {
+    transform: translateX(1px);
+  }
+  100% {
+    transform: translateX(3px);
+  }
+}
+
+@keyframes rightReverse {
+  from {
+    transform: translateX(3px);
+  }
+  to {
+    transform: translateX(0px);
   }
 }
