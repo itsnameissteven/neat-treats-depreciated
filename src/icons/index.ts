@@ -31,6 +31,8 @@ import ArrowCircleUpF from "./ArrowCircleUpF";
 import ArrowCircleRightF from "./ArrowCircleRightF";
 import ArrowCircleLeftF from "./ArrowCircleLeftF";
 import ArrowCircleDownF from "./ArrowCircleDownF";
+import Moon from "./Moon";
+import Sun from "./Sun";
 
 export {
   ChevronLeft,
@@ -66,4 +68,6 @@ export {
   ArrowCircleRightF,
   ArrowCircleDownF,
   ArrowCircleLeftF,
+  Moon,
+  Sun,
 };

@@ -8,6 +8,8 @@ import Calendar from "./Calendar";
 import Carousel from "./Carousel";
 import Icon from "./Icon";
 import DropDownBox from "./DropDownBox";
+import ToggleButton from "./ToggleButton";
+import ActionButton from "./ActionButton";
 
 export {
   Button,
@@ -20,4 +22,6 @@ export {
   Calendar,
   Carousel,
   DropDownBox,
+  ToggleButton,
+  ActionButton,
 };
