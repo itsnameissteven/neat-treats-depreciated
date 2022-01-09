@@ -4,7 +4,7 @@ import { preventAnimation } from "../../utils";
 interface IActionButton {
   size: number;
   stroke: number;
-  onClick: () => void;
+  onClick?: () => void;
   border?: string;
   activeBorder?: string;
   animationDirection?: "up" | "down" | "left" | "right";
