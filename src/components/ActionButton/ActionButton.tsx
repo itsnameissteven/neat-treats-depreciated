@@ -4,9 +4,11 @@ import { preventAnimation } from "../../utils";
 interface IActionButton {
   size: number;
   stroke: number;
+  onClick?: () => void;
   border?: string;
   activeBorder?: string;
   animationDirection?: "up" | "down" | "left" | "right";
+  className?: string;
   children: JSX.Element | string;
 }
 
@@ -17,6 +19,8 @@ const ActionButton = ({
   activeBorder = "black",
   animationDirection,
   children,
+  className = "",
+  onClick,
 }: IActionButton) => {
   const circleRef = useRef<SVGCircleElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -60,7 +64,7 @@ const ActionButton = ({
   };
 
   return (
-    <button className="action-btn">
+    <button className={`action-btn ${className}`} onClick={onClick}>
       <svg className="action-btn__progress-ring" height={width} width={width}>
         <circle
           className="action-btn__progress-ring__circle"

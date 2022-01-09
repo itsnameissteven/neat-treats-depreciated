@@ -10,6 +10,7 @@ import Icon from "./Icon";
 import DropDownBox from "./DropDownBox";
 import ToggleButton from "./ToggleButton";
 import ActionButton from "./ActionButton";
+import Switch from "./Switch";
 
 export {
   Button,
@@ -24,4 +25,5 @@ export {
   DropDownBox,
   ToggleButton,
   ActionButton,
+  Switch,
 };
