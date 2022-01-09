@@ -59,17 +59,20 @@ const Icon = ({
   // started logic for dynamic import
 
   let Component: any = null;
+  const iconName = name
+    .split("-")
+    .map((string) => {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    })
+    .join("");
   try {
-    const iconName = name
-      .split("-")
-      .map((string) => {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-      })
-      .join("");
-
-    Component = require(`../../icons/${iconName}.tsx`).default;
+    Component = require(`../../icons/${iconName}.js`).default;
   } catch {
-    console.log(`Icon ${name} does not exist.`);
+    try {
+      Component = require(`../../icons/${iconName}.tsx`).default;
+    } catch {
+      console.log(`Icon ${name} does not exist.`);
+    }
   }
 
   if (!Component) {
