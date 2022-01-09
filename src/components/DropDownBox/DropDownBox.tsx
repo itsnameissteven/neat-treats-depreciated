@@ -77,54 +77,54 @@ const DropDownBox = () => {
     "drop-down-box__content__inverse--open": isOpen,
   });
 
-  function createKeyframeAnimation() {
-    // Figure out the size of the element when collapsed.
-    function ease(v: number, pow = 4) {
-      return 1 - Math.pow(1 - v, pow);
-    }
-    const animateOpen = () => {
-      const el = contentRef.current.getBoundingClientRect();
-      return {
-        x: el.width / el.width,
-        y: 0 / el.height,
-      };
-    };
-    let { x, y } = animateOpen();
-    let animation = "";
-    let inverseAnimation = "";
+  // function createKeyframeAnimation() {
+  //   // Figure out the size of the element when collapsed.
+  //   function ease(v: number, pow = 4) {
+  //     return 1 - Math.pow(1 - v, pow);
+  //   }
+  //   const animateOpen = () => {
+  //     const el = contentRef.current.getBoundingClientRect();
+  //     return {
+  //       x: el.width / el.width,
+  //       y: 0 / el.height,
+  //     };
+  //   };
+  //   let { x, y } = animateOpen();
+  //   let animation = "";
+  //   let inverseAnimation = "";
 
-    for (let step = 0; step <= 100; step++) {
-      // Remap the step value to an eased one.
-      let easedStep = ease(step / 100);
+  //   for (let step = 0; step <= 100; step++) {
+  //     // Remap the step value to an eased one.
+  //     let easedStep = ease(step / 100);
 
-      // Calculate the scale of the element.
-      const xScale = x + (1 - x) * easedStep;
-      const yScale = y + (1 - y) * easedStep;
+  //     // Calculate the scale of the element.
+  //     const xScale = x + (1 - x) * easedStep;
+  //     const yScale = y + (1 - y) * easedStep;
 
-      animation += `${step}% {
-      transform: scale(${xScale}, ${yScale});
-    }`;
+  //     animation += `${step}% {
+  //     transform: scale(${xScale}, ${yScale});
+  //   }`;
 
-      // And now the inverse for the contents.
-      const invXScale = 1 / xScale;
-      const invYScale = 1 / yScale;
-      inverseAnimation += `${step}% {
-      transform: scale(${invXScale}, ${invYScale}) translate3d( 0, 0, 0);
-    }`;
-    }
-    console.log(animation);
+  //     // And now the inverse for the contents.
+  //     const invXScale = 1 / xScale;
+  //     const invYScale = 1 / yScale;
+  //     inverseAnimation += `${step}% {
+  //     transform: scale(${invXScale}, ${invYScale}) translate3d( 0, 0, 0);
+  //   }`;
+  //   }
+  //   console.log(animation);
 
-    return {
-      parent: `
-      @keyframes menuAnimation {
-        ${animation}
-      }`,
-      child: `
-      @keyframes menuContentsAnimation {
-        ${inverseAnimation}
-      }`,
-    };
-  }
+  //   return {
+  //     parent: `
+  //     @keyframes menuAnimation {
+  //       ${animation}
+  //     }`,
+  //     child: `
+  //     @keyframes menuContentsAnimation {
+  //       ${inverseAnimation}
+  //     }`,
+  //   };
+  // }
 
   // createKeyframeAnimation();
 
