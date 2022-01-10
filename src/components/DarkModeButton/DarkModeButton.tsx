@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Icon } from "..";
-import classNames from "classnames";
 
 import "./DarkModeButton.scss";
 
 interface IDarkModeButton {
   /** Optional className to pass to the top element*/
   className?: string;
-  /** Function to take in boolean value to trigger on click */
-  handleOn?: (string: boolean) => void;
+  /** For additional functionality pass an onClick event */
+  onClick?: () => void;
   /** Off icon jsx element */
   offIcon?: JSX.Element;
   /** On icon jsx element */
@@ -17,14 +16,13 @@ interface IDarkModeButton {
 
 const DarkModeButton = ({
   className = "",
-  handleOn,
+  onClick,
   offIcon,
   onIcon,
 }: IDarkModeButton) => {
   const [isOn, setIsOn] = useState(false);
 
   useEffect(() => {
-    handleOn && handleOn(isOn);
     if (isOn) {
       document.body.classList.add("dark-mode");
     } else {
@@ -32,24 +30,17 @@ const DarkModeButton = ({
     }
   }, [isOn]);
 
-  const toggleClass = classNames(className, "dark-mode-button", {
-    ["dark-mode-button--white"]: isOn,
-  });
-
-  const iconClassOn = classNames("dark-mode-button__icon", {
-    "dark-mode-button__icon--left": !isOn,
-  });
-
-  const iconClassOff = classNames("dark-mode-button__icon", {
-    "dark-mode-button__icon--right": isOn,
-  });
+  const handleClick = () => {
+    setIsOn(!isOn);
+    onClick && onClick();
+  };
 
   return (
-    <button className={toggleClass} onClick={() => setIsOn(!isOn)}>
-      <span className={iconClassOff}>
+    <button className={`dark-mode-button ${className}`} onClick={handleClick}>
+      <span className="dark-mode-button__icon--light">
         {offIcon || <Icon name={"sun"} size={40} color="#1F2028" />}
       </span>
-      <span className={iconClassOn}>
+      <span className="dark-mode-button__icon--dark">
         {onIcon || <Icon name={"moon"} size={40} color="#fff" />}
       </span>
     </button>

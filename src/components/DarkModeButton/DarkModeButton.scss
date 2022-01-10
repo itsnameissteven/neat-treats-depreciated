@@ -1,40 +1,47 @@
 .dark-mode-button {
   position: relative;
-  border: 2px solid #e6e9ed;
+  border: 2px solid #ced1d4;
   border-radius: 50px;
   width: 60px;
   height: 60px;
   overflow: hidden;
-  transition: border-color 0.1s ease-in;
+  transition: border-color 0.15s ease-in;
 
   &:hover,
   &:focus {
+    outline: none;
     border-color: #1f2028;
   }
 
-  &--white {
-    transition: border-color 0.1s ease-in;
-    border-color: #4b4c52;
-    &:hover,
-    &:focus {
-      border-color: #fff;
-    }
-  }
-
-  &__icon {
+  &__icon--light,
+  &__icon--dark {
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
     transition: all 0.8s ease-out;
     transform-origin: 50% 200px;
+  }
 
-    &--right {
-      transform: rotate(-45deg);
+  &__icon--dark {
+    transform: rotate(45deg);
+  }
+}
+
+.dark-mode {
+  .dark-mode-button {
+    border-color: #4b4c52;
+
+    &:hover,
+    &:focus {
+      border-color: #fff;
     }
 
-    &--left {
-      transform: rotate(45deg);
+    &__icon--light {
+      transform: rotate(-45deg);
+    }
+    &__icon--dark {
+      transform: rotate(0deg);
     }
   }
 }
