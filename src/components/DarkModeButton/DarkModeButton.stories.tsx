@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
-import ToggleButton from "./ToggleButton";
+import DarkModeButton from "./DarkModeButton";
 
 export default {
-  component: ToggleButton,
-  title: "Components/ToggleButton",
+  component: DarkModeButton,
+  title: "Components/DarkModeButton",
   argTypes: {},
   decorators: [(Story) => <Story />],
 };
@@ -34,7 +34,7 @@ export const Primary = () => {
 
   return (
     <div style={darkIsOn ? onStyle : offStyle}>
-      <ToggleButton handleOn={handleOn} />
+      <DarkModeButton handleOn={handleOn} />
     </div>
   );
 };

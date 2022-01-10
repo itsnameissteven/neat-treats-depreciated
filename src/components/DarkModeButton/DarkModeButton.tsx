@@ -2,41 +2,41 @@ import React, { useState, useEffect } from "react";
 import { Icon } from "..";
 import classNames from "classnames";
 
-import "./ToggleButton.scss";
+import "./DarkModeButton.scss";
 
-interface IToggleButton {
+interface IDarkModeButton {
   /** Optional className to pass to the top element*/
   className?: string;
   /** Function to take in boolean value to trigger on click */
-  handleOn: (string: boolean) => void;
+  handleOn?: (string: boolean) => void;
   /** Off icon jsx element */
   offIcon?: JSX.Element;
   /** On icon jsx element */
   onIcon?: JSX.Element;
 }
 
-const ToggleButton = ({
+const DarkModeButton = ({
   className = "",
   handleOn,
   offIcon,
   onIcon,
-}: IToggleButton) => {
+}: IDarkModeButton) => {
   const [isOn, setIsOn] = useState(false);
 
   useEffect(() => {
-    handleOn(isOn);
+    handleOn && handleOn(isOn);
   }, [isOn]);
 
-  const toggleClass = classNames(className, "toggle-button", {
-    ["toggle-button--white"]: isOn,
+  const toggleClass = classNames(className, "dark-mode-button", {
+    ["dark-mode-button--white"]: isOn,
   });
 
-  const iconClassOn = classNames("toggle-button__icon", {
-    "toggle-button__icon--left": !isOn,
+  const iconClassOn = classNames("dark-mode-button__icon", {
+    "dark-mode-button__icon--left": !isOn,
   });
 
-  const iconClassOff = classNames("toggle-button__icon", {
-    "toggle-button__icon--right": isOn,
+  const iconClassOff = classNames("dark-mode-button__icon", {
+    "dark-mode-button__icon--right": isOn,
   });
 
   return (
@@ -51,4 +51,4 @@ const ToggleButton = ({
   );
 };
 
-export default ToggleButton;
+export default DarkModeButton;
