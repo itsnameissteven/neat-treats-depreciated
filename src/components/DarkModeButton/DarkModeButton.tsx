@@ -25,6 +25,11 @@ const DarkModeButton = ({
 
   useEffect(() => {
     handleOn && handleOn(isOn);
+    if (isOn) {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
   }, [isOn]);
 
   const toggleClass = classNames(className, "dark-mode-button", {

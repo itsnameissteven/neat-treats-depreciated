@@ -1,0 +1,13 @@
+.dark-mode-story {
+  padding: 200px;
+  height: 100vh;
+  width: 100%;
+  background: #1F2028;
+  transition: all .3s ease-out;
+};
+
+.dark-mode {
+  .dark-mode-story {
+    background: #fff;
+  }
+}
