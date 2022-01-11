@@ -1,44 +1,6 @@
 import React from "react";
 import classNames from "classnames";
 
-export const iconKeys = [
-  "chevron-left",
-  "chevron-right",
-  "chevron-down",
-  "chevron-up",
-  "chevron-circle-up",
-  "chevron-circle-down",
-  "chevron-circle-left",
-  "chevron-circle-right",
-  "chevron-circle-up-f",
-  "chevron-circle-down-f",
-  "chevron-circle-left-f",
-  "chevron-circle-right-f",
-  "plus",
-  "plus-circle",
-  "plus-circle-f",
-  "x",
-  "x-circle",
-  "x-circle-f",
-  "hamburger-round",
-  "hamburger-square",
-  "hamburger-short",
-  "arrow-up",
-  "arrow-right",
-  "arrow-down",
-  "arrow-left",
-  "arrow-circle-up",
-  "arrow-circle-right",
-  "arrow-circle-down",
-  "arrow-circle-left",
-  "arrow-circle-up-f",
-  "arrow-circle-right-f",
-  "arrow-circle-down-f",
-  "arrow-circle-left-f",
-  "moon",
-  "sun",
-];
-
 interface IconProps {
   name: string;
   color?: string;

@@ -1,5 +1,16 @@
 .code-block {
+  position: relative;
   margin: 8px 0;
+  &__copy {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 8px;
+    path {
+      transition: all 0.2s ease;
+      fill: #fff;
+    }
+  }
 }
 
 // From the prism css files -- Twilight
@@ -124,6 +135,12 @@ pre[class*="language-"] {
 // Dark mode also from prism files
 
 .dark-mode {
+  .code-block {
+    path {
+      fill: #000;
+    }
+  }
+
   code[class*="language-"],
   pre[class*="language-"] {
     color: black;

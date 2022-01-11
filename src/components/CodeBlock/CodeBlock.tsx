@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Prism from "prismjs";
 import "./CodeBlock.scss";
+import { Icon } from "..";
 
 interface ICodeBlock {
   /** Place your code inside template literals*/
@@ -18,6 +19,7 @@ const CodeBlock = ({ className = "", code, language }: ICodeBlock) => {
 
   return (
     <div className={`Code code-block ${className}`}>
+      <Icon className="code-block__copy" name="copy" size={34} />
       <pre>
         <code className={`language-${language}`}>{code}</code>
       </pre>
