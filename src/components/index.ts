@@ -11,6 +11,7 @@ import DropDownBox from "./DropDownBox";
 import DarkModeButton from "./DarkModeButton";
 import ActionButton from "./ActionButton";
 import Switch from "./Switch";
+import CodeBlock from "./CodeBlock";
 
 export {
   Button,
@@ -26,4 +27,5 @@ export {
   DarkModeButton,
   ActionButton,
   Switch,
+  CodeBlock,
 };

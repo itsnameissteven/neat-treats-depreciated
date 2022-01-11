@@ -12,6 +12,8 @@ interface IDarkModeButton {
   offIcon?: JSX.Element;
   /** On icon jsx element */
   onIcon?: JSX.Element;
+  /** Size of the button */
+  size?: number;
 }
 
 const DarkModeButton = ({
@@ -19,6 +21,7 @@ const DarkModeButton = ({
   onClick,
   offIcon,
   onIcon,
+  size = 50,
 }: IDarkModeButton) => {
   const [isOn, setIsOn] = useState(false);
 
@@ -35,13 +38,22 @@ const DarkModeButton = ({
     onClick && onClick();
   };
 
+  const iconSize = size * 0.66;
+
   return (
-    <button className={`dark-mode-button ${className}`} onClick={handleClick}>
+    <button
+      className={`dark-mode-button ${className}`}
+      onClick={handleClick}
+      style={{
+        width: `${size}px`,
+        height: `${size}px`,
+      }}
+    >
       <span className="dark-mode-button__icon--light">
-        {offIcon || <Icon name={"sun"} size={40} color="#1F2028" />}
+        {offIcon || <Icon name={"sun"} size={iconSize} color="#1F2028" />}
       </span>
       <span className="dark-mode-button__icon--dark">
-        {onIcon || <Icon name={"moon"} size={40} color="#fff" />}
+        {onIcon || <Icon name={"moon"} size={iconSize} color="#fff" />}
       </span>
     </button>
   );

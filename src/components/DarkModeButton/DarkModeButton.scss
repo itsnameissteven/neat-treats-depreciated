@@ -2,8 +2,6 @@
   position: relative;
   border: 2px solid #ced1d4;
   border-radius: 50px;
-  width: 60px;
-  height: 60px;
   overflow: hidden;
   transition: border-color 0.15s ease-in;
 
@@ -19,7 +17,7 @@
     justify-content: center;
     align-items: center;
     position: absolute;
-    transition: all 0.8s ease-out;
+    transition: all 0.7s ease;
     transform-origin: 50% 200px;
   }
 
