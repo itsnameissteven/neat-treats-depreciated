@@ -22,4 +22,14 @@ code {
 
 .no-animation {
   animation-duration: 0s !important;
+  * {
+    animation-duration: 0s !important;
+  }
+}
+
+.no-transition {
+  transition-duration: 0s !important;
+  * {
+    transition-duration: 0s !important;
+  }
 }

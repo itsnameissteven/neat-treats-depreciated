@@ -1,9 +1,9 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect } from "react";
 import "./ActionButton.scss";
-import { preventAnimation } from "../../utils";
+import { usePreventAnimation } from "../../hooks";
 interface IActionButton {
-  size: number;
-  stroke: number;
+  size?: number;
+  stroke?: number;
   onClick?: () => void;
   border?: string;
   activeBorder?: string;
@@ -13,8 +13,8 @@ interface IActionButton {
 }
 
 const ActionButton = ({
-  size,
-  stroke,
+  size = 50,
+  stroke = 2,
   border = "grey",
   activeBorder = "black",
   animationDirection,
@@ -23,9 +23,7 @@ const ActionButton = ({
   onClick,
 }: IActionButton) => {
   const circleRef = useRef<SVGCircleElement>(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  const { noAnimation } = preventAnimation(!isLoaded);
+  const { noAnimation } = usePreventAnimation();
 
   const width = size;
   const strokeWidth = stroke;
@@ -34,10 +32,6 @@ const ActionButton = ({
   const animationClass = animationDirection
     ? `animation-${animationDirection}`
     : "";
-
-  useEffect(() => {
-    setTimeout(() => setIsLoaded(true), 500);
-  }, []);
 
   useEffect(() => {
     const { current } = circleRef;

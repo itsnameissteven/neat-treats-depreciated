@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Icon } from "..";
+import { useLocalStorage, usePreventAnimation } from "../../hooks";
 
 import "./DarkModeButton.scss";
 
@@ -8,9 +9,9 @@ interface IDarkModeButton {
   className?: string;
   /** For additional functionality pass an onClick event */
   onClick?: () => void;
-  /** Off icon jsx element */
+  /** Dark mode off icon jsx element */
   offIcon?: JSX.Element;
-  /** On icon jsx element */
+  /** Dark mode on icon jsx element */
   onIcon?: JSX.Element;
   /** Size of the button */
   size?: number;
@@ -23,18 +24,19 @@ const DarkModeButton = ({
   onIcon,
   size = 50,
 }: IDarkModeButton) => {
-  const [isOn, setIsOn] = useState(false);
+  const [isDark, setIsDark] = useLocalStorage("dark-mode", true);
+  const { noTransition } = usePreventAnimation();
 
   useEffect(() => {
-    if (isOn) {
+    if (isDark) {
       document.body.classList.add("dark-mode");
     } else {
       document.body.classList.remove("dark-mode");
     }
-  }, [isOn]);
+  }, [isDark]);
 
   const handleClick = () => {
-    setIsOn(!isOn);
+    setIsDark(!isDark);
     onClick && onClick();
   };
 
@@ -49,10 +51,10 @@ const DarkModeButton = ({
         height: `${size}px`,
       }}
     >
-      <span className="dark-mode-button__icon--light">
+      <span className={`dark-mode-button__icon--light ${noTransition}`}>
         {offIcon || <Icon name={"sun"} size={iconSize} color="#1F2028" />}
       </span>
-      <span className="dark-mode-button__icon--dark">
+      <span className={`dark-mode-button__icon--dark ${noTransition}`}>
         {onIcon || <Icon name={"moon"} size={iconSize} color="#fff" />}
       </span>
     </button>

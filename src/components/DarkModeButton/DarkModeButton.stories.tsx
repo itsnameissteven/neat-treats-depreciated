@@ -1,5 +1,6 @@
 import React from "react";
 import { CodeBlock } from "..";
+import { usePreventAnimation } from "../../hooks";
 import DarkModeButton from "./DarkModeButton";
 import "./story.styles.scss";
 
@@ -28,8 +29,9 @@ const css = `.dark-mode-demo {
 }`;
 
 export const Primary = () => {
+  const { noTransition } = usePreventAnimation();
   return (
-    <div className="dark-mode-demo">
+    <div className={`dark-mode-demo ${noTransition}`}>
       <div className="dark-mode-demo__header">
         <h1>Dark Mode Button Demo</h1>
         <DarkModeButton />
