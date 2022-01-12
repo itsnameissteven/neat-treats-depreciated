@@ -1,14 +1,8 @@
 import "../src/styles/index.scss";
+import React from "react";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
-  backgrounds: {
-    default: "black",
-    values: [
-      { name: "black", value: "#1F2028" },
-      { name: "white", value: "#fff" },
-    ],
-  },
   controls: {
     matchers: {
       color: /(background|color)$/i,
@@ -16,3 +10,11 @@ export const parameters = {
     },
   },
 };
+
+export const decorators = [
+  (Story) => (
+    <div style={{ color: "#fff" }}>
+      <Story />
+    </div>
+  ),
+];

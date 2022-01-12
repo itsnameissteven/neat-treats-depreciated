@@ -12,16 +12,12 @@ export default {
 
 export const Primary = () => {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexWrap: "wrap",
-      }}
-    >
+    <>
+      <h1 style={{ margin: "24px 0" }}>ActionButton</h1>
       <p
         style={{
-          width: "100%",
-          marginBottom: "20px",
+          width: "50%",
+          marginBottom: "24px",
           fontSize: "16px",
           lineHeight: "1.3",
         }}
@@ -30,26 +26,38 @@ export const Primary = () => {
         available icon library. Icon animation will be omitted if no
         animationDirection is indicated
       </p>
-      <ActionButton
-        animationDirection="right"
-        iconName="arrow-right"
-        onClick={() => null}
-      />
-      <ActionButton
-        animationDirection="left"
-        iconName="arrow-left"
-        onClick={() => null}
-      />
-      <ActionButton
-        animationDirection="up"
-        iconName="arrow-up"
-        onClick={() => null}
-      />
-      <ActionButton
-        animationDirection="down"
-        iconName="arrow-down"
-        onClick={() => null}
-      />
-    </div>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          background: "#fff",
+          height: "200px",
+          borderRadius: "4px",
+          padding: "30px",
+        }}
+      >
+        <ActionButton
+          animationDirection="right"
+          iconName="arrow-right"
+          onClick={() => null}
+        />
+        <ActionButton
+          animationDirection="left"
+          iconName="arrow-left"
+          onClick={() => null}
+        />
+        <ActionButton
+          animationDirection="up"
+          iconName="arrow-up"
+          onClick={() => null}
+        />
+        <ActionButton
+          animationDirection="down"
+          iconName="arrow-down"
+          onClick={() => null}
+        />
+        <ActionButton iconName="x" onClick={() => null} />
+      </div>
+    </>
   );
 };

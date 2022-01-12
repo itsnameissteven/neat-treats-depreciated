@@ -46,7 +46,7 @@ export const Primary = () => {
         <h1>Dark Mode Button Demo</h1>
         <DarkModeButton />
       </div>
-      <p>
+      <p className="dark-mode-demo__about">
         The Dark Mode button allows users to switch between light and dark
         modes. Clicking the button toggles the class name{" "}
         <strong>'dark-mode'</strong> on the <strong>body</strong> element.

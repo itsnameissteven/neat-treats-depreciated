@@ -11,7 +11,7 @@ interface IArgs {
 }
 
 const useCopyText = ({
-  transitionDuration = 1000,
+  transitionDuration = 400,
   styles,
   className,
 }: IArgs) => {
