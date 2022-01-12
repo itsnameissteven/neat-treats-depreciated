@@ -1,11 +1,18 @@
 .code-block {
   position: relative;
   margin: 8px 0;
+
   &__copy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     right: 0;
     top: 0;
     margin: 8px;
+    &__icon {
+      margin-left: 16px;
+    }
     path {
       transition: all 0.2s ease;
       fill: #fff;
@@ -136,6 +143,7 @@ pre[class*="language-"] {
 
 .dark-mode {
   .code-block {
+    color: #000;
     path {
       fill: #000;
     }
