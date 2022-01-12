@@ -16,10 +16,13 @@
   p {
     max-width: 700px;
     line-height: 1.4;
-    margin-left: 20px;
+    margin: 0 0 20px 20px;
+  }
+  &__code {
+    margin: 0 20px;
   }
 }
-
+// dark mode styles
 .dark-mode {
   .dark-mode-demo {
     background: #1f2028;

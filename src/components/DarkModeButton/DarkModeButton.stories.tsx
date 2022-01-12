@@ -26,6 +26,16 @@ const css = `.dark-mode-demo {
     padding: 0 20px 16px;
     border-bottom: 2px solid #ced1d4;
   }
+}
+// dark mode styles
+.dark-mode {
+  .dark-mode-demo {
+    background: #1f2028;
+    color: #fff;
+    &__header {
+      border-bottom: 2px solid #4b4c52;
+    }
+  }
 }`;
 
 export const Primary = () => {
@@ -37,13 +47,14 @@ export const Primary = () => {
         <DarkModeButton />
       </div>
       <p>
-        The Dark Mode button enables user to switch between light and dark
+        The Dark Mode button allows users to switch between light and dark
         modes. Clicking the button toggles the class name{" "}
         <strong>'dark-mode'</strong> on the <strong>body</strong> element.
         Developers can utilize this parent class to add styles specific to the
-        dark view.
+        dark view see scss styles below. Local storage is utilized to remember
+        the users preference so styles should persist between pages.
       </p>
-      <CodeBlock code={css} language="css" />
+      <CodeBlock className="dark-mode-demo__code" code={css} language="css" />
     </div>
   );
 };

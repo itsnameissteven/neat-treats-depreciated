@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import "./ActionButton.scss";
 import { usePreventAnimation } from "../../hooks";
+import { Icon } from "..";
 interface IActionButton {
   size?: number;
   stroke?: number;
@@ -8,8 +9,9 @@ interface IActionButton {
   border?: string;
   activeBorder?: string;
   animationDirection?: "up" | "down" | "left" | "right";
+  iconName?: string;
   className?: string;
-  children: JSX.Element | string;
+  children?: JSX.Element | string;
 }
 
 const ActionButton = ({
@@ -19,6 +21,7 @@ const ActionButton = ({
   activeBorder = "black",
   animationDirection,
   children,
+  iconName,
   className = "",
   onClick,
 }: IActionButton) => {
@@ -83,7 +86,7 @@ const ActionButton = ({
         />
       </svg>
       <div className={`action-btn__content ${animationClass} ${noAnimation}`}>
-        {children}
+        {children ? children : <Icon name={iconName || ""} size={size * 0.6} />}
       </div>
     </button>
   );

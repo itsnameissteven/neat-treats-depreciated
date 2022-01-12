@@ -12,15 +12,44 @@ export default {
 
 export const Primary = () => {
   return (
-    <div>
-      <ActionButton
-        size={75}
-        stroke={4}
-        animationDirection="right"
-        onClick={() => null}
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+      }}
+    >
+      <p
+        style={{
+          width: "100%",
+          marginBottom: "20px",
+          fontSize: "16px",
+          lineHeight: "1.3",
+        }}
       >
-        <Icon name="arrow-right" size={40} />
-      </ActionButton>
+        The ActionButton allows you to pass in a custom icon or pick from the
+        available icon library. Icon animation will be omitted if no
+        animationDirection is indicated
+      </p>
+      <ActionButton
+        animationDirection="right"
+        iconName="arrow-right"
+        onClick={() => null}
+      />
+      <ActionButton
+        animationDirection="left"
+        iconName="arrow-left"
+        onClick={() => null}
+      />
+      <ActionButton
+        animationDirection="up"
+        iconName="arrow-up"
+        onClick={() => null}
+      />
+      <ActionButton
+        animationDirection="down"
+        iconName="arrow-down"
+        onClick={() => null}
+      />
     </div>
   );
 };

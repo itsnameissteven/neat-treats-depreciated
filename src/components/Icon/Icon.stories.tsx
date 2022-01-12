@@ -58,7 +58,10 @@ const allIcons = iconKeys.map((name, i) => {
       }}
       key={i}
     >
-      <p className="icon__name" style={{ marginBottom: "16px" }}>
+      <p
+        className="icon__name"
+        style={{ marginBottom: "16px", fontSize: "18px" }}
+      >
         {name}
       </p>
       <Icon name={name} />
@@ -67,13 +70,18 @@ const allIcons = iconKeys.map((name, i) => {
 });
 
 export const Primary = () => (
-  <div
-    style={{
-      display: "grid",
-      gridTemplateColumns: "repeat(5, 200px)",
-      rowGap: "20px",
-    }}
-  >
-    {allIcons}
-  </div>
+  <>
+    <h3 style={{ margin: "0 auto 30px auto", textAlign: "center" }}>
+      These are all the available icons for use with the Icon component
+    </h3>
+    <div
+      style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(5, 200px)",
+        rowGap: "20px",
+      }}
+    >
+      {allIcons}
+    </div>
+  </>
 );
