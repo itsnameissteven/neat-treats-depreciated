@@ -1,4 +1,5 @@
 import "../src/styles/index.scss";
+import React from "react";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -9,3 +10,11 @@ export const parameters = {
     },
   },
 };
+
+export const decorators = [
+  (Story) => (
+    <div style={{ color: "#fff" }}>
+      <Story />
+    </div>
+  ),
+];

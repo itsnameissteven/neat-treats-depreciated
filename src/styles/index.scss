@@ -1,2 +1,47 @@
-@import "./global.scss";
 @import "./animations.scss";
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  color: #000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.no-animation {
+  animation-duration: 0s !important;
+  * {
+    animation-duration: 0s !important;
+  }
+}
+
+.no-transition {
+  transition-duration: 0s !important;
+  * {
+    transition-duration: 0s !important;
+  }
+}
+
+.use-copy-text-msg {
+  transition: all 2s ease-out 1.5s;
+  opacity: 0;
+
+  &--unhide {
+    transition: all 1s ease-out;
+    opacity: 1;
+  }
+}

@@ -8,9 +8,10 @@ import Calendar from "./Calendar";
 import Carousel from "./Carousel";
 import Icon from "./Icon";
 import DropDownBox from "./DropDownBox";
-import ToggleButton from "./ToggleButton";
+import DarkModeButton from "./DarkModeButton";
 import ActionButton from "./ActionButton";
 import Switch from "./Switch";
+import CodeBlock from "./CodeBlock";
 
 export {
   Button,
@@ -23,7 +24,8 @@ export {
   Calendar,
   Carousel,
   DropDownBox,
-  ToggleButton,
+  DarkModeButton,
   ActionButton,
   Switch,
+  CodeBlock,
 };

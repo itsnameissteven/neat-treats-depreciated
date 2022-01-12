@@ -20,6 +20,14 @@
     "suppressImplicitAnyIndexErrors": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src/**/*.ts"],
+  "include": [
+    "src/**/*.ts",
+    "src/hooks/useRandomInterval.tsx",
+    "src/hooks/useRainbow.tsx",
+    "src/hooks/usePreventAnimation.tsx",
+    "src/hooks/usePrefersReducedMotion.tsx",
+    "src/hooks/useIncrementingNumber.tsx",
+    "src/hooks/useLocalStorage.tsx"
+  ],
   "exclude": ["node_modules", "lib"]
 }

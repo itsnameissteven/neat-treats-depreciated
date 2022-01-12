@@ -5,9 +5,10 @@ import {
   Hamburger,
   Menu,
   ActionButton,
-  ToggleButton,
+  DarkModeButton,
   MasonryGrid,
   Icon,
+  CodeBlock,
 } from "./components";
 
 export {
@@ -16,7 +17,8 @@ export {
   Hamburger,
   Menu,
   ActionButton,
-  ToggleButton,
+  DarkModeButton,
   MasonryGrid,
   Icon,
+  CodeBlock,
 };

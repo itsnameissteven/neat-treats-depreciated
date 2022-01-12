@@ -1,31 +1,32 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect } from "react";
 import "./ActionButton.scss";
-import { preventAnimation } from "../../utils";
+import { usePreventAnimation } from "../../hooks";
+import { Icon } from "..";
 interface IActionButton {
-  size: number;
-  stroke: number;
+  size?: number;
+  stroke?: number;
   onClick?: () => void;
   border?: string;
   activeBorder?: string;
   animationDirection?: "up" | "down" | "left" | "right";
+  iconName?: string;
   className?: string;
-  children: JSX.Element | string;
+  children?: JSX.Element | string;
 }
 
 const ActionButton = ({
-  size,
-  stroke,
+  size = 50,
+  stroke = 2,
   border = "grey",
   activeBorder = "black",
   animationDirection,
   children,
+  iconName,
   className = "",
   onClick,
 }: IActionButton) => {
   const circleRef = useRef<SVGCircleElement>(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  const { noAnimation } = preventAnimation(!isLoaded);
+  const { noAnimation } = usePreventAnimation();
 
   const width = size;
   const strokeWidth = stroke;
@@ -34,10 +35,6 @@ const ActionButton = ({
   const animationClass = animationDirection
     ? `animation-${animationDirection}`
     : "";
-
-  useEffect(() => {
-    setTimeout(() => setIsLoaded(true), 500);
-  }, []);
 
   useEffect(() => {
     const { current } = circleRef;
@@ -89,7 +86,7 @@ const ActionButton = ({
         />
       </svg>
       <div className={`action-btn__content ${animationClass} ${noAnimation}`}>
-        {children}
+        {children ? children : <Icon name={iconName || ""} size={size * 0.6} />}
       </div>
     </button>
   );
