@@ -4,9 +4,15 @@ import "./MasonryGrid.scss";
 
 interface IMasonryGrid {
   children: JSX.Element[];
+  minWidth?: number;
+  maxWidth?: number;
 }
 
-const MasonryGrid = ({ children }: IMasonryGrid) => {
+const MasonryGrid = ({
+  children,
+  minWidth = 750,
+  maxWidth = 1200,
+}: IMasonryGrid) => {
   const [width, setWidth] = useState(0);
 
   const StyledChildren = () => {
@@ -21,8 +27,8 @@ const MasonryGrid = ({ children }: IMasonryGrid) => {
     const { innerWidth } = window;
 
     const handleResize = () => {
-      if (innerWidth < 1200 && innerWidth > 750) {
-        /* 1200 and 750 can be max/min width */
+      if (innerWidth < maxWidth && innerWidth > minWidth) {
+        return;
       }
       setWidth(innerWidth);
     };

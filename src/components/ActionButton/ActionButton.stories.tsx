@@ -1,7 +1,6 @@
 import React from "react";
 
 import ActionButton from "./ActionButton";
-import { Icon } from "..";
 
 export default {
   component: ActionButton,
@@ -13,29 +12,13 @@ export default {
 export const Primary = () => {
   return (
     <>
-      <h1 style={{ margin: "24px 0" }}>ActionButton</h1>
-      <p
-        style={{
-          width: "75%",
-          marginBottom: "24px",
-          fontSize: "16px",
-          lineHeight: "1.3",
-        }}
-      >
+      <h1 className="story__h1">ActionButton</h1>
+      <p className="story__p">
         The ActionButton allows you to pass in a custom icon or pick from the
         available icon library. Icon animation will be omitted if no
         animationDirection is indicated.
       </p>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          background: "#fff",
-          height: "200px",
-          borderRadius: "4px",
-          padding: "30px",
-        }}
-      >
+      <div className="story__action-btn">
         <ActionButton
           animationDirection="right"
           iconName="arrow-right"

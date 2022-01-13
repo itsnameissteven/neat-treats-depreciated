@@ -20,7 +20,7 @@ const CodeBlock = ({ className = "", code, language }: ICodeBlock) => {
   }, []);
 
   return (
-    <div className={`Code code-block ${className}`}>
+    <div className={`code code-block ${className}`}>
       <div className="code-block__copy">
         {showMessage()}
         <Icon
