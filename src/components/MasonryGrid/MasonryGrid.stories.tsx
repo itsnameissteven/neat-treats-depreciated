@@ -18,5 +18,17 @@ export const Primary = () => {
     );
   });
 
-  return <MasonryGrid>{babies}</MasonryGrid>;
+  return (
+    <>
+      <h1 className="story__h1">MasonryGrid</h1>
+      <p className="story__p">
+        All this component needs is children. On window resize MasonryGrid does
+        some behind the scenes work to make sure everything stays stacked
+        nicely. If you would like to optimize performance add a minWidth and
+        maxWidth prop to prevent continued rendering once the window reaches a
+        certain width.
+      </p>
+      <MasonryGrid>{babies}</MasonryGrid>;
+    </>
+  );
 };

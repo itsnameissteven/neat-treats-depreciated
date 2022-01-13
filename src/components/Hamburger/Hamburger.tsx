@@ -6,8 +6,7 @@ import "./Hamburger.scss";
 interface IHamburger {
   size?: string;
   className?: string;
-  handleClick: () => void;
-  isActive: boolean;
+  onClick: () => void;
   pipes?: 2 | 3;
   animationTime?: string;
   color?: string;
@@ -20,10 +19,9 @@ interface IHamburger {
 }
 
 const Hamburger = ({
-  size = "40px",
+  size = "30px",
   className,
-  handleClick,
-  isActive,
+  onClick,
   pipes = 3,
   animationTime = "400ms",
   color,
@@ -34,24 +32,24 @@ const Hamburger = ({
   const [firstRender, setFirstRender] = useState(true);
 
   const topClass = classnames({
-    ["animate-top"]: isActive,
-    ["hamburger__top"]: !firstRender && !isActive,
+    ["animate-top"]: isClicked,
+    ["hamburger__top"]: !firstRender && !isClicked,
   });
   const middleClass = classnames({
-    ["animate-middle"]: isActive,
-    ["hamburger__middle"]: !firstRender && !isActive,
+    ["animate-middle"]: isClicked,
+    ["hamburger__middle"]: !firstRender && !isClicked,
   });
   const bottomClass = classnames({
-    ["animate-bottom"]: isActive,
-    ["hamburger__bottom"]: !firstRender && !isActive,
+    ["animate-bottom"]: isClicked,
+    ["hamburger__bottom"]: !firstRender && !isClicked,
   });
   const topClassTwoPipe = classnames({
-    ["animate-top--two"]: isActive,
-    ["hamburger__top--two"]: !firstRender && !isActive,
+    ["animate-top--two"]: isClicked,
+    ["hamburger__top--two"]: !firstRender && !isClicked,
   });
   const bottomClassTwoPipe = classnames({
-    ["animate-bottom--two"]: isActive,
-    ["hamburger__bottom--two"]: !firstRender && !isActive,
+    ["animate-bottom--two"]: isClicked,
+    ["hamburger__bottom--two"]: !firstRender && !isClicked,
   });
 
   useEffect(() => {
@@ -61,12 +59,8 @@ const Hamburger = ({
   }, [isClicked]);
 
   const passedClick = () => {
-    if (handleClick) {
-      handleClick();
-      setFirstRender(false);
-    } else {
-      setIsClicked(!isClicked);
-    }
+    setIsClicked(!isClicked);
+    onClick && onClick();
   };
 
   const { top, left, right } = position || {};

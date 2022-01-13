@@ -1,41 +1,30 @@
 import React from "react";
 
 import ActionButton from "./ActionButton";
-import { Icon } from "..";
 
 export default {
   component: ActionButton,
   title: "Components/ActionButton",
-  argTypes: {},
+  argTypes: {
+    animationDirection: {
+      options: [undefined, "up", "down", "left", "right"],
+      control: { type: "radio" },
+      defaultValue: undefined,
+    },
+  },
   decorators: [(Story) => <Story />],
 };
 
-export const Primary = () => {
+const Template = ({ iconName, animationDirection, stroke, size }) => {
   return (
     <>
-      <h1 style={{ margin: "24px 0" }}>ActionButton</h1>
-      <p
-        style={{
-          width: "50%",
-          marginBottom: "24px",
-          fontSize: "16px",
-          lineHeight: "1.3",
-        }}
-      >
+      <h1 className="story__h1">ActionButton</h1>
+      <p className="story__p">
         The ActionButton allows you to pass in a custom icon or pick from the
         available icon library. Icon animation will be omitted if no
-        animationDirection is indicated
+        animationDirection is indicated.
       </p>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          background: "#fff",
-          height: "200px",
-          borderRadius: "4px",
-          padding: "30px",
-        }}
-      >
+      <div className="story__action-btn">
         <ActionButton
           animationDirection="right"
           iconName="arrow-right"
@@ -56,8 +45,16 @@ export const Primary = () => {
           iconName="arrow-down"
           onClick={() => null}
         />
-        <ActionButton iconName="x" onClick={() => null} />
+        <ActionButton
+          iconName={iconName || "x"}
+          onClick={() => null}
+          stroke={stroke}
+          size={size}
+          animationDirection={animationDirection || null}
+        />
       </div>
     </>
   );
 };
+
+export const Primary = Template.bind({});

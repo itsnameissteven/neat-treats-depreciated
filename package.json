@@ -11,6 +11,7 @@
     "@monaco-editor/react": "^4.3.1",
     "@open-wc/building-rollup": "^1.10.0",
     "@rollup/plugin-node-resolve": "^13.0.4",
+    "@storybook/addon-controls": "^6.4.12",
     "@storybook/preview-web": "^6.4.9",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",

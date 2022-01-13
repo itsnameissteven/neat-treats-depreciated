@@ -2,7 +2,6 @@ import React from "react";
 import { CodeBlock } from "..";
 import { usePreventAnimation } from "../../hooks";
 import DarkModeButton from "./DarkModeButton";
-import "./story.styles.scss";
 
 export default {
   component: DarkModeButton,
@@ -38,13 +37,13 @@ const css = `.dark-mode-demo {
   }
 }`;
 
-export const Primary = () => {
+const Template = ({ size }) => {
   const { noTransition } = usePreventAnimation();
   return (
     <div className={`dark-mode-demo ${noTransition}`}>
       <div className="dark-mode-demo__header">
         <h1>Dark Mode Button Demo</h1>
-        <DarkModeButton />
+        <DarkModeButton size={size} />
       </div>
       <p className="dark-mode-demo__about">
         The Dark Mode button allows users to switch between light and dark
@@ -58,3 +57,5 @@ export const Primary = () => {
     </div>
   );
 };
+
+export const Primary = Template.bind({});

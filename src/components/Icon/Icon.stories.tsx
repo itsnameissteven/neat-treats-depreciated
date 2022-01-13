@@ -5,7 +5,12 @@ import Icon from ".";
 export default {
   component: Icon,
   title: "Components/Icon",
-  argTypes: {},
+  argTypes: {
+    color: {
+      control: { type: "color" },
+      defaultValue: "#fff",
+    },
+  },
 };
 
 const iconKeys = [
@@ -47,41 +52,37 @@ const iconKeys = [
   "copy",
 ];
 
-const allIcons = iconKeys.map((name, i) => {
-  return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-      key={i}
-    >
-      <p
-        className="icon__name"
-        style={{ marginBottom: "16px", fontSize: "18px" }}
+const allIcons = (color: string, size: number) =>
+  iconKeys.map((name, i) => {
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+        key={i}
       >
-        {name}
-      </p>
-      <Icon name={name} />
-    </div>
-  );
-});
+        <p
+          className="icon__name"
+          style={{ marginBottom: "16px", fontSize: "18px" }}
+        >
+          {name}
+        </p>
+        <Icon name={name} color={color} size={size} />
+      </div>
+    );
+  });
 
-export const Primary = () => (
-  <>
-    <h3 style={{ margin: "0 auto 30px auto", textAlign: "center" }}>
-      These are all the available icons for use with the Icon component
-    </h3>
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(5, 200px)",
-        rowGap: "20px",
-      }}
-    >
-      {allIcons}
-    </div>
-  </>
-);
+const Template = ({ color, size }) => {
+  return (
+    <>
+      <h1 className="story__h1">Icon</h1>
+      <p className="story__p">Current icons and names used to access them</p>
+      <div className="story__icon-grid">{allIcons(color, size)}</div>
+    </>
+  );
+};
+
+export const Primary = Template.bind({});
