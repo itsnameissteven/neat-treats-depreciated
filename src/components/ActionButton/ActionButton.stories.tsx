@@ -16,7 +16,7 @@ export const Primary = () => {
       <h1 style={{ margin: "24px 0" }}>ActionButton</h1>
       <p
         style={{
-          width: "50%",
+          width: "75%",
           marginBottom: "24px",
           fontSize: "16px",
           lineHeight: "1.3",
@@ -24,7 +24,7 @@ export const Primary = () => {
       >
         The ActionButton allows you to pass in a custom icon or pick from the
         available icon library. Icon animation will be omitted if no
-        animationDirection is indicated
+        animationDirection is indicated.
       </p>
       <div
         style={{

@@ -1,9 +1,6 @@
 .action-btn {
   position: relative;
   border-radius: 100%;
-  width: fit-content;
-  height: fit-content;
-  // border: 2px solid red;
 
   &__progress-ring {
     transform: rotate(-90deg);
@@ -42,12 +39,8 @@
   &__content {
     position: absolute;
     pointer-events: none;
-    // border: 2px solid red;
     display: flex;
     justify-content: center;
     align-items: center;
-
-    // top: 50%;
-    // left: 50%;
   }
 }
