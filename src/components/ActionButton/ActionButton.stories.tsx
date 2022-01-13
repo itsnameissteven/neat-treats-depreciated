@@ -5,11 +5,17 @@ import ActionButton from "./ActionButton";
 export default {
   component: ActionButton,
   title: "Components/ActionButton",
-  argTypes: {},
+  argTypes: {
+    animationDirection: {
+      options: [undefined, "up", "down", "left", "right"],
+      control: { type: "radio" },
+      defaultValue: undefined,
+    },
+  },
   decorators: [(Story) => <Story />],
 };
 
-export const Primary = () => {
+const Template = ({ iconName, animationDirection, stroke, size }) => {
   return (
     <>
       <h1 className="story__h1">ActionButton</h1>
@@ -39,8 +45,16 @@ export const Primary = () => {
           iconName="arrow-down"
           onClick={() => null}
         />
-        <ActionButton iconName="x" onClick={() => null} />
+        <ActionButton
+          iconName={iconName || "x"}
+          onClick={() => null}
+          stroke={stroke}
+          size={size}
+          animationDirection={animationDirection || null}
+        />
       </div>
     </>
   );
 };
+
+export const Primary = Template.bind({});
