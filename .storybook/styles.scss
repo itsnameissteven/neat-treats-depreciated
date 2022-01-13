@@ -25,6 +25,13 @@
     grid-template-columns: repeat(5, 200px);
     row-gap: 20px;
   }
+
+  &__hamburger {
+    background: #fff;
+    height: 200px;
+    border-radius: 4px;
+    padding: 30px;
+  }
 }
 
 // dark mode demo

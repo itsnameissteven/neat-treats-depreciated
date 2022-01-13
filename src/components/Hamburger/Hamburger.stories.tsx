@@ -5,13 +5,19 @@ import Hamburger from ".";
 export default {
   component: Hamburger,
   title: "Components/Hamburger",
-  argTypes: {},
+  argTypes: {
+    pipes: {
+      options: [2, 3],
+      control: { type: "radio" },
+      defaultValue: 3,
+    },
+  },
 };
 
 const Template = (args) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div>
+    <div className="story__hamburger">
       <Hamburger
         handleClick={() => setIsOpen(!isOpen)}
         isActive={isOpen}
@@ -22,7 +28,3 @@ const Template = (args) => {
 };
 
 export const Primary = Template.bind({});
-Primary.args = {
-  size: "100px",
-  pipes: 2,
-};

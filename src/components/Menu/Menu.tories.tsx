@@ -39,8 +39,7 @@ export const WithBurger = () => {
   return (
     <div>
       <Hamburger
-        handleClick={() => setIsOpen(!isOpen)}
-        isActive={isOpen}
+        onClick={() => setIsOpen(!isOpen)}
         size="25px"
         animationTime="300ms"
       />
