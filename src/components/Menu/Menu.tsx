@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import classNames from "classnames";
 
-import "./Menu.scss";
-
 interface IMenu {
   isOpen: boolean;
   children: any;

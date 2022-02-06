@@ -1,0 +1,25 @@
+.switch {
+  position: relative;
+  padding: 5px;
+  border-radius: 500px;
+  background: black;
+
+  &__ball {
+    position: absolute;
+    top: 0px;
+    width: 50%;
+    height: 0;
+    padding-bottom: 50%;
+    background: white;
+    border-radius: 500px;
+    transition: all 0.2s ease-out;
+
+    &--off {
+      transform: translateX(-50%);
+    }
+
+    &--on {
+      transform: translateX(50%);
+    }
+  }
+}

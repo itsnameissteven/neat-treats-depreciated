@@ -1,7 +1,5 @@
 import React, { useState, useEffect, cloneElement, Children } from "react";
 
-import "./MasonryGrid.scss";
-
 interface IMasonryGrid {
   children: JSX.Element[];
   minWidth?: number;

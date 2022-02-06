@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import Prism from "prismjs";
-import "./CodeBlock.scss";
 import { Icon } from "..";
 import { useCopyText } from "../../hooks";
 

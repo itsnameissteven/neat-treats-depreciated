@@ -2,8 +2,6 @@ import React, { useEffect } from "react";
 import { Icon } from "..";
 import { useLocalStorage, usePreventAnimation } from "../../hooks";
 
-import "./DarkModeButton.scss";
-
 interface IDarkModeButton {
   /** Optional className to pass to the top element*/
   className?: string;

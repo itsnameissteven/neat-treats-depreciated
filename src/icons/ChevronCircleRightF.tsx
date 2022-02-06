@@ -2,8 +2,6 @@ import React from "react";
 
 import { IIcon } from "../types";
 
-import "./icon.scss";
-
 const ChevronCircleRightF = ({
   size = 48,
   color = "#000",

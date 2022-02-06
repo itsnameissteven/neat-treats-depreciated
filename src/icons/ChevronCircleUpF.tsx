@@ -2,8 +2,6 @@ import React from "react";
 
 import { IIcon } from "../types";
 
-import "./icon.scss";
-
 const ChevronCircleUpF = ({ size = 48, color = "#000", ...props }: IIcon) => {
   return (
     <svg

@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import classNames from "classnames";
 import { Icon } from "..";
-import "./DropDownBox.scss";
 
 const DropDownBox = () => {
   const [isOpen, setIsOpen] = useState(false);
