@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import classnames from "classnames";
 
-import "./Hamburger.scss";
-
 interface IHamburger {
   size?: string;
   className?: string;

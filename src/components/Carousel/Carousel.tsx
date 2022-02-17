@@ -3,8 +3,6 @@ import classNames from "classnames";
 
 import { Icon } from "..";
 
-import "./Carousel.scss";
-
 interface ICarousel {
   slides?: JSX.Element[];
 }

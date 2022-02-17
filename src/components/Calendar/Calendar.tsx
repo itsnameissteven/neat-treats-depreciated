@@ -3,8 +3,6 @@ import classNames from "classnames";
 
 import { Icon } from "../index";
 
-// import "../../styles/global.scss";
-import "./Calendar.scss";
 interface IRenderDayArgs {
   key: string;
   i: number;

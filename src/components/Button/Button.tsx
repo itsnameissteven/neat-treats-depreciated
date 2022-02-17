@@ -1,8 +1,6 @@
 import React from "react";
 import classnames from "classnames";
 
-import "./Button.scss";
-
 interface IButton {
   type?: "primary" | "secondary" | "outline";
   round?: boolean;

@@ -1,5 +1,4 @@
 import React, { useRef, useEffect } from "react";
-import "./ActionButton.scss";
 import { usePreventAnimation } from "../../hooks";
 import { Icon } from "..";
 interface IActionButton {
