@@ -45,11 +45,13 @@ const Input = ({
 
   return (
     <fieldset className={`neat-input ${className}`} style={styles}>
-      {label && <legend style={{ width }}></legend>}
       {label && (
-        <label ref={labelRef} className={labelClass}>
-          {label}
-        </label>
+        <>
+          <legend style={{ width }}></legend>
+          <label ref={labelRef} className={labelClass}>
+            {label}
+          </label>
+        </>
       )}
       <input
         className="neat-input__input"
