@@ -1,58 +1,37 @@
 .carousel {
+  overflow: hidden;
   position: relative;
-  display: flex;
-  align-items: center;
-  border: 2px solid red;
   width: 400px;
   overflow: hidden;
+
   &__prev,
   &__next {
+    transition: all 0.2s ease-in;
     position: absolute;
     left: 0;
     top: 50%;
     transform: translateY(-50%);
     z-index: 10;
+    opacity: 0.5;
+
+    &:hover {
+      opacity: 1;
+    }
   }
 
   &__next {
     right: 0;
     left: unset;
   }
-
   &__slide {
-    width: 400px;
-    height: fit-content;
-    flex-shrink: 0;
+    white-space: nowrap;
+    transition: transform ease-in;
 
-    &__content {
+    &__item {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
       width: 100%;
-
-      &--right {
-        // transition: all 1000ms ease-out;
-        animation: leftSlide 1000ms ease-out;
-        transform-origin: left;
-      }
-      &--left {
-        animation: rightSlide 1000ms ease-out;
-      }
     }
-  }
-}
-
-@keyframes leftSlide {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-100%);
-  }
-}
-
-@keyframes rightSlide {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(0);
   }
 }

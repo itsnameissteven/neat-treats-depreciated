@@ -12,4 +12,5 @@ import DarkModeButton from "./DarkModeButton";
 import ActionButton from "./ActionButton";
 import Switch from "./Switch";
 import CodeBlock from "./CodeBlock";
-export { Button, Hamburger, Glitter, MagicRainbowButton, MasonryGrid, Menu, Icon, Calendar, Carousel, DropDownBox, DarkModeButton, ActionButton, Switch, CodeBlock, };
+import Input from "./Input";
+export { Button, Hamburger, Glitter, MagicRainbowButton, MasonryGrid, Menu, Icon, Calendar, Carousel, DropDownBox, DarkModeButton, ActionButton, Switch, CodeBlock, Input, };
