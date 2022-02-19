@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useMemo, useRef } from "react";
 import classnames from "classnames";
 
 import { Icon } from "..";
@@ -6,12 +6,29 @@ import { Icon } from "..";
 interface ICarousel {
   transitionTime?: number;
   children: JSX.Element | JSX.Element[];
+  iconColor?: string;
+  iconSize?: number;
+  iconPrev?: string;
+  iconNext?: string;
 }
 
-const Carousel = ({ transitionTime = 300, children }: ICarousel) => {
-  const [slidePanels, setSlidePanels] = useState<JSX.Element[]>([]);
+const Carousel = ({
+  transitionTime = 300,
+  iconColor = "#fff",
+  iconSize = 34,
+  children,
+  iconPrev = "chevron-left",
+  iconNext = "chevron-right",
+}: ICarousel) => {
+  const slidePanels = useMemo(() => {
+    const newChildren = React.Children.map(children, (child) => {
+      return React.cloneElement(child, { width: "100%" });
+    });
+    const firstSlide = newChildren[0];
+    const lastSlide = newChildren[newChildren.length - 1];
+    return [lastSlide, ...newChildren, firstSlide];
+  }, [children]);
   const [activeIndex, setActiveIndex] = useState(1);
-  const sliderRef = useRef<HTMLDivElement>(null);
   const [isDisabled, setIsDisabled] = useState(false);
   const [isNoTransition, setIsNoTransition] = useState(false);
 
@@ -26,15 +43,6 @@ const Carousel = ({ transitionTime = 300, children }: ICarousel) => {
       </div>
     );
   });
-
-  useEffect(() => {
-    const newChildren = React.Children.map(children, (child) => {
-      return React.cloneElement(child, { width: "100%" });
-    });
-    const firstSlide = newChildren[0];
-    const lastSlide = newChildren[newChildren.length - 1];
-    setSlidePanels([lastSlide, ...newChildren, firstSlide]);
-  }, []);
 
   const resetlocation = () => {
     setIsDisabled(false);
@@ -57,12 +65,13 @@ const Carousel = ({ transitionTime = 300, children }: ICarousel) => {
     <div className="carousel">
       <Icon
         className="carousel__prev"
-        name="chevron-left"
+        name={iconPrev}
         onClick={() => handleClick(-1)}
         disabled={isDisabled}
+        color={iconColor}
+        size={iconSize}
       />
       <div
-        ref={sliderRef}
         onTransitionEnd={resetlocation}
         className={slideClass}
         style={{
@@ -74,9 +83,11 @@ const Carousel = ({ transitionTime = 300, children }: ICarousel) => {
       </div>
       <Icon
         className="carousel__next"
-        name="chevron-right"
+        name={iconNext}
         onClick={() => handleClick(1)}
         disabled={isDisabled}
+        color={iconColor}
+        size={iconSize}
       />
     </div>
   );

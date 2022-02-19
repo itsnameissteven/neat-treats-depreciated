@@ -1,13 +1,13 @@
 .neat-input {
   transition: all 0.15s linear;
   position: relative;
-  border: 2px solid #c1c1c1;
+  border: 2px solid $cadet-blue-crayola;
   border-radius: 6px;
   max-width: 300px;
   &:focus-within {
-    border-color: rgb(25, 87, 255);
+    border-color: $blue-green;
     .neat-input__label {
-      color: rgb(25, 87, 255);
+      color: $blue-green;
       transform: translateY(-28px);
     }
   }
@@ -25,10 +25,10 @@
     font-size: 12px;
     transform: translate(2px, -50%) scale(1.2);
     padding: 0 3px;
-    color: rgb(109, 109, 109);
+    color: #93a2ac;
 
     &--with-content {
-      color: rgb(75, 75, 75);
+      color: $sonic-silver;
       transform: translateY(-28px);
     }
   }

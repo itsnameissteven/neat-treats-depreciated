@@ -10,6 +10,10 @@ export default {
       control: { type: "color" },
       defaultValue: "#fff",
     },
+    size: {
+      control: { type: "number" },
+      defaultValue: 24,
+    },
   },
 };
 
