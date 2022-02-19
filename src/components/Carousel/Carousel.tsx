@@ -1,18 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import classnames from "classnames";
-import { usePreventAnimation } from "../../hooks";
 
 import { Icon } from "..";
 
 interface ICarousel {
-  slides?: JSX.Element[];
   transitionTime?: number;
+  children: JSX.Element | JSX.Element[];
 }
 
-const Carousel = ({
-  slides = [<h1>1</h1>, <h2>2</h2>, <h3>3</h3>],
-  transitionTime = 300,
-}: ICarousel) => {
+const Carousel = ({ transitionTime = 300, children }: ICarousel) => {
   const [slidePanels, setSlidePanels] = useState<JSX.Element[]>([]);
   const [activeIndex, setActiveIndex] = useState(1);
   const sliderRef = useRef<HTMLDivElement>(null);
@@ -32,9 +28,12 @@ const Carousel = ({
   });
 
   useEffect(() => {
-    const firstSlide = slides[0];
-    const lastSlide = slides[slides.length - 1];
-    setSlidePanels([lastSlide, ...slides, firstSlide]);
+    const newChildren = React.Children.map(children, (child) => {
+      return React.cloneElement(child);
+    });
+    const firstSlide = newChildren[0];
+    const lastSlide = newChildren[newChildren.length - 1];
+    setSlidePanels([lastSlide, ...newChildren, firstSlide]);
   }, []);
 
   const resetlocation = () => {

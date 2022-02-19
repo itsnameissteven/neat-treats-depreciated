@@ -1,66 +1,6 @@
-// .carousel {
-//   position: relative;
-//   display: flex;
-//   align-items: center;
-//   border: 2px solid red;
-//   width: 400px;
-//   overflow: hidden;
-//   &__prev,
-//   &__next {
-//     position: absolute;
-//     left: 0;
-//     top: 50%;
-//     transform: translateY(-50%);
-//     z-index: 10;
-//   }
-
-//   &__next {
-//     right: 0;
-//     left: unset;
-//   }
-
-//   &__slide {
-//     width: 400px;
-//     height: fit-content;
-//     flex-shrink: 0;
-
-//     &__content {
-//       width: 100%;
-
-//       &--right {
-//         // transition: all 1000ms ease-out;
-//         animation: leftSlide 1000ms ease-out;
-//         transform-origin: left;
-//       }
-//       &--left {
-//         animation: rightSlide 1000ms ease-out;
-//       }
-//     }
-//   }
-// }
-
-// @keyframes leftSlide {
-//   from {
-//     transform: translateX(0);
-//   }
-//   to {
-//     transform: translateX(-100%);
-//   }
-// }
-
-// @keyframes rightSlide {
-//   from {
-//     transform: translateX(-100%);
-//   }
-//   to {
-//     transform: translateX(0);
-//   }
-// }
-
 .carousel {
   overflow: hidden;
   position: relative;
-  border: 2px solid red;
   width: 400px;
   overflow: hidden;
   &__prev,
@@ -78,7 +18,7 @@
   }
   &__slide {
     white-space: nowrap;
-    // transition: transform 0.3s ease;
+    transition: transform ease;
 
     &__item {
       display: inline-flex;
