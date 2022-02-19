@@ -7,7 +7,7 @@ interface IButton {
   fancy?: boolean;
   size?: "small" | "medium" | "large";
   backgroundColor?: string;
-  children: string; //or any? or icon?
+  children: string;
   className?: "string";
   onClick?: () => void;
 }
@@ -27,7 +27,8 @@ const Button = ({
     [`nt-btn__${type}`]: true,
     [`nt-btn__${size}`]: true,
     round: round,
-    fancy: fancy && type !== "outline",
+    fancy: fancy && type !== "outline" && !round,
+    "fancy-round": fancy && type !== "outline" && round,
   });
 
   const style =

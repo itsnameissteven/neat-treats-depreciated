@@ -33,6 +33,10 @@ import ArrowCircleLeftF from "./ArrowCircleLeftF";
 import ArrowCircleDownF from "./ArrowCircleDownF";
 import Moon from "./Moon";
 import Sun from "./Sun";
+import Minus from "./Minus";
+import MinusCircle from "./MinusCircle";
+import MinusCircleF from "./MinusCircleF";
+import Meteor from "./Meteor";
 
 export {
   ChevronLeft,
@@ -70,4 +74,8 @@ export {
   ArrowCircleLeftF,
   Moon,
   Sun,
+  Minus,
+  MinusCircle,
+  MinusCircleF,
+  Meteor,
 };

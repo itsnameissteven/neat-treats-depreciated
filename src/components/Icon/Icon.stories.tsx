@@ -10,6 +10,10 @@ export default {
       control: { type: "color" },
       defaultValue: "#fff",
     },
+    size: {
+      control: { type: "number" },
+      defaultValue: 24,
+    },
   },
 };
 
@@ -49,7 +53,11 @@ const iconKeys = [
   "arrow-circle-left-f",
   "moon",
   "sun",
+  "meteor",
   "copy",
+  "minus",
+  "minus-circle",
+  "minus-circle-f",
 ];
 
 const allIcons = (color: string, size: number) =>
