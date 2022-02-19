@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Prism from "prismjs";
 import { Icon } from "..";
-import { useCopyText } from "../../hooks";
+import { useCopyText, usePreventAnimation } from "../../hooks";
 
 interface ICodeBlock {
   /** Place your code inside template literals*/
@@ -13,13 +13,14 @@ interface ICodeBlock {
 }
 
 const CodeBlock = ({ className = "", code, language }: ICodeBlock) => {
+  const { noTransition } = usePreventAnimation();
   const { copyText, showMessage } = useCopyText({});
   useEffect(() => {
     Prism.highlightAll();
   }, []);
 
   return (
-    <div className={`code code-block ${className}`}>
+    <div className={`code code-block ${className} ${noTransition}`}>
       <div className="code-block__copy">
         {showMessage()}
         <Icon
