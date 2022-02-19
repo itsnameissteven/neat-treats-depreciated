@@ -1,6 +1,9 @@
 import React from "react";
 
 import Carousel from "./Carousel";
+import image1 from "../../assets/images/image1.jpg";
+import image2 from "../../assets/images/image2.jpg";
+import image3 from "../../assets/images/image3.jpg";
 
 export default {
   component: Carousel,
@@ -10,8 +13,8 @@ export default {
 
 export const Primary = () => (
   <Carousel>
-    <h1>1</h1>
-    <h2>2</h2>
-    <h3>3</h3>
+    <img src={image1} />
+    <img src={image3} />
+    <img src={image2} />
   </Carousel>
 );

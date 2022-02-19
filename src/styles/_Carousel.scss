@@ -18,7 +18,7 @@
   }
   &__slide {
     white-space: nowrap;
-    transition: transform ease;
+    transition: transform ease-in;
 
     &__item {
       display: inline-flex;

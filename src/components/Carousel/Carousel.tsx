@@ -29,7 +29,7 @@ const Carousel = ({ transitionTime = 300, children }: ICarousel) => {
 
   useEffect(() => {
     const newChildren = React.Children.map(children, (child) => {
-      return React.cloneElement(child);
+      return React.cloneElement(child, { width: "100%" });
     });
     const firstSlide = newChildren[0];
     const lastSlide = newChildren[newChildren.length - 1];
