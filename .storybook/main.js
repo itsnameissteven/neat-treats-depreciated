@@ -6,4 +6,5 @@ module.exports = {
     "@storybook/preset-create-react-app",
     "@storybook/addon-controls",
   ],
+  staticDirs: ["../public"],
 };
