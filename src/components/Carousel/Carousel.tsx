@@ -1,61 +1,57 @@
-import React, { useState, useEffect } from "react";
-import classNames from "classnames";
+import React, { useState, useEffect, useRef } from "react";
+import classnames from "classnames";
+import { usePreventAnimation } from "../../hooks";
 
 import { Icon } from "..";
 
 interface ICarousel {
   slides?: JSX.Element[];
+  transitionTime?: number;
 }
 
-const Carousel = ({ slides = [<h1>hi</h1>] }: ICarousel) => {
-  const [slidePanels, setSlidePanels] = useState<JSX.Element[]>(slides);
-  const [direction, setDirection] = useState<"left" | "right" | "">("");
+const Carousel = ({
+  slides = [<h1>1</h1>, <h2>2</h2>, <h3>3</h3>],
+  transitionTime = 300,
+}: ICarousel) => {
+  const [slidePanels, setSlidePanels] = useState<JSX.Element[]>([]);
+  const [activeIndex, setActiveIndex] = useState(1);
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const [isDisabled, setIsDisabled] = useState(false);
+  const [isNoTransition, setIsNoTransition] = useState(false);
 
-  const slideClassNames = classNames({
-    carousel__slide__content: true,
-    "carousel__slide__content--left": direction === "left",
-    "carousel__slide__content--right": direction === "right",
+  const slideClass = classnames("carousel__slide", {
+    "no-transition": isNoTransition,
   });
 
   const allSlides = slidePanels.map((slide, i) => {
     return (
-      <div className="carousel__slide" key={i}>
-        <div className={slideClassNames}>{slide}</div>
+      <div className="carousel__slide__item" key={i}>
+        {slide}
       </div>
     );
   });
 
   useEffect(() => {
-    if (direction === "right") {
-      const resetDirection = setTimeout(() => {
-        // fix this to reset state
-        slidePanels.shift();
-        setDirection("");
-      }, 1000);
-      return () => clearTimeout(resetDirection);
-    }
-    if (direction === "left") {
-      const resetDirection = setTimeout(() => {
-        setDirection("");
-      }, 1000);
-      return () => clearTimeout(resetDirection);
-    }
-    return;
-  }, [direction]);
+    const firstSlide = slides[0];
+    const lastSlide = slides[slides.length - 1];
+    setSlidePanels([lastSlide, ...slides, firstSlide]);
+  }, []);
 
-  const onNext = () => {
-    setDirection("");
-    setDirection("right");
-    setSlidePanels((slides) => [...slides, slides[0]]);
+  const resetlocation = () => {
+    setIsDisabled(false);
+    if (activeIndex === 0) {
+      setIsNoTransition(true);
+      setActiveIndex(slidePanels.length - 2);
+    } else if (activeIndex === slidePanels.length - 1) {
+      setActiveIndex(1);
+      setIsNoTransition(true);
+    }
   };
 
-  const onPrev = () => {
-    setDirection("");
-    setDirection("left");
-    const lastSlide = slidePanels.pop();
-    if (lastSlide) {
-      setSlidePanels((slides) => [lastSlide, ...slides]);
-    }
+  const handleClick = (n: number) => {
+    setActiveIndex(activeIndex + n);
+    setIsDisabled(true);
+    setIsNoTransition(false);
   };
 
   return (
@@ -63,15 +59,25 @@ const Carousel = ({ slides = [<h1>hi</h1>] }: ICarousel) => {
       <Icon
         className="carousel__prev"
         name="chevron-left"
-        onClick={onPrev}
-        disabled={direction.length > 0}
+        onClick={() => handleClick(-1)}
+        disabled={isDisabled}
       />
-      {allSlides}
+      <div
+        ref={sliderRef}
+        onTransitionEnd={resetlocation}
+        className={slideClass}
+        style={{
+          transform: `translateX(-${activeIndex * 100}%)`,
+          transitionDuration: `${transitionTime}ms`,
+        }}
+      >
+        {allSlides}
+      </div>
       <Icon
         className="carousel__next"
         name="chevron-right"
-        onClick={onNext}
-        disabled={direction.length > 0}
+        onClick={() => handleClick(1)}
+        disabled={isDisabled}
       />
     </div>
   );
