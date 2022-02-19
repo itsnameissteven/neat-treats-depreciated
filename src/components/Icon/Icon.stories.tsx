@@ -49,7 +49,11 @@ const iconKeys = [
   "arrow-circle-left-f",
   "moon",
   "sun",
+  "meteor",
   "copy",
+  "minus",
+  "minus-circle",
+  "minus-circle-f",
 ];
 
 const allIcons = (color: string, size: number) =>
