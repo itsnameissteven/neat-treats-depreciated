@@ -12,6 +12,7 @@ import DarkModeButton from "./DarkModeButton";
 import ActionButton from "./ActionButton";
 import Switch from "./Switch";
 import CodeBlock from "./CodeBlock";
+import Input from "./Input";
 
 export {
   Button,
@@ -28,4 +29,5 @@ export {
   ActionButton,
   Switch,
   CodeBlock,
+  Input,
 };

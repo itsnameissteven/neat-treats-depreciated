@@ -29,7 +29,7 @@ pre[class*="language-"] {
   color: #ccc;
   background: none;
   font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
-  font-size: 1em;
+  font-size: 14px;
   text-align: left;
   white-space: pre;
   word-spacing: normal;
@@ -145,6 +145,9 @@ pre[class*="language-"] {
 .dark-mode {
   .code-block {
     color: #000;
+    &__copy {
+      color: #000;
+    }
     path {
       fill: #000;
     }

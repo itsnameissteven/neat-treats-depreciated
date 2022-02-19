@@ -2,6 +2,7 @@ import React from "react";
 interface IInput {
     name?: string;
     id?: string;
+    maxWidth?: string;
     value: string;
     placeholder?: string;
     label?: string;
@@ -9,5 +10,5 @@ interface IInput {
     className?: string;
     [x: string]: any;
 }
-declare const Input: ({ value, placeholder, onChange, name, id, className, label, ...rest }: IInput) => JSX.Element;
+declare const Input: ({ value, placeholder, onChange, name, id, className, label, maxWidth, ...rest }: IInput) => JSX.Element;
 export default Input;
