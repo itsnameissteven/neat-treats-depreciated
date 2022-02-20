@@ -13,6 +13,8 @@ import {
   Input,
   Switch,
   Incrementor,
+  ShiftBy,
+  Spacer,
 } from "./components";
 
 import { usePreventAnimation, useLocalStorage, useCopyText } from "./hooks";
@@ -34,4 +36,6 @@ export {
   useLocalStorage,
   usePreventAnimation,
   useCopyText,
+  ShiftBy,
+  Spacer,
 };

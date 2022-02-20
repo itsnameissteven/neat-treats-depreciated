@@ -14,6 +14,8 @@ import Switch from "./Switch";
 import CodeBlock from "./CodeBlock";
 import Input from "./Input";
 import Incrementor from "./Incrementor";
+import ShiftBy from "./ShiftBy";
+import Spacer from "./Spacer";
 
 export {
   Button,
@@ -32,4 +34,6 @@ export {
   CodeBlock,
   Incrementor,
   Input,
+  ShiftBy,
+  Spacer,
 };
