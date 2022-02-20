@@ -11,7 +11,7 @@ export default {
 export const Primary = () => {
   const [count, setCount] = useState(1);
   return (
-    <div className="white-backing">
+    <div className="white-backing incrementor-story">
       <Incrementor
         currentCount={count}
         onAdd={() => setCount(count + 1)}
