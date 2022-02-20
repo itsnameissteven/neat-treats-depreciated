@@ -17,6 +17,7 @@ import Incrementor from "./Incrementor";
 import ShiftBy from "./ShiftBy";
 import Spacer from "./Spacer";
 import ProgressRing from "./ProgressRing";
+import ProgressBar from "./ProgressBar";
 
 export {
   Button,
@@ -38,4 +39,5 @@ export {
   ShiftBy,
   Spacer,
   ProgressRing,
+  ProgressBar,
 };

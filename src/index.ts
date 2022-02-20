@@ -16,6 +16,7 @@ import {
   ShiftBy,
   Spacer,
   ProgressRing,
+  ProgressBar,
 } from "./components";
 
 import { usePreventAnimation, useLocalStorage, useCopyText } from "./hooks";
@@ -40,4 +41,5 @@ export {
   ShiftBy,
   Spacer,
   ProgressRing,
+  ProgressBar,
 };
