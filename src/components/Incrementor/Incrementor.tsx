@@ -5,6 +5,7 @@ interface IIncrementor {
   maxCount?: number;
   minCount?: number;
   currentCount: number;
+  width?: string;
   onSubtract: () => void;
   onAdd: () => void;
 }
@@ -12,6 +13,7 @@ interface IIncrementor {
 const Incrementor = ({
   maxCount,
   minCount = 0,
+  width = "32px",
   currentCount,
   onSubtract,
   onAdd,
@@ -19,17 +21,21 @@ const Incrementor = ({
   return (
     <div className="incrementor">
       <Icon
-        color="#000"
+        color="#343a40ff"
         disabled={currentCount === minCount}
         name="minus-circle"
         onClick={onSubtract}
+        size={20}
       />
-      <p>{currentCount}</p>
+      <div className="incrementor__count" style={{ width: width }}>
+        {currentCount}
+      </div>
       <Icon
-        color="#000"
+        color="#343a40ff"
         disabled={currentCount === maxCount}
         name="plus-circle"
         onClick={onAdd}
+        size={20}
       />
     </div>
   );

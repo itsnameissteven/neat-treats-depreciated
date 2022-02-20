@@ -13,6 +13,7 @@ import ActionButton from "./ActionButton";
 import Switch from "./Switch";
 import CodeBlock from "./CodeBlock";
 import Input from "./Input";
+import Incrementor from "./Incrementor";
 
 export {
   Button,
@@ -29,5 +30,6 @@ export {
   ActionButton,
   Switch,
   CodeBlock,
+  Incrementor,
   Input,
 };
