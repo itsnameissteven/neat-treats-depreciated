@@ -15,6 +15,7 @@ import {
   Incrementor,
   ShiftBy,
   Spacer,
+  ProgressRing,
 } from "./components";
 
 import { usePreventAnimation, useLocalStorage, useCopyText } from "./hooks";
@@ -38,4 +39,5 @@ export {
   useCopyText,
   ShiftBy,
   Spacer,
+  ProgressRing,
 };
