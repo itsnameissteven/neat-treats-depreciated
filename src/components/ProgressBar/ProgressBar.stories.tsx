@@ -1,29 +1,21 @@
 import React from "react";
 
-import ProgressRing from "./ProgressRing";
+import ProgressBar from "./ProgressBar";
 
 export default {
-  component: ProgressRing,
-  title: "Components/ProgressRing",
+  component: ProgressBar,
+  title: "Components/ProgressBar",
   argTypes: {
     percentageComplete: {
       defaultValue: "20",
       required: true,
       type: "number",
     },
-    size: {
-      defaultValue: "70",
-      type: "number",
+    height: {
+      defaultValue: "5px",
+      type: "string",
     },
-    stroke: {
-      defaultValue: "3",
-      type: "number",
-    },
-    hasPercentageDisplay: {
-      default: "true",
-      type: "boolean",
-    },
-    border: {
+    background: {
       default: "#ade8f4",
       type: "string",
     },
@@ -37,19 +29,15 @@ export default {
 
 const Template = ({
   percentageComplete,
-  size,
-  stroke,
-  hasPercentageDisplay,
-  border,
+  height,
+  background,
   completeBorder,
 }) => {
   return (
-    <ProgressRing
-      size={size}
+    <ProgressBar
+      height={height}
       percentageComplete={percentageComplete}
-      stroke={stroke}
-      hasPercentageDisplay={hasPercentageDisplay}
-      border={border}
+      background={background}
       completedBorder={completeBorder}
     />
   );

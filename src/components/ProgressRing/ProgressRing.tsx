@@ -9,7 +9,7 @@ interface IPercentageCircleProps {
   /** Initial border color */
   border?: string;
   /** Color of completed color */
-  completeBorder?: string;
+  completedBorder?: string;
   /** Amount completed */
   percentageComplete: number;
   /** Optional classname to pass to parent element */
@@ -22,7 +22,7 @@ const ProgressRing = ({
   size = 70,
   stroke = 3,
   border = "#ade8f4",
-  completeBorder = "#0077b6",
+  completedBorder = "#0077b6",
   percentageComplete,
   className = "",
   hasPercentageDisplay = true,
@@ -73,7 +73,7 @@ const ProgressRing = ({
         <circle
           ref={circleRef}
           className="progress-circle__ring__border"
-          stroke={completeBorder}
+          stroke={completedBorder}
           strokeWidth={strokeWidth}
           fill="transparent"
           r={radius}
