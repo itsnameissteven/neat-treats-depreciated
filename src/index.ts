@@ -12,6 +12,7 @@ import {
   CodeBlock,
   Input,
   Switch,
+  Incrementor,
 } from "./components";
 
 export {
@@ -27,4 +28,5 @@ export {
   CodeBlock,
   Input,
   Switch,
+  Incrementor,
 };

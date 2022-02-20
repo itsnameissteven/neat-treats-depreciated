@@ -1,4 +1,6 @@
+@import "./reset";
 @import "./variables";
+@import "./mixins";
 @import "./animations.scss";
 @import "./Switch";
 @import "./Menu";
@@ -12,28 +14,7 @@
 @import "./Calendar";
 @import "./Button";
 @import "./ActionButton";
-
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  color: #000;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
+@import "./Incrementor";
 
 .no-animation {
   animation-duration: 0s !important;
