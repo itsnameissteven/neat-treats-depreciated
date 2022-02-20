@@ -15,6 +15,8 @@ import {
   Incrementor,
 } from "./components";
 
+import { usePreventAnimation, useLocalStorage, useCopyText } from "./hooks";
+
 export {
   Button,
   Glitter,
@@ -29,4 +31,7 @@ export {
   Input,
   Switch,
   Incrementor,
+  useLocalStorage,
+  usePreventAnimation,
+  useCopyText,
 };

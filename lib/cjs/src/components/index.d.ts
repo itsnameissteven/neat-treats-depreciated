@@ -13,4 +13,5 @@ import ActionButton from "./ActionButton";
 import Switch from "./Switch";
 import CodeBlock from "./CodeBlock";
 import Input from "./Input";
-export { Button, Hamburger, Glitter, MagicRainbowButton, MasonryGrid, Menu, Icon, Calendar, Carousel, DropDownBox, DarkModeButton, ActionButton, Switch, CodeBlock, Input, };
+import Incrementor from "./Incrementor";
+export { Button, Hamburger, Glitter, MagicRainbowButton, MasonryGrid, Menu, Icon, Calendar, Carousel, DropDownBox, DarkModeButton, ActionButton, Switch, CodeBlock, Incrementor, Input, };
