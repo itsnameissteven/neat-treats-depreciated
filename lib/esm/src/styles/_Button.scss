@@ -21,6 +21,16 @@
     }
   }
 
+  &__inline {
+    background: none;
+    padding: unset;
+    min-width: unset !important;
+    text-decoration: underline;
+    &:hover {
+      background: none;
+    }
+  }
+
   &__outline {
     background: transparent;
     border: 1px solid rgb(1, 132, 255);

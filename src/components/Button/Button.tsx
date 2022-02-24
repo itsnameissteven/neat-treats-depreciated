@@ -2,7 +2,7 @@ import React from "react";
 import classnames from "classnames";
 
 interface IButton {
-  type?: "primary" | "secondary" | "outline";
+  type?: "primary" | "secondary" | "outline" | "inline";
   round?: boolean;
   fancy?: boolean;
   size?: "small" | "medium" | "large";
