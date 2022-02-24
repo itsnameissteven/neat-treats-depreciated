@@ -7,7 +7,7 @@ export default {
   title: "Components/Button",
   argTypes: {
     type: {
-      options: ["primary", "secondary", "outline"],
+      options: ["primary", "secondary", "outline", "inline"],
       control: { type: "radio" },
       defaultValue: "primary",
     },
