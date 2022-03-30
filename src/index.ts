@@ -19,7 +19,12 @@ import {
   ProgressBar,
 } from "./components";
 
-import { usePreventAnimation, useLocalStorage, useCopyText } from "./hooks";
+import {
+  usePreventAnimation,
+  useLocalStorage,
+  useCopyText,
+  useWindowSize,
+} from "./hooks";
 
 export {
   Button,
@@ -37,6 +42,7 @@ export {
   Incrementor,
   useLocalStorage,
   usePreventAnimation,
+  useWindowSize,
   useCopyText,
   ShiftBy,
   Spacer,

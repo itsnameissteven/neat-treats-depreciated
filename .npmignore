@@ -1,3 +1,11 @@
 .env
-.storybook
+/.storybook
 /storybook-static
+/node_modules
+/public
+/src
+README.md
+rollup.config.js
+/lib/cjs
+tsconfig.json
+yarn-error.log
