@@ -18,6 +18,7 @@
     "copyfiles": "^2.4.1",
     "cssnano": "^5.0.16",
     "deepmerge": "^4.2.2",
+    "express": "^4.17.3",
     "node-sass": "^5.0.0",
     "prismjs": "^1.26.0",
     "randomcolor": "^0.6.2",
@@ -46,7 +47,8 @@
     "rollup": "yarn clean && yarn compile && yarn copy-files && yarn copy-files-cjs && yarn build",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "prepare-launch": "node .launch.js $1"
+    "prepare-launch": "node .launch.js $1",
+    "server": "node express.js"
   },
   "eslintConfig": {
     "extends": [
@@ -77,13 +79,20 @@
     ]
   },
   "devDependencies": {
+    "@open-wc/building-rollup": "^1.10.0",
+    "@rollup/plugin-node-resolve": "^13.0.4",
     "@storybook/addon-actions": "^6.4.9",
+    "@storybook/addon-controls": "^6.4.12",
     "@storybook/addon-essentials": "^6.4.9",
     "@storybook/addon-links": "^6.4.9",
     "@storybook/builder-webpack5": "^6.2.9",
     "@storybook/node-logger": "^6.4.9",
     "@storybook/preset-create-react-app": "^3.2.0",
+    "@storybook/preview-web": "^6.4.9",
     "@storybook/react": "^6.4.9",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
     "@types/randomcolor": "^0.5.6",
     "@types/react-transition-group": "^4.4.2",
     "@types/styled-components": "^5.1.12",
@@ -93,19 +102,12 @@
     "classnames": "^2.3.1",
     "postcss": "^8.3.6",
     "randomcolor": "^0.6.2",
-    "styled-components": "^5.3.0",
-    "@open-wc/building-rollup": "^1.10.0",
-    "@rollup/plugin-node-resolve": "^13.0.4",
-    "@storybook/addon-controls": "^6.4.12",
-    "@storybook/preview-web": "^6.4.9",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
+    "rollup": "^2.56.1",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.0",
     "rollup-plugin-scss": "3",
-    "rollup": "^2.56.1"
+    "styled-components": "^5.3.0"
   },
   "files": [
     "/dist",
