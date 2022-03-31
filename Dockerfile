@@ -11,7 +11,11 @@ COPY ./ /app/
 
 RUN yarn build-storybook
 
-RUN yarn server
+EXPOSE 3000
+
+ENV PORT 3000
+
+CMD ["node", "express.js"]
 
 # # Stage 1, based on Nginx, to have only the compiled app, ready for production with Nginx
 # FROM nginx:1.15
