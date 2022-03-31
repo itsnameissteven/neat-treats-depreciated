@@ -1,7 +1,7 @@
-version: "3.9"
+version: "3.3"
 services:
   storybook:
     build: .
-  ports:
-    - "3030:3000"
-  restart: always
+    ports:
+      - "3030:3000"
+    restart: always
