@@ -11,6 +11,8 @@ COPY ./ /app/
 
 RUN yarn build-storybook
 
+RUN yarn server
+
 # # Stage 1, based on Nginx, to have only the compiled app, ready for production with Nginx
 # FROM nginx:1.15
 # COPY --from=build-stage /app/build/ /usr/share/nginx/html
