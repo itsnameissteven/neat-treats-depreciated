@@ -1,15 +1,27 @@
 # Stage 0, "build-stage", based on Node.js, to build and compile the frontend
-FROM node:14 as build-stage
+FROM node:14 as deps
 
 WORKDIR /app
+COPY package.json yarn.lock ./
+RUN yarn install 
 
-COPY package.json yarn.lock ./ 
+FROM node:14 AS builder
 
-RUN yarn install --frozen-lockfile
-
-COPY ./ /app/
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
 
 RUN yarn build-storybook
+# COPY ./ /app/
+
+FROM node:14 AS runner
+WORKDIR /app
+
+ENV NODE_ENV production
+
+RUN addgroup --system --gid 1001 nodejs
+
+COPY --from=builder /app/storybook-static ./storybook-static
 
 EXPOSE 3000
 
