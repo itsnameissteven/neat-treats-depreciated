@@ -4,7 +4,7 @@ const PORT = 3000;
 
 app.use(express.static("storybook-static"));
 
-app.get("/", (req, res) => {
+app.get("/", (_req, res) => {
   res.send("Hello World!");
 });
 
