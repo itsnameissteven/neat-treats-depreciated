@@ -25,6 +25,7 @@ import {
   useCopyText,
   useWindowSize,
   useTouch,
+  useBodyLock,
 } from "./hooks";
 
 export {
@@ -46,6 +47,7 @@ export {
   useWindowSize,
   useCopyText,
   useTouch,
+  useBodyLock,
   ShiftBy,
   Spacer,
   ProgressRing,
