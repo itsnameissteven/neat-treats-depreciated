@@ -4,11 +4,12 @@
   border: 2px solid $cadet-blue-crayola;
   border-radius: 6px;
   max-width: 300px;
+  margin-bottom: 1rem;
   &:focus-within {
     border-color: $blue-green;
     .neat-input__label {
       color: $blue-green;
-      transform: translateY(-28px);
+      transform: translateY(-30px);
     }
   }
 

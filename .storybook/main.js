@@ -7,4 +7,7 @@ module.exports = {
     "@storybook/addon-controls",
   ],
   staticDirs: ["../public"],
+  core: {
+    builder: "webpack5",
+  },
 };
