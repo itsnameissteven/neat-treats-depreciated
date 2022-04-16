@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from "react";
 import classnames from "classnames";
+import { useTouch } from "../../hooks";
 
 import { Icon } from "..";
 
@@ -10,6 +11,7 @@ interface ICarousel {
   iconSize?: number;
   iconPrev?: string;
   iconNext?: string;
+  className?: string;
 }
 
 const Carousel = ({
@@ -19,6 +21,7 @@ const Carousel = ({
   children,
   iconPrev = "chevron-left",
   iconNext = "chevron-right",
+  className = "",
 }: ICarousel) => {
   const slidePanels = useMemo(() => {
     const newChildren = React.Children.map(children, (child) => {
@@ -31,7 +34,13 @@ const Carousel = ({
   const [activeIndex, setActiveIndex] = useState(1);
   const [isDisabled, setIsDisabled] = useState(false);
   const [isNoTransition, setIsNoTransition] = useState(false);
-
+  const {
+    onSwipeStart,
+    onSwipeEnd,
+    onSwipeMove,
+    isSwipeActive,
+    swipeDistance,
+  } = useTouch();
   const slideClass = classnames("carousel__slide", {
     "no-transition": isNoTransition,
   });
@@ -61,8 +70,21 @@ const Carousel = ({
     setIsNoTransition(false);
   };
 
+  const handleSwipe = () => {
+    if (swipeDistance < -20) {
+      handleClick(1);
+    } else if (swipeDistance > 20) {
+      handleClick(-1);
+    }
+    onSwipeEnd();
+  };
+
+  const transform = isSwipeActive
+    ? `translateX(calc(-${activeIndex * 100}% + ${swipeDistance}px))`
+    : `translateX(-${activeIndex * 100}%)`;
+
   return (
-    <div className="carousel">
+    <div className={`carousel ${className}`}>
       <Icon
         className="carousel__prev"
         name={iconPrev}
@@ -73,9 +95,12 @@ const Carousel = ({
       />
       <div
         onTransitionEnd={resetlocation}
+        onTouchStart={onSwipeStart}
+        onTouchMove={onSwipeMove}
+        onTouchEnd={handleSwipe}
         className={slideClass}
         style={{
-          transform: `translateX(-${activeIndex * 100}%)`,
+          transform,
           transitionDuration: `${transitionTime}ms`,
         }}
       >
