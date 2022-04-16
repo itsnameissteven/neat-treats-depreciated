@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import classNames from "classnames";
+import { useBodyLock } from "../../hooks";
 
 interface IMenu {
   isOpen: boolean;
@@ -27,7 +28,7 @@ const Menu = ({
   containerColor = "#0505051c",
 }: IMenu) => {
   const [canOpen, setCanOpen] = useState(isOpen);
-
+  useBodyLock(isOpen);
   const styles = {
     width,
     top: heightFromTop,
