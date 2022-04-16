@@ -3,9 +3,9 @@ interface IGlitter {
     color?: string;
     rainbow?: boolean;
     children: JSX.Element;
-    delegated?: {
-        [x: string]: any;
-    };
+    minSize?: number;
+    maxSize?: number;
+    [x: string]: any;
 }
-declare const Glitter: ({ color, rainbow, children, ...delegated }: IGlitter) => JSX.Element;
+declare const Glitter: ({ color, rainbow, children, minSize, maxSize, ...delegated }: IGlitter) => JSX.Element;
 export default Glitter;

@@ -11,19 +11,21 @@ interface IGlitter {
   color?: string;
   rainbow?: boolean;
   children: JSX.Element;
-  delegated?: {
-    [x: string]: any;
-  };
+  minSize?: number;
+  maxSize?: number;
+  [x: string]: any;
 }
 
 const Glitter = ({
   color = "#FFC700",
   rainbow = false,
   children,
+  minSize = 10,
+  maxSize = 20,
   ...delegated
 }: IGlitter) => {
   const [sparkles, setSparkles] = useState(() => {
-    return range(3).map(() => generateSparkle(color));
+    return range(3).map(() => generateSparkle({ color, minSize, maxSize }));
   });
 
   const prefersReducedMotion = usePrefersReducedMotion();
@@ -32,7 +34,7 @@ const Glitter = ({
     () => {
       const now = Date.now();
       const newColor = rainbow ? randomColor() : color;
-      const sparkle = generateSparkle(newColor);
+      const sparkle = generateSparkle({ color: newColor, minSize, maxSize });
 
       const nextSparkles = sparkles.filter((sp) => {
         const delta = now - sp.createdAt;
@@ -43,8 +45,8 @@ const Glitter = ({
 
       setSparkles(nextSparkles);
     },
-    prefersReducedMotion ? null : 50,
-    prefersReducedMotion ? null : 500
+    prefersReducedMotion ? null : 400,
+    prefersReducedMotion ? null : 1000
   );
 
   return (

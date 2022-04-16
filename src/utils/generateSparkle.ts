@@ -1,13 +1,19 @@
 import random from "./random";
 
-const generateSparkle = (color: string) => {
+interface IArgs {
+  color: string;
+  minSize?: number;
+  maxSize?: number;
+}
+
+const generateSparkle = ({ color, minSize = 10, maxSize = 20 }: IArgs) => {
   const sparkle = {
     id: String(random(10000, 99999)),
     createdAt: Date.now(),
     color,
-    size: random(10, 20),
+    size: random(minSize, maxSize),
     style: {
-      top: random(-50, 75) + "%",
+      top: random(0, 100) + "%",
       left: random(-3, 98) + "%",
     },
   };
