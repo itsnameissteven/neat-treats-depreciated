@@ -1,4 +1,9 @@
-declare const generateSparkle: (color: string) => {
+interface IArgs {
+    color: string;
+    minSize?: number;
+    maxSize?: number;
+}
+declare const generateSparkle: ({ color, minSize, maxSize }: IArgs) => {
     id: string;
     createdAt: number;
     color: string;
