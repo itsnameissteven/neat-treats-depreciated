@@ -9,7 +9,7 @@ export default {
 };
 
 export const Primary = () => (
-  <Carousel>
+  <Carousel className="carousel__story">
     <img src="./images/image1.jpg" />
     <img src="./images/image2.jpg" />
     <img src="./images/image3.jpg" />

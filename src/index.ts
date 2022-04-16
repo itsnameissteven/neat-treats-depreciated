@@ -24,6 +24,7 @@ import {
   useLocalStorage,
   useCopyText,
   useWindowSize,
+  useTouch,
 } from "./hooks";
 
 export {
@@ -44,6 +45,7 @@ export {
   usePreventAnimation,
   useWindowSize,
   useCopyText,
+  useTouch,
   ShiftBy,
   Spacer,
   ProgressRing,
