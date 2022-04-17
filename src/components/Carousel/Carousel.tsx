@@ -12,6 +12,7 @@ interface ICarousel {
   iconPrev?: string;
   iconNext?: string;
   className?: string;
+  width?: string;
 }
 
 const Carousel = ({
@@ -82,7 +83,6 @@ const Carousel = ({
   const transform = isSwipeActive
     ? `translateX(calc(-${activeIndex * 100}% + ${swipeDistance}px))`
     : `translateX(-${activeIndex * 100}%)`;
-
   return (
     <div className={`carousel ${className}`}>
       <Icon

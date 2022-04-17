@@ -1,0 +1,118 @@
+.t-group {
+  height: 100vh;
+  width: 100%;
+}
+.menu {
+  height: 100vh;
+  width: 100%;
+  left: 0;
+  top: 0;
+  background-color: #0505051c;
+  position: absolute;
+  z-index: 10;
+
+  &__slide-out--left {
+    height: 100%;
+    width: 225px;
+    background-color: pink;
+    position: absolute;
+    left: 0px;
+    transform: translateX(-100%);
+  }
+  &__slide-out--right {
+    @extend .menu__slide-out--left;
+    transform: translateX(100%);
+    left: unset;
+    right: 0px;
+  }
+}
+
+@keyframes menu-cont-open {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes menu-cont-close {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slide-out-enter-left {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+@keyframes slide-out-exit-left {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes slide-out-enter-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+@keyframes slide-out-exit-right {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.menu-container-enter {
+  animation: menu-cont-open 300ms ease-out forwards;
+}
+
+.menu-container-exit {
+  animation: menu-cont-close 300ms ease-in forwards;
+}
+
+.menu__slide-out-enter--left {
+  animation: slide-out-enter-left 200ms ease-out 100ms forwards;
+}
+
+.menu__slide-out-exit--left {
+  animation: slide-out-exit-left 200ms ease-in forwards;
+}
+
+.menu__slide-out-enter--right {
+  animation: slide-out-enter-right 200ms ease-out 100ms forwards;
+}
+
+.menu__slide-out-exit--right {
+  animation: slide-out-exit-right 200ms ease-in forwards;
+}
+
+.slide-enter {
+  transform: translateX(-100%);
+}
+.slide-enter-active {
+  transform: translateX(0%);
+  transition: all 200ms;
+}
+.slide-exit {
+  opacity: 1;
+}
+.slide-exit-active {
+  transform: translateX(-100%);
+  transition: all 200ms;
+}
