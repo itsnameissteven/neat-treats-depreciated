@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 
 const useBodyLock = (locked = false) => {
-  if (typeof window === "undefined") {
-    return null;
-  }
   useEffect(() => {
-    if (!locked) {
-      return document.body.classList.add("overflow-hidden");
+    if (typeof window === "undefined") {
+      return;
     }
-    return document.body.classList.remove("overflow-hidden");
+    if (!locked) {
+      return document.body.classList.remove("overflow-hidden");
+    }
+    return document.body.classList.add("overflow-hidden");
   }, [locked]);
 
   return;
