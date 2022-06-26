@@ -10,6 +10,7 @@ interface IButton {
   children: string;
   className?: string;
   onClick?: () => void;
+  disabled?: boolean;
 }
 
 const Button = ({
@@ -21,6 +22,7 @@ const Button = ({
   children,
   className,
   onClick,
+  disabled,
 }: IButton) => {
   const btnClass = classnames({
     'nt-btn': true,
@@ -41,6 +43,7 @@ const Button = ({
       className={`${btnClass} ${className}`}
       onClick={onClick}
       style={style}
+      disabled={disabled}
     >
       {children}
     </button>
