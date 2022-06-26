@@ -1,15 +1,15 @@
-import React, { useRef, useEffect, useState } from "react";
-import classnames from "classnames";
+import React, { useRef, useEffect, useState } from 'react';
+import classnames from 'classnames';
 
 interface IInput {
   name?: string;
   id?: string;
-  maxWidth?: string;
   value: string;
   placeholder?: string;
   label?: string;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   className?: string;
+  errorMessage?: string;
   [x: string]: any;
 }
 
@@ -21,15 +21,12 @@ const Input = ({
   id,
   className,
   label,
-  maxWidth = "400px",
+  errorMessage,
   ...rest
 }: IInput) => {
   const labelRef = useRef<HTMLLabelElement | null>(null);
   const [legendWidth, setLegendWidth] = useState(0);
   const [isInFocus, setIsInFocus] = useState(false);
-  const styles = {
-    maxWidth: maxWidth,
-  };
 
   useEffect(() => {
     if (labelRef.current) {
@@ -37,17 +34,21 @@ const Input = ({
     }
   }, []);
 
-  const labelClass = classnames("neat-input__label", {
-    "neat-input__label--with-content": value.length,
+  const labelClass = classnames('neat-input__label', {
+    'neat-input__label--with-content': value.length,
   });
 
-  const width = isInFocus || value.length ? `${legendWidth}px` : "0px";
+  const fieldSetClass = classnames('neat-input', `${className}`, {
+    'neat-input__error': !!errorMessage,
+  });
+
+  const width = isInFocus || value.length ? `${legendWidth}px` : '0px';
 
   return (
-    <fieldset className={`neat-input ${className}`} style={styles}>
+    <fieldset className={fieldSetClass}>
       {label && (
         <>
-          <legend style={{ width }}></legend>
+          <legend style={{ width }} />
           <label ref={labelRef} className={labelClass}>
             {label}
           </label>
@@ -64,6 +65,9 @@ const Input = ({
         onFocus={() => setIsInFocus(true)}
         {...rest}
       />
+      {!!errorMessage && (
+        <p className="neat-input__error-msg">{errorMessage}</p>
+      )}
     </fieldset>
   );
 };

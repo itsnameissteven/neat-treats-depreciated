@@ -1,16 +1,23 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
-const usePreventAnimation = (timeout: number = 500) => {
+interface IPreventAnimation {
+  timeout?: number;
+  secondaryBoolean?: boolean;
+}
+const usePreventAnimation = ({
+  timeout = 500,
+  secondaryBoolean = false,
+}: IPreventAnimation = {}) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     setTimeout(() => setIsLoaded(true), timeout);
-  }, []);
+  }, [timeout]);
 
   return {
     isLoaded,
-    noAnimation: !isLoaded ? "no-animation" : "",
-    noTransition: !isLoaded ? "no-transition" : "",
+    noAnimation: !isLoaded || secondaryBoolean ? 'no-animation' : '',
+    noTransition: !isLoaded || secondaryBoolean ? 'no-transition' : '',
   };
 };
 

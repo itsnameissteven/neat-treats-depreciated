@@ -1,11 +1,11 @@
-import React from "react";
-import { CodeBlock } from "..";
-import { usePreventAnimation } from "../../hooks";
-import DarkModeButton from "./DarkModeButton";
+import React from 'react';
+import { CodeBlock } from '..';
+import { usePreventAnimation } from '../../hooks';
+import DarkModeButton from './';
 
 export default {
   component: DarkModeButton,
-  title: "Components/DarkModeButton",
+  title: 'Components/DarkModeButton',
   argTypes: {},
   decorators: [(Story) => <Story />],
 };
@@ -47,7 +47,7 @@ const Template = ({ size }) => {
       </div>
       <p className="dark-mode-demo__about">
         The Dark Mode button allows users to switch between light and dark
-        modes. Clicking the button toggles the class name{" "}
+        modes. Clicking the button toggles the class name{' '}
         <strong>'dark-mode'</strong> on the <strong>body</strong> element.
         Developers can utilize this parent class to add styles specific to the
         dark view see scss styles below. Local storage is utilized to remember

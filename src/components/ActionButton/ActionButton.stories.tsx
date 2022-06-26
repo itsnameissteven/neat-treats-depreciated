@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react';
 
-import ActionButton from "./ActionButton";
+import ActionButton from './';
 
 export default {
   component: ActionButton,
-  title: "Components/ActionButton",
+  title: 'Components/ActionButton',
   argTypes: {
     animationDirection: {
-      options: [undefined, "up", "down", "left", "right"],
-      control: { type: "radio" },
+      options: [undefined, 'up', 'down', 'left', 'right'],
+      control: { type: 'radio' },
       defaultValue: undefined,
     },
   },
@@ -46,7 +46,7 @@ const Template = ({ iconName, animationDirection, stroke, size }) => {
           onClick={() => null}
         />
         <ActionButton
-          iconName={iconName || "x"}
+          iconName={iconName || 'x'}
           onClick={() => null}
           stroke={stroke}
           size={size}

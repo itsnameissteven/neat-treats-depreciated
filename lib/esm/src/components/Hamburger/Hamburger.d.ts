@@ -11,6 +11,7 @@ interface IHamburger {
         left: string;
         right: string;
     };
+    isActive: boolean;
 }
-declare const Hamburger: ({ size, className, onClick, pipes, animationTime, color, zIndex, position, }: IHamburger) => JSX.Element;
+declare const Hamburger: ({ size, className, onClick, pipes, animationTime, color, zIndex, position, isActive, }: IHamburger) => JSX.Element;
 export default Hamburger;

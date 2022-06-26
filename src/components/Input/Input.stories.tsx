@@ -1,21 +1,21 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import Input from ".";
+import Input from '.';
 
 export default {
   component: Input,
-  title: "Components/Input",
+  title: 'Components/Input',
   argTypes: {},
 };
 
 export const Primary = () => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState('');
   return (
-    <div className="white-backing">
+    <div className="white-backing" style={{ width: '600px' }}>
       <Input
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        label={"Legend"}
+        label={'Legend'}
       />
     </div>
   );

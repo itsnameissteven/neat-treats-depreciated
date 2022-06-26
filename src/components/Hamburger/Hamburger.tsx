@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
-import classnames from "classnames";
+import React from 'react';
+import classnames from 'classnames';
+import { usePreventAnimation } from '../../hooks';
 
 interface IHamburger {
   size?: string;
@@ -14,52 +15,37 @@ interface IHamburger {
     left: string;
     right: string;
   };
+  isActive: boolean;
 }
 
 const Hamburger = ({
-  size = "30px",
+  size = '30px',
   className,
   onClick,
   pipes = 3,
-  animationTime = "400ms",
+  animationTime = '400ms',
   color,
   zIndex,
   position,
+  isActive,
 }: IHamburger) => {
-  const [isClicked, setIsClicked] = useState(false);
-  const [firstRender, setFirstRender] = useState(true);
+  const { noAnimation } = usePreventAnimation();
 
-  const topClass = classnames({
-    ["animate-top"]: isClicked,
-    ["hamburger__top"]: !firstRender && !isClicked,
+  const topClass = classnames('hamburger__top', {
+    'animate-top': isActive,
   });
-  const middleClass = classnames({
-    ["animate-middle"]: isClicked,
-    ["hamburger__middle"]: !firstRender && !isClicked,
+  const middleClass = classnames(' hamburger__middle', {
+    'animate-middle': isActive,
   });
-  const bottomClass = classnames({
-    ["animate-bottom"]: isClicked,
-    ["hamburger__bottom"]: !firstRender && !isClicked,
+  const bottomClass = classnames('hamburger__bottom', {
+    'animate-bottom': isActive,
   });
-  const topClassTwoPipe = classnames({
-    ["animate-top--two"]: isClicked,
-    ["hamburger__top--two"]: !firstRender && !isClicked,
+  const topClassTwoPipe = classnames('hamburger__top--two', {
+    'animate-top--two': isActive,
   });
-  const bottomClassTwoPipe = classnames({
-    ["animate-bottom--two"]: isClicked,
-    ["hamburger__bottom--two"]: !firstRender && !isClicked,
+  const bottomClassTwoPipe = classnames('hamburger__bottom--two', {
+    'animate-bottom--two': isActive,
   });
-
-  useEffect(() => {
-    if (isClicked) {
-      setFirstRender(false);
-    }
-  }, [isClicked]);
-
-  const passedClick = () => {
-    setIsClicked(!isClicked);
-    onClick && onClick();
-  };
 
   const { top, left, right } = position || {};
 
@@ -76,11 +62,11 @@ const Hamburger = ({
   if (pipes === 2) {
     return (
       <svg
-        className={`hamburger ${className}`}
+        className={`hamburger ${className} ${noAnimation}`}
         width={size}
         height={size}
         style={styles}
-        onClick={passedClick}
+        onClick={onClick}
         viewBox="0 0 48 48"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -111,14 +97,14 @@ const Hamburger = ({
 
   return (
     <svg
-      className={`hamburger ${className}`}
+      className={`hamburger ${className} ${noAnimation}`}
       viewBox="0 0 48 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       width={size}
       height={size}
       style={styles}
-      onClick={passedClick}
+      onClick={onClick}
     >
       <rect
         className={topClass}
