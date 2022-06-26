@@ -1,38 +1,38 @@
-import React from "react";
-import classnames from "classnames";
+import React from 'react';
+import classnames from 'classnames';
 
 interface IButton {
-  type?: "primary" | "secondary" | "outline" | "inline";
+  type?: 'primary' | 'secondary' | 'outline' | 'inline';
   round?: boolean;
   fancy?: boolean;
-  size?: "small" | "medium" | "large";
+  size?: 'small' | 'medium' | 'large';
   backgroundColor?: string;
   children: string;
-  className?: "string";
+  className?: string;
   onClick?: () => void;
 }
 
 const Button = ({
-  type = "primary",
+  type = 'primary',
   round = false,
   backgroundColor,
   fancy = false,
-  size = "medium",
+  size = 'medium',
   children,
   className,
   onClick,
 }: IButton) => {
   const btnClass = classnames({
-    "nt-btn": true,
+    'nt-btn': true,
     [`nt-btn__${type}`]: true,
     [`nt-btn__${size}`]: true,
     round: round,
-    fancy: fancy && type !== "outline" && !round,
-    "fancy-round": fancy && type !== "outline" && round,
+    fancy: fancy && type !== 'outline' && !round,
+    'fancy-round': fancy && type !== 'outline' && round,
   });
 
   const style =
-    type === "outline"
+    type === 'outline'
       ? { color: backgroundColor, borderColor: backgroundColor }
       : { backgroundColor };
 
