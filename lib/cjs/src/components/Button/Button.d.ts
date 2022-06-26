@@ -7,6 +7,7 @@ interface IButton {
     children: string;
     className?: string;
     onClick?: () => void;
+    disabled?: boolean;
 }
-declare const Button: ({ type, round, backgroundColor, fancy, size, children, className, onClick, }: IButton) => JSX.Element;
+declare const Button: ({ type, round, backgroundColor, fancy, size, children, className, onClick, disabled, }: IButton) => JSX.Element;
 export default Button;
