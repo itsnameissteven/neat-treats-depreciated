@@ -1,4 +1,8 @@
-declare const usePreventAnimation: (timeout?: number) => {
+interface IPreventAnimation {
+    timeout?: number;
+    secondaryBoolean?: boolean;
+}
+declare const usePreventAnimation: ({ timeout, secondaryBoolean, }?: IPreventAnimation) => {
     isLoaded: boolean;
     noAnimation: string;
     noTransition: string;
