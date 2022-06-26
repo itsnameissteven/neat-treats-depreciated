@@ -1,63 +1,64 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import Icon from ".";
+import Icon from '.';
 
 export default {
   component: Icon,
-  title: "Components/Icon",
+  title: 'Components/Icon',
   argTypes: {
     color: {
-      control: { type: "color" },
-      defaultValue: "#fff",
+      control: { type: 'color' },
+      defaultValue: '#fff',
     },
     size: {
-      control: { type: "number" },
+      control: { type: 'number' },
       defaultValue: 24,
     },
   },
 };
 
 const iconKeys = [
-  "chevron-left",
-  "chevron-right",
-  "chevron-down",
-  "chevron-up",
-  "chevron-circle-up",
-  "chevron-circle-down",
-  "chevron-circle-left",
-  "chevron-circle-right",
-  "chevron-circle-up-f",
-  "chevron-circle-down-f",
-  "chevron-circle-left-f",
-  "chevron-circle-right-f",
-  "plus",
-  "plus-circle",
-  "plus-circle-f",
-  "x",
-  "x-circle",
-  "x-circle-f",
-  "hamburger-round",
-  "hamburger-square",
-  "hamburger-short",
-  "arrow-up",
-  "arrow-right",
-  "arrow-down",
-  "arrow-left",
-  "arrow-circle-up",
-  "arrow-circle-right",
-  "arrow-circle-down",
-  "arrow-circle-left",
-  "arrow-circle-up-f",
-  "arrow-circle-right-f",
-  "arrow-circle-down-f",
-  "arrow-circle-left-f",
-  "moon",
-  "sun",
-  "meteor",
-  "copy",
-  "minus",
-  "minus-circle",
-  "minus-circle-f",
+  'chevron-left',
+  'chevron-right',
+  'chevron-down',
+  'chevron-up',
+  'chevron-circle-up',
+  'chevron-circle-down',
+  'chevron-circle-left',
+  'chevron-circle-right',
+  'chevron-circle-up-f',
+  'chevron-circle-down-f',
+  'chevron-circle-left-f',
+  'chevron-circle-right-f',
+  'plus',
+  'plus-circle',
+  'plus-circle-f',
+  'x',
+  'x-circle',
+  'x-circle-f',
+  'hamburger-round',
+  'hamburger-square',
+  'hamburger-short',
+  'arrow-up',
+  'arrow-right',
+  'arrow-down',
+  'arrow-left',
+  'arrow-circle-up',
+  'arrow-circle-right',
+  'arrow-circle-down',
+  'arrow-circle-left',
+  'arrow-circle-up-f',
+  'arrow-circle-right-f',
+  'arrow-circle-down-f',
+  'arrow-circle-left-f',
+  'moon',
+  'sun',
+  'meteor',
+  'copy',
+  'minus',
+  'minus-circle',
+  'minus-circle-f',
+  'shopping-cart',
 ];
 
 const allIcons = (color: string, size: number) =>
@@ -65,16 +66,16 @@ const allIcons = (color: string, size: number) =>
     return (
       <div
         style={{
-          display: "flex",
-          justifyContent: "center",
-          flexDirection: "column",
-          alignItems: "center",
+          display: 'flex',
+          justifyContent: 'center',
+          flexDirection: 'column',
+          alignItems: 'center',
         }}
         key={i}
       >
         <p
           className="icon__name"
-          style={{ marginBottom: "16px", fontSize: "18px" }}
+          style={{ marginBottom: '16px', fontSize: '18px' }}
         >
           {name}
         </p>

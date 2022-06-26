@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 const usePreventAnimation = (timeout: number = 500) => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -9,8 +9,8 @@ const usePreventAnimation = (timeout: number = 500) => {
 
   return {
     isLoaded,
-    noAnimation: !isLoaded ? "no-animation" : "",
-    noTransition: !isLoaded ? "no-transition" : "",
+    noAnimation: !isLoaded ? 'no-animation' : '',
+    noTransition: !isLoaded ? 'no-transition' : '',
   };
 };
 

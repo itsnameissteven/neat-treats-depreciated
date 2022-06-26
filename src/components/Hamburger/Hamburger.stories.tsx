@@ -1,28 +1,25 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import Hamburger from ".";
+import Hamburger from './';
 
 export default {
   component: Hamburger,
-  title: "Components/Hamburger",
+  title: 'Components/Hamburger',
   argTypes: {
     pipes: {
       options: [2, 3],
-      control: { type: "radio" },
+      control: { type: 'radio' },
       defaultValue: 3,
     },
   },
 };
 
-const Template = (args) => {
+const Template = () => {
   const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div className="story__hamburger">
-      <Hamburger
-        handleClick={() => setIsOpen(!isOpen)}
-        isActive={isOpen}
-        {...args}
-      />
+      <Hamburger onClick={() => setIsOpen(!isOpen)} isActive={isOpen} />
     </div>
   );
 };
