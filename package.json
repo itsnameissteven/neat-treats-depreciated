@@ -1,6 +1,6 @@
 {
   "name": "neat-treats",
-  "version": "1.2.63",
+  "version": "1.2.65",
   "description": "A component library.",
   "module": "./lib/esm/src/index.js",
   "types": "./lib/esm/src/index.d.ts",
@@ -122,16 +122,13 @@
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
-    "classnames": "^2.3.1",
     "postcss": "^8.3.6",
-    "randomcolor": "^0.6.2",
     "rollup": "^2.70.2",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-exclude-dependencies-from-bundle": "^1.1.22",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.0",
-    "rollup-plugin-scss": "3",
-    "styled-components": "^5.3.0"
+    "rollup-plugin-scss": "3"
   },
   "files": [
     "/dist",
