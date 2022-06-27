@@ -2,7 +2,6 @@
   "name": "neat-treats",
   "version": "1.2.63",
   "description": "A component library.",
-  "main": "./lib/cjs/src/index.js",
   "module": "./lib/esm/src/index.js",
   "types": "./lib/esm/src/index.d.ts",
   "license": "MIT",
