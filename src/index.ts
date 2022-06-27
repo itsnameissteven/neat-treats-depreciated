@@ -26,6 +26,7 @@ import {
   useWindowSize,
   useTouch,
   useBodyLock,
+  useDynamicRefs
 } from "./hooks";
 
 export {
@@ -52,4 +53,5 @@ export {
   Spacer,
   ProgressRing,
   ProgressBar,
+  useDynamicRefs
 };
