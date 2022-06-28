@@ -5,6 +5,7 @@ import useWindowSize from "./useWindowSize";
 import useTouch from "./useTouch";
 import useBodyLock from "./useBodyLock";
 import useDynamicRefs from "./useDynamicRefs";
+import useOnOutsideClick from "./useOnOutsideClick"
 
 export {
   usePreventAnimation,
@@ -13,5 +14,6 @@ export {
   useWindowSize,
   useTouch,
   useBodyLock,
-  useDynamicRefs
+  useDynamicRefs,
+  useOnOutsideClick
 };
