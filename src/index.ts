@@ -1,4 +1,4 @@
-import "./styles/index.scss";
+import './styles/index.scss';
 import {
   Glitter,
   Button,
@@ -17,7 +17,8 @@ import {
   Spacer,
   ProgressRing,
   ProgressBar,
-} from "./components";
+  Loader,
+} from './components';
 
 import {
   usePreventAnimation,
@@ -26,7 +27,7 @@ import {
   useWindowSize,
   useTouch,
   useBodyLock,
-} from "./hooks";
+} from './hooks';
 
 export {
   Button,
@@ -52,4 +53,5 @@ export {
   Spacer,
   ProgressRing,
   ProgressBar,
+  Loader,
 };

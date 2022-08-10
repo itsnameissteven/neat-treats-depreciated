@@ -1,5 +1,5 @@
-import React, { useRef, useEffect } from "react";
-import { usePreventAnimation } from "../../hooks";
+import React, { useRef, useEffect } from 'react';
+import { usePreventAnimation } from '../../hooks';
 
 interface IPercentageCircleProps {
   /** Size of the progress ring */
@@ -21,10 +21,10 @@ interface IPercentageCircleProps {
 const ProgressRing = ({
   size = 70,
   stroke = 3,
-  border = "#ade8f4",
-  completedBorder = "#0077b6",
+  border = '#ade8f4',
+  completedBorder = '#0077b6',
   percentageComplete,
-  className = "",
+  className = '',
   hasPercentageDisplay = true,
 }: IPercentageCircleProps) => {
   const circleRef = useRef<SVGCircleElement>(null);
@@ -82,7 +82,7 @@ const ProgressRing = ({
         />
       </svg>
       {hasPercentageDisplay && (
-        <div className={"progress-circle__content"}>
+        <div className={'progress-circle__content'}>
           <p style={{ fontSize: `${size * 0.25}px` }}>{percentageComplete}%</p>
         </div>
       )}
