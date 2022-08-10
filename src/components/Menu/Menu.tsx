@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import classNames from "classnames";
-import { useBodyLock } from "../../hooks";
+import React, { useState, useEffect } from 'react';
+import classNames from 'classnames';
+import { useBodyLock } from '../../hooks';
 
 interface IMenu {
   isOpen: boolean;
   children: any;
   width?: string;
   handleClose: () => void;
-  position?: "left" | "right";
+  position?: 'left' | 'right';
   heightFromTop?: string;
   backgroundColor?: string;
   boxShadow?: string;
@@ -19,13 +19,13 @@ const Menu = ({
   isOpen,
   children,
   handleClose,
-  width = "225px",
-  position = "left",
-  heightFromTop = "50px",
-  backgroundColor = "#fff",
+  width = '225px',
+  position = 'left',
+  heightFromTop = '50px',
+  backgroundColor = '#fff',
   boxShadow,
-  style,
-  containerColor = "#0505051c",
+  style = {},
+  containerColor = '#0505051c',
 }: IMenu) => {
   const [canOpen, setCanOpen] = useState(isOpen);
   useBodyLock(isOpen);
@@ -34,12 +34,13 @@ const Menu = ({
     top: heightFromTop,
     backgroundColor,
     boxShadow,
+    height: `calc(100vh - ${heightFromTop})`,
   };
 
   const containerClassName = classNames({
     menu: true,
-    ["menu-container-enter"]: isOpen,
-    ["menu-container-exit"]: !isOpen,
+    'menu-container-enter': isOpen,
+    'menu-container-exit': !isOpen,
   });
 
   const slideOutClassName = classNames({
@@ -72,7 +73,7 @@ const Menu = ({
       }}
       onClick={handleClose}
     >
-      <div className={slideOutClassName} style={style ? style : styles}>
+      <div className={slideOutClassName} style={{ ...styles, ...style }}>
         {children}
       </div>
     </div>

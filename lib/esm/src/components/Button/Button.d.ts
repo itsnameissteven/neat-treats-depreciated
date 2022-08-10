@@ -1,10 +1,11 @@
+/// <reference types="react" />
 interface IButton {
     type?: 'primary' | 'secondary' | 'outline' | 'inline';
     round?: boolean;
     fancy?: boolean;
     size?: 'small' | 'medium' | 'large';
     backgroundColor?: string;
-    children: string;
+    children: string | JSX.Element | JSX.Element[];
     className?: string;
     onClick?: () => void;
     disabled?: boolean;

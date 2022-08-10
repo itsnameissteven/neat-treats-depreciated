@@ -12,12 +12,12 @@
   z-index: 10;
 
   &__slide-out--left {
-    height: 100%;
     width: 225px;
     background-color: pink;
     position: absolute;
     left: 0px;
     transform: translateX(-100%);
+    z-index: 15px;
   }
   &__slide-out--right {
     @extend .menu__slide-out--left;

@@ -3,6 +3,7 @@ interface ICarousel {
     transitionTime?: number;
     children: JSX.Element | JSX.Element[];
     iconColor?: string;
+    hoverIconColor?: string;
     iconSize?: number;
     iconPrev?: string;
     iconNext?: string;
