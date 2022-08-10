@@ -1,11 +1,12 @@
-import React from 'react';
-import classnames from 'classnames';
-import { usePreventAnimation } from '../../hooks';
+import React from "react";
+import classnames from "classnames";
+import { usePreventAnimation } from "../../hooks";
 
 interface IHamburger {
   size?: string;
   className?: string;
-  onClick: () => void;
+  onClick?: () => void;
+  onMouseDown?: () => void;
   pipes?: 2 | 3;
   animationTime?: string;
   color?: string;
@@ -19,11 +20,12 @@ interface IHamburger {
 }
 
 const Hamburger = ({
-  size = '30px',
+  size = "30px",
   className,
-  onClick,
+  onClick = () => null,
+  onMouseDown = () => null,
   pipes = 3,
-  animationTime = '400ms',
+  animationTime = "400ms",
   color,
   zIndex,
   position,
@@ -31,20 +33,20 @@ const Hamburger = ({
 }: IHamburger) => {
   const { noAnimation } = usePreventAnimation();
 
-  const topClass = classnames('hamburger__top', {
-    'animate-top': isActive,
+  const topClass = classnames("hamburger__top", {
+    "animate-top": isActive,
   });
-  const middleClass = classnames(' hamburger__middle', {
-    'animate-middle': isActive,
+  const middleClass = classnames(" hamburger__middle", {
+    "animate-middle": isActive,
   });
-  const bottomClass = classnames('hamburger__bottom', {
-    'animate-bottom': isActive,
+  const bottomClass = classnames("hamburger__bottom", {
+    "animate-bottom": isActive,
   });
-  const topClassTwoPipe = classnames('hamburger__top--two', {
-    'animate-top--two': isActive,
+  const topClassTwoPipe = classnames("hamburger__top--two", {
+    "animate-top--two": isActive,
   });
-  const bottomClassTwoPipe = classnames('hamburger__bottom--two', {
-    'animate-bottom--two': isActive,
+  const bottomClassTwoPipe = classnames("hamburger__bottom--two", {
+    "animate-bottom--two": isActive,
   });
 
   const { top, left, right } = position || {};
@@ -66,6 +68,7 @@ const Hamburger = ({
         width={size}
         height={size}
         style={styles}
+        onMouseDown={onMouseDown}
         onClick={onClick}
         viewBox="0 0 48 48"
         fill="none"

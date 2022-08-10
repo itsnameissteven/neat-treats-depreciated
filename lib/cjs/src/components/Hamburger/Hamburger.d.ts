@@ -1,7 +1,8 @@
 interface IHamburger {
     size?: string;
     className?: string;
-    onClick: () => void;
+    onClick?: () => void;
+    onMouseDown?: () => void;
     pipes?: 2 | 3;
     animationTime?: string;
     color?: string;
@@ -13,5 +14,5 @@ interface IHamburger {
     };
     isActive: boolean;
 }
-declare const Hamburger: ({ size, className, onClick, pipes, animationTime, color, zIndex, position, isActive, }: IHamburger) => JSX.Element;
+declare const Hamburger: ({ size, className, onClick, onMouseDown, pipes, animationTime, color, zIndex, position, isActive, }: IHamburger) => JSX.Element;
 export default Hamburger;
