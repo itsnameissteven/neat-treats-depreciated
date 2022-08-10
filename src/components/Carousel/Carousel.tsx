@@ -1,13 +1,14 @@
-import React, { useState, useMemo } from "react";
-import classnames from "classnames";
-import { useTouch } from "../../hooks";
+import React, { useState, useMemo } from 'react';
+import classnames from 'classnames';
+import { useTouch } from '../../hooks';
 
-import { Icon } from "..";
+import { Icon } from '..';
 
 interface ICarousel {
   transitionTime?: number;
   children: JSX.Element | JSX.Element[];
   iconColor?: string;
+  hoverIconColor?: string;
   iconSize?: number;
   iconPrev?: string;
   iconNext?: string;
@@ -17,16 +18,16 @@ interface ICarousel {
 
 const Carousel = ({
   transitionTime = 300,
-  iconColor = "#fff",
+  iconColor = '#fff',
   iconSize = 34,
   children,
-  iconPrev = "chevron-left",
-  iconNext = "chevron-right",
-  className = "",
+  iconPrev = 'chevron-left',
+  iconNext = 'chevron-right',
+  className = '',
 }: ICarousel) => {
   const slidePanels = useMemo(() => {
     const newChildren = React.Children.map(children, (child) => {
-      return React.cloneElement(child, { width: "100%" });
+      return React.cloneElement(child, { width: '100%' });
     });
     const firstSlide = newChildren[0];
     const lastSlide = newChildren[newChildren.length - 1];
@@ -42,8 +43,8 @@ const Carousel = ({
     isSwipeActive,
     swipeDistance,
   } = useTouch();
-  const slideClass = classnames("carousel__slide", {
-    "no-transition": isNoTransition,
+  const slideClass = classnames('carousel__slide', {
+    'no-transition': isNoTransition,
   });
 
   const allSlides = slidePanels.map((slide, i) => {
