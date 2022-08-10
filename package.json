@@ -1,6 +1,6 @@
 {
   "name": "neat-treats",
-  "version": "1.2.71",
+  "version": "1.2.72",
   "description": "A component library.",
   "main": "./lib/cjs/src/index.js",
   "module": "./lib/esm/src/index.js",
