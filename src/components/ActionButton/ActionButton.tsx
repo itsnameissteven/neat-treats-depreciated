@@ -1,14 +1,15 @@
-import React, { useRef, useEffect } from "react";
-import { usePreventAnimation } from "../../hooks";
-import { Icon } from "..";
+import React, { useRef, useEffect } from 'react';
+import { usePreventAnimation } from '../../hooks';
+import { Icon } from '..';
 interface IActionButton {
   size?: number;
   stroke?: number;
   onClick?: () => void;
   border?: string;
   activeBorder?: string;
-  animationDirection?: "up" | "down" | "left" | "right";
+  animationDirection?: 'up' | 'down' | 'left' | 'right';
   iconName?: string;
+  iconSize?: number;
   className?: string;
   children?: JSX.Element | string;
 }
@@ -16,12 +17,13 @@ interface IActionButton {
 const ActionButton = ({
   size = 50,
   stroke = 2,
-  border = "grey",
-  activeBorder = "black",
+  border = 'grey',
+  activeBorder = 'black',
   animationDirection,
   children,
   iconName,
-  className = "",
+  iconSize,
+  className = '',
   onClick,
 }: IActionButton) => {
   const circleRef = useRef<SVGCircleElement>(null);
@@ -33,7 +35,7 @@ const ActionButton = ({
 
   const animationClass = animationDirection
     ? `animation-${animationDirection}`
-    : "";
+    : '';
 
   useEffect(() => {
     const { current } = circleRef;
@@ -85,7 +87,11 @@ const ActionButton = ({
         />
       </svg>
       <div className={`action-btn__content ${animationClass} ${noAnimation}`}>
-        {children ? children : <Icon name={iconName || ""} size={size * 0.6} />}
+        {children ? (
+          children
+        ) : (
+          <Icon name={iconName || ''} size={iconSize || size * 0.6} />
+        )}
       </div>
     </button>
   );
