@@ -8,7 +8,7 @@ RUN yarn install
 
 COPY . .
 
-RUN yarn run build-storybook
+# RUN yarn run build-storybook
 
 # COPY . .
 
