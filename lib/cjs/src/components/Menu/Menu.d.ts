@@ -3,7 +3,7 @@ interface IMenu {
     children: any;
     width?: string;
     handleClose: () => void;
-    position?: "left" | "right";
+    position?: 'left' | 'right';
     heightFromTop?: string;
     backgroundColor?: string;
     boxShadow?: string;

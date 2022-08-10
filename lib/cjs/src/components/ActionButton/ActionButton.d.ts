@@ -5,10 +5,11 @@ interface IActionButton {
     onClick?: () => void;
     border?: string;
     activeBorder?: string;
-    animationDirection?: "up" | "down" | "left" | "right";
+    animationDirection?: 'up' | 'down' | 'left' | 'right';
     iconName?: string;
+    iconSize?: number;
     className?: string;
     children?: JSX.Element | string;
 }
-declare const ActionButton: ({ size, stroke, border, activeBorder, animationDirection, children, iconName, className, onClick, }: IActionButton) => JSX.Element;
+declare const ActionButton: ({ size, stroke, border, activeBorder, animationDirection, children, iconName, iconSize, className, onClick, }: IActionButton) => JSX.Element;
 export default ActionButton;
