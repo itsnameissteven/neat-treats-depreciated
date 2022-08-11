@@ -20,6 +20,7 @@
     left: 0px;
     transform: translateX(-100%);
     z-index: 15px;
+    pointer-events: all;
   }
   &__slide-out--right {
     @extend .menu__slide-out--left;
