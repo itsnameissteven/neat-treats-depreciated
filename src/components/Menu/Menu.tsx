@@ -13,6 +13,7 @@ interface IMenu {
   boxShadow?: string;
   style?: object;
   containerColor?: string;
+  className?: string;
 }
 
 const Menu = ({
@@ -26,6 +27,7 @@ const Menu = ({
   boxShadow,
   style = {},
   containerColor = "#0505051c",
+  className = "",
 }: IMenu) => {
   useBodyLock(isOpen);
   const styles = {
@@ -50,7 +52,7 @@ const Menu = ({
 
   return (
     <div
-      className={containerClassName}
+      className={`${containerClassName} ${className}`}
       style={{
         backgroundColor: containerColor,
       }}
