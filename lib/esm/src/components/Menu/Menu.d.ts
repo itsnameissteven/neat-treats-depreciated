@@ -9,6 +9,7 @@ interface IMenu {
     boxShadow?: string;
     style?: object;
     containerColor?: string;
+    className?: string;
 }
-declare const Menu: ({ isOpen, children, handleClose, width, position, heightFromTop, backgroundColor, boxShadow, style, containerColor, }: IMenu) => JSX.Element;
+declare const Menu: ({ isOpen, children, handleClose, width, position, heightFromTop, backgroundColor, boxShadow, style, containerColor, className, }: IMenu) => JSX.Element;
 export default Menu;
