@@ -2,8 +2,8 @@ import React, { useRef, useEffect, useState } from 'react';
 import classnames from 'classnames';
 
 interface IInput {
-  name?: string;
-  id?: string;
+  name: string;
+  id: string;
   value: string;
   placeholder?: string;
   label?: string;
