@@ -1,7 +1,7 @@
 import React from 'react';
 interface IInput {
-    name?: string;
-    id?: string;
+    name: string;
+    id: string;
     value: string;
     placeholder?: string;
     label?: string;
