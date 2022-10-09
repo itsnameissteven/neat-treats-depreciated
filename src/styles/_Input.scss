@@ -10,7 +10,7 @@
     border-color: $blue-green;
     .neat-input__label {
       color: $blue-green;
-      transform: translateY(-33px);
+      transform: translateY(-32px);
       &::placeholder {
         font-size: inherit;
         font-family: inherit;
@@ -55,7 +55,7 @@
     max-width: 70%;
     &--with-content {
       color: $sonic-silver;
-      transform: translateY(-33px);
+      transform: translateY(-32px);
     }
 
     &--error {
@@ -71,7 +71,6 @@
     outline: none;
     border-radius: 6px;
     &::placeholder {
-      // font-size: 14px;
       font-size: inherit;
       font-family: inherit;
       color: #6e757a;
