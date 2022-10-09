@@ -19,9 +19,31 @@ export const Primary = () => {
         onChange={(e) => setValue(e.target.value)}
         label={'Legend'}
         placeholder="First Name"
-        required={true}
-        disabled={true}
-        // errorMessage="noooo :)"
+      />
+      <Input
+        name="firstName"
+        id="firstName"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        label={'First Name'}
+      />
+      <Input
+        name="firstName"
+        id="firstName"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        label={'First Name'}
+        placeholder={'Enter First Name'}
+        withLabel
+      />
+      <Input
+        name="firstName"
+        id="firstName"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        label={'First Name'}
+        placeholder={'Enter First Name'}
+        withLabel
       />
     </div>
   );

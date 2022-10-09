@@ -4,12 +4,19 @@
   border: 2px solid $cadet-blue-crayola;
   border-radius: 6px;
   width: 100%;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 14px;
   &:focus-within {
     border-color: $blue-green;
     .neat-input__label {
       color: $blue-green;
-      transform: translateY(-30px);
+      transform: translateY(-33px);
+      &::placeholder {
+        font-size: inherit;
+        font-family: inherit;
+        color: #6e757a;
+        margin-left: 102px;
+      }
     }
   }
   &__error {
@@ -17,17 +24,26 @@
     margin-bottom: 2rem;
   }
 
+  &__with-label {
+    display: inline-block;
+    margin: 0 0 4px 6px;
+    font-size: 16px;
+
+    &--error {
+      color: #f01c1c;
+    }
+  }
+
   legend {
-    margin-left: 12px;
+    margin-left: 6px;
   }
 
   &__label {
     transition: all 0.15s linear;
     position: absolute;
     top: 50%;
-    left: 12px;
-    font-size: 12px;
-    transform: scale(1.2) translate(2px, -44%);
+    left: 6px;
+    transform: translate(2px, -50%);
     transform-origin: left;
     padding: 0 3px;
     color: #6e757a;
@@ -39,7 +55,11 @@
     max-width: 70%;
     &--with-content {
       color: $sonic-silver;
-      transform: translateY(-30px);
+      transform: translateY(-33px);
+    }
+
+    &--error {
+      color: #f01c1c;
     }
   }
 
@@ -47,11 +67,12 @@
     width: 100%;
     height: 40px;
     border: none;
-    font-size: 16px;
     padding: 8px 12px;
     outline: none;
     border-radius: 6px;
     &::placeholder {
+      // font-size: 14px;
+      font-size: inherit;
       font-family: inherit;
       color: #6e757a;
       margin-left: 102px;

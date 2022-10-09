@@ -12,6 +12,7 @@ interface IInput {
   errorMessage?: string;
   required?: boolean;
   disabled?: boolean;
+  withLabel?: boolean;
   [x: string]: any;
 }
 
@@ -26,6 +27,7 @@ const Input = ({
   errorMessage,
   required,
   disabled,
+  withLabel,
   ...rest
 }: IInput) => {
   const labelRef = useRef<HTMLLabelElement | null>(null);
@@ -40,25 +42,21 @@ const Input = ({
 
   const labelClass = classnames('neat-input__label', {
     'neat-input__label--with-content': value || placeholder,
-    'neat-input__label--error': true,
+    'neat-input__label--error': value || (placeholder && !!errorMessage),
   });
 
   const fieldSetClass = classnames('neat-input', `${className}`, {
     'neat-input__error': !!errorMessage,
   });
 
+  const withLabelClass = classnames('neat-input__with-label', {
+    'neat-input__with-label--error': !!errorMessage,
+  });
+
   const width = isInFocus || value || placeholder ? `${legendWidth}px` : '0px';
 
-  return (
-    <fieldset className={fieldSetClass}>
-      {label && (
-        <>
-          <legend style={{ width }} />
-          <label ref={labelRef} className={labelClass}>
-            {label}
-          </label>
-        </>
-      )}
+  const input = (
+    <>
       <input
         className="neat-input__input"
         placeholder={placeholder}
@@ -75,6 +73,31 @@ const Input = ({
       {!!errorMessage && (
         <p className="neat-input__error-msg">{errorMessage}</p>
       )}
+    </>
+  );
+
+  if (withLabel) {
+    return (
+      <>
+        <label htmlFor={id} className={withLabelClass}>
+          {label}
+        </label>
+        <div className={fieldSetClass}>{input}</div>
+      </>
+    );
+  }
+
+  return (
+    <fieldset className={fieldSetClass}>
+      {label && (
+        <>
+          <legend style={{ width }} />
+          <label ref={labelRef} className={labelClass}>
+            {label}
+          </label>
+        </>
+      )}
+      {input}
     </fieldset>
   );
 };
