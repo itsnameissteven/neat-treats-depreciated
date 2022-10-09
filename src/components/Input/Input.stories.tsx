@@ -13,9 +13,12 @@ export const Primary = () => {
   return (
     <div className="white-backing" style={{ width: '600px' }}>
       <Input
+        name="firstName"
+        id="firstName"
         value={value}
         onChange={(e) => setValue(e.target.value)}
         label={'Legend'}
+        placeholder="First Name"
       />
     </div>
   );

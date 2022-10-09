@@ -27,7 +27,8 @@
     "src/hooks/usePreventAnimation.tsx",
     "src/hooks/usePrefersReducedMotion.tsx",
     "src/hooks/useIncrementingNumber.tsx",
-    "src/hooks/useLocalStorage.tsx"
+    "src/hooks/useLocalStorage.tsx",
+    "src/hooks/useBodyLock.tsx"
   ],
   "exclude": ["node_modules", "lib"]
 }

@@ -27,6 +27,7 @@ import {
   useWindowSize,
   useTouch,
   useBodyLock,
+  useOnOutsideClick,
 } from './hooks';
 
 export {
@@ -45,6 +46,7 @@ export {
   Incrementor,
   useLocalStorage,
   usePreventAnimation,
+  useOnOutsideClick,
   useWindowSize,
   useCopyText,
   useTouch,
