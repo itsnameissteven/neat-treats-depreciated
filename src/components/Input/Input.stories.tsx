@@ -19,6 +19,9 @@ export const Primary = () => {
         onChange={(e) => setValue(e.target.value)}
         label={'Legend'}
         placeholder="First Name"
+        required={true}
+        disabled={true}
+        // errorMessage="noooo :)"
       />
     </div>
   );

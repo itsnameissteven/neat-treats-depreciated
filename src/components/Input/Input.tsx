@@ -10,6 +10,8 @@ interface IInput {
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   className?: string;
   errorMessage?: string;
+  required?: boolean;
+  disabled?: boolean;
   [x: string]: any;
 }
 
@@ -22,6 +24,8 @@ const Input = ({
   className,
   label,
   errorMessage,
+  required,
+  disabled,
   ...rest
 }: IInput) => {
   const labelRef = useRef<HTMLLabelElement | null>(null);
@@ -35,14 +39,15 @@ const Input = ({
   }, []);
 
   const labelClass = classnames('neat-input__label', {
-    'neat-input__label--with-content': value.length,
+    'neat-input__label--with-content': value || placeholder,
+    'neat-input__label--error': true,
   });
 
   const fieldSetClass = classnames('neat-input', `${className}`, {
     'neat-input__error': !!errorMessage,
   });
 
-  const width = isInFocus || value.length ? `${legendWidth}px` : '0px';
+  const width = isInFocus || value || placeholder ? `${legendWidth}px` : '0px';
 
   return (
     <fieldset className={fieldSetClass}>
@@ -63,6 +68,8 @@ const Input = ({
         id={id}
         onBlur={() => setIsInFocus(false)}
         onFocus={() => setIsInFocus(true)}
+        required={required}
+        disabled={disabled}
         {...rest}
       />
       {!!errorMessage && (

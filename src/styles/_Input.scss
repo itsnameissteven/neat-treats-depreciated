@@ -30,7 +30,7 @@
     transform: scale(1.2) translate(2px, -44%);
     transform-origin: left;
     padding: 0 3px;
-    color: #93a2ac;
+    color: #6e757a;
     text-align: right;
     pointer-events: none;
     white-space: nowrap;
@@ -51,6 +51,17 @@
     padding: 8px 12px;
     outline: none;
     border-radius: 6px;
+    &::placeholder {
+      font-family: inherit;
+      color: #6e757a;
+      margin-left: 102px;
+    }
+    &:disabled {
+      background: #6e757a1a;
+      &:hover {
+        cursor: not-allowed;
+      }
+    }
   }
 
   &__error-msg {
