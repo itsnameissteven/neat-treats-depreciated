@@ -28,6 +28,8 @@ import {
   useTouch,
   useBodyLock,
   useOnOutsideClick,
+  useDynamicRefs,
+  useDebounce,
 } from './hooks';
 
 export {
@@ -56,4 +58,6 @@ export {
   ProgressRing,
   ProgressBar,
   Loader,
+  useDynamicRefs,
+  useDebounce,
 };
