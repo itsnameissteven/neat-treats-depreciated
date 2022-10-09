@@ -27,6 +27,9 @@ import {
   useWindowSize,
   useTouch,
   useBodyLock,
+  useOnOutsideClick,
+  useDynamicRefs,
+  useDebounce,
 } from './hooks';
 
 export {
@@ -45,6 +48,7 @@ export {
   Incrementor,
   useLocalStorage,
   usePreventAnimation,
+  useOnOutsideClick,
   useWindowSize,
   useCopyText,
   useTouch,
@@ -54,4 +58,6 @@ export {
   ProgressRing,
   ProgressBar,
   Loader,
+  useDynamicRefs,
+  useDebounce,
 };
