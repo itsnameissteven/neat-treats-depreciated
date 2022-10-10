@@ -22,6 +22,12 @@
   &__error {
     border-color: #f01c1c;
     margin-bottom: 2rem;
+    &:focus-within {
+      border-color: #f01c1c;
+      .neat-input__label {
+        color: #f01c1c;
+      }
+    }
   }
 
   &__with-label {
