@@ -28,7 +28,8 @@
     "src/hooks/usePrefersReducedMotion.tsx",
     "src/hooks/useIncrementingNumber.tsx",
     "src/hooks/useLocalStorage.tsx",
-    "src/hooks/useBodyLock.tsx"
+    "src/hooks/useBodyLock.tsx",
+    "src/components/Form/Form.tsx"
   ],
   "exclude": ["node_modules", "lib"]
 }

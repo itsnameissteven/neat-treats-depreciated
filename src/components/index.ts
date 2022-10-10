@@ -19,6 +19,7 @@ import Spacer from './ShiftBy/Spacer';
 import ProgressRing from './ProgressRing';
 import ProgressBar from './ProgressBar';
 import Loader from './Loader';
+import Form from './Form';
 
 export {
   Button,
@@ -42,4 +43,5 @@ export {
   ProgressRing,
   ProgressBar,
   Loader,
+  Form,
 };

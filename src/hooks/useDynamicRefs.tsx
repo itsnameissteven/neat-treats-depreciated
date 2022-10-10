@@ -12,8 +12,8 @@ interface IScrollToArgs {
 const useDynamicRefs = () => {
   const refs = useRef<IObject>({});
 
-  const setRef = (element: string, key: string) => {
-    refs.current[key] = element;
+  const setRef = (ref: any, key: string) => {
+    refs.current[key] = ref;
   };
 
   const scrollToRef = ({

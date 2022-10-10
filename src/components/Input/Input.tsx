@@ -19,24 +19,25 @@ interface IInput {
   required?: boolean;
   disabled?: boolean;
   withLabel?: boolean;
-  ref: ForwardedRef<HTMLInputElement>;
 }
 
 const Input = forwardRef(
-  ({
-    value,
-    placeholder,
-    onChange,
-    name,
-    id,
-    className,
-    label,
-    errorMessage,
-    required,
-    disabled,
-    withLabel,
-    ref,
-  }: IInput) => {
+  (
+    {
+      value,
+      placeholder,
+      onChange,
+      name,
+      id,
+      className,
+      label,
+      errorMessage,
+      required,
+      disabled,
+      withLabel,
+    }: IInput,
+    ref: ForwardedRef<HTMLInputElement>
+  ) => {
     const labelRef = useRef<HTMLLabelElement | null>(null);
     const [legendWidth, setLegendWidth] = useState(0);
     const [isInFocus, setIsInFocus] = useState(false);
