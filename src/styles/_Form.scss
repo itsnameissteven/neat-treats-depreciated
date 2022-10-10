@@ -1,9 +1,13 @@
-@import '../../styles/';
-
 .form {
   height: 100%;
+  @include flexColumn;
+  justify-content: space-between;
   border: 2px solid $placeholder-gray;
   padding: 24px 32px;
   border-radius: 6px;
   overflow-y: scroll;
+
+  &__btn-container {
+    align-self: end;
+  }
 }

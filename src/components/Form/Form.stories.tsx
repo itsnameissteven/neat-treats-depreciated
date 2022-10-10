@@ -23,7 +23,7 @@ export const Primary = () => {
   ];
 
   return (
-    <div className="white-backing" style={{ width: '00px' }}>
+    <div className="white-backing" style={{ width: '600px' }}>
       <Form components={components} />
     </div>
   );

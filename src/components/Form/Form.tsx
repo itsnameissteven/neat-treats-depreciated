@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { useDynamicRefs, useForm } from '../../hooks';
 import { Input, Button } from '..';
 import { TFormComponent } from '../../types';
-import './Form.scss';
 
 interface IForm {
   components: TFormComponent[];
@@ -59,8 +58,10 @@ const Form = ({ components, className }: IForm) => {
   });
   return (
     <form className={`form ${className}`} onSubmit={(e) => e.preventDefault()}>
-      {allInputs}
-      <Button round>Submit</Button>
+      <div className="form__input-container">{allInputs}</div>
+      <div className="form__btn-container">
+        <Button round>Submit</Button>
+      </div>
     </form>
   );
 };
