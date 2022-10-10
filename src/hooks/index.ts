@@ -7,6 +7,7 @@ import useBodyLock from './useBodyLock';
 import useOnOutsideClick from './useOnOutsideClick';
 import useDebounce from './useDebounce';
 import useDynamicRefs from './useDynamicRefs';
+import useForm from './useForm';
 
 export {
   usePreventAnimation,
@@ -18,4 +19,5 @@ export {
   useDebounce,
   useDynamicRefs,
   useOnOutsideClick,
+  useForm,
 };

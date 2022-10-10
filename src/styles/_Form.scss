@@ -1,0 +1,9 @@
+@import '../../styles/';
+
+.form {
+  height: 100%;
+  border: 2px solid $placeholder-gray;
+  padding: 24px 32px;
+  border-radius: 6px;
+  overflow-y: scroll;
+}

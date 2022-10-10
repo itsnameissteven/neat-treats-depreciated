@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
-import { useDynamicRefs } from '../../hooks';
-import { Input } from '..';
+import { useDynamicRefs, useForm } from '../../hooks';
+import { Input, Button } from '..';
 import { TFormComponent } from '../../types';
+import './Form.scss';
 
 interface IForm {
   components: TFormComponent[];
@@ -10,6 +11,7 @@ interface IForm {
 
 const Form = ({ components, className }: IForm) => {
   const { setRef, refs } = useDynamicRefs();
+  const { formState, formDispatch } = useForm(components);
 
   useEffect(() => {
     if (refs?.current?.test) {
@@ -21,7 +23,6 @@ const Form = ({ components, className }: IForm) => {
     const {
       name,
       id,
-      value,
       type,
       placeHolder,
       errorMessage,
@@ -29,6 +30,8 @@ const Form = ({ components, className }: IForm) => {
       required,
       label,
     } = component;
+
+    const { value, error } = formState[id];
     switch (type) {
       case 'input':
         return (
@@ -42,15 +45,24 @@ const Form = ({ components, className }: IForm) => {
             placeholder={placeHolder}
             required={required}
             withLabel={withLabel}
-            errorMessage={errorMessage}
-            onChange={() => null}
+            errorMessage={
+              error ? errorMessage || 'Please complete this field' : ''
+            }
+            onChange={(e) =>
+              formDispatch({ type: 'CHANGE', payload: { id, e } })
+            }
           />
         );
       default:
         return <div></div>;
     }
   });
-  return <form className={`form ${className}`}>{allInputs}</form>;
+  return (
+    <form className={`form ${className}`} onSubmit={(e) => e.preventDefault()}>
+      {allInputs}
+      <Button round>Submit</Button>
+    </form>
+  );
 };
 
 export default Form;

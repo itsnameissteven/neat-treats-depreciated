@@ -30,11 +30,20 @@ const useDynamicRefs = () => {
     refs?.current?.[key]?.scrollIntoView(options);
   };
 
+  const scrollToFocus = ({
+    key,
+    options = { behavior: 'smooth', block: 'center', inline: 'center' },
+  }: IScrollToArgs) => {
+    scrollToRef({ key, options });
+    refs?.current?.[key]?.focus();
+  };
+
   return {
     refs,
     setRef,
     scrollToRef,
     scrollToTop,
+    scrollToFocus,
   };
 };
 
