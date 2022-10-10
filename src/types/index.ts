@@ -8,7 +8,7 @@ export interface IIcon {
 export type TFormComponent = {
   type: 'input';
   id: string;
-  name: string;
+  name?: string;
   value: string;
   placeHolder?: string;
   label?: string;

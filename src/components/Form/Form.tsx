@@ -11,6 +11,7 @@ interface IForm {
 const Form = ({ components, className }: IForm) => {
   const { setRef, refs } = useDynamicRefs();
   const { formState, formDispatch } = useForm(components);
+  console.log(formState);
 
   useEffect(() => {
     if (refs?.current?.test) {
@@ -26,7 +27,7 @@ const Form = ({ components, className }: IForm) => {
       placeHolder,
       errorMessage,
       withLabel,
-      required,
+      // required,
       label,
     } = component;
 
@@ -39,10 +40,10 @@ const Form = ({ components, className }: IForm) => {
             key={id}
             id={id}
             label={label}
-            name={name}
+            name={name || id}
             value={value}
             placeholder={placeHolder}
-            required={required}
+            // required={required}
             withLabel={withLabel}
             errorMessage={
               error ? errorMessage || 'Please complete this field' : ''
@@ -60,7 +61,9 @@ const Form = ({ components, className }: IForm) => {
     <form className={`form ${className}`} onSubmit={(e) => e.preventDefault()}>
       <div className="form__input-container">{allInputs}</div>
       <div className="form__btn-container">
-        <Button round>Submit</Button>
+        <Button round onClick={() => formDispatch({ type: 'VALIDATE' })}>
+          Submit
+        </Button>
       </div>
     </form>
   );

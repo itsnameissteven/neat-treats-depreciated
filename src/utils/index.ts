@@ -2,6 +2,22 @@ import { calculateTrajectory } from './calculateTrajectory';
 import random from './random';
 import range from './range';
 import { getTargetValue } from './interactionHandlers';
-import { getInputValue } from './formHelpers';
+import objMap from './objMap';
+import {
+  getInputValue,
+  formReducer,
+  getInitialFormState,
+  IInitialFormState,
+} from './formHelpers';
 
-export { calculateTrajectory, random, range, getTargetValue, getInputValue };
+export {
+  calculateTrajectory,
+  random,
+  range,
+  getTargetValue,
+  getInputValue,
+  formReducer,
+  getInitialFormState,
+  IInitialFormState,
+  objMap,
+};
