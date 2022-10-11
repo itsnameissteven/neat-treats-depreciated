@@ -3,13 +3,16 @@ import { ChangeEvent } from 'react';
 import { TFormComponent } from '../types';
 import { objMap } from '.';
 
-export interface IInputState {
-  value: string;
-  required?: boolean;
+export interface IInputState extends TFormComponent {
   error: boolean;
 }
-export interface IInitialFormState {
+export interface IFormInputs {
   [key: string]: IInputState;
+}
+
+export interface IFormState {
+  form: IFormInputs;
+  firstError: string | null;
 }
 
 export type TFormAction =
@@ -22,16 +25,19 @@ export type TFormAction =
     }
   | { type: 'VALIDATE' };
 
-export const getInitialFormState = (data: TFormComponent[]) => {
-  return data.reduce((acc: IInitialFormState, el) => {
-    const { id, value, required } = el;
+export const getInitialFormState = (data: TFormComponent[]): IFormState => {
+  const form = data.reduce((acc: IFormInputs, el) => {
+    const { id } = el;
     acc[id] = {
-      required,
-      value,
+      ...el,
       error: false,
     };
     return acc;
   }, {});
+  return {
+    form,
+    firstError: null,
+  };
 };
 
 export const getInputValue = (e: ChangeEvent<HTMLInputElement>) => {
@@ -41,25 +47,38 @@ export const getInputValue = (e: ChangeEvent<HTMLInputElement>) => {
   };
 };
 
-export const formReducer = (state: IInitialFormState, action: TFormAction) => {
+export const formReducer = (state: IFormState, action: TFormAction) => {
   // return state
   switch (action.type) {
     case 'CHANGE':
+      const { id, e } = action.payload;
       return {
         ...state,
-        [action.payload.id]: {
-          ...state[action.payload.id],
-          ...getInputValue(action.payload.e),
+        form: {
+          ...state.form,
+          [id]: {
+            ...state.form[id],
+            ...getInputValue(e),
+          },
         },
+        firstError: null,
       };
     case 'VALIDATE':
+      let firstError: string | null = null;
       const getIsError = (val: IInputState) => {
+        const isError = val.required ? !val.value : false;
+        if (isError && !firstError) {
+          firstError = val.id;
+        }
         return {
           ...val,
-          error: val.required ? !val.value : false,
+          error: isError,
         };
       };
-      return objMap(state, getIsError);
+      return {
+        form: objMap(state.form, getIsError),
+        firstError,
+      };
     default:
       return state;
   }

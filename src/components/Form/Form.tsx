@@ -6,18 +6,17 @@ import { TFormComponent } from '../../types';
 interface IForm {
   components: TFormComponent[];
   className?: string;
+  withValidate?: boolean;
 }
 
-const Form = ({ components, className }: IForm) => {
-  const { setRef, refs } = useDynamicRefs();
+const Form = ({ components, className, withValidate = true }: IForm) => {
+  const { setRef, scrollToFocus } = useDynamicRefs();
   const { formState, formDispatch } = useForm(components);
-  console.log(formState);
+  const { form, firstError } = formState;
 
   useEffect(() => {
-    if (refs?.current?.test) {
-      refs?.current?.test.focus();
-    }
-  }, [refs.current]);
+    firstError && scrollToFocus({ key: firstError });
+  }, [firstError]);
 
   const allInputs = components.map((component) => {
     const {
@@ -27,11 +26,10 @@ const Form = ({ components, className }: IForm) => {
       placeHolder,
       errorMessage,
       withLabel,
-      // required,
       label,
     } = component;
 
-    const { value, error } = formState[id];
+    const { value, error } = form[id];
     switch (type) {
       case 'input':
         return (
@@ -43,7 +41,6 @@ const Form = ({ components, className }: IForm) => {
             name={name || id}
             value={value}
             placeholder={placeHolder}
-            // required={required}
             withLabel={withLabel}
             errorMessage={
               error ? errorMessage || 'Please complete this field' : ''
@@ -54,14 +51,20 @@ const Form = ({ components, className }: IForm) => {
           />
         );
       default:
-        return <div></div>;
+        return null;
     }
   });
+
+  const onSubmit = () => {
+    withValidate && formDispatch({ type: 'VALIDATE' });
+    firstError && scrollToFocus({ key: firstError });
+  };
+
   return (
     <form className={`form ${className}`} onSubmit={(e) => e.preventDefault()}>
       <div className="form__input-container">{allInputs}</div>
       <div className="form__btn-container">
-        <Button round onClick={() => formDispatch({ type: 'VALIDATE' })}>
+        <Button round onClick={onSubmit}>
           Submit
         </Button>
       </div>

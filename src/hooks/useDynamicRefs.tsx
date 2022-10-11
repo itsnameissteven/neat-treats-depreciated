@@ -35,7 +35,7 @@ const useDynamicRefs = () => {
     options = { behavior: 'smooth', block: 'center', inline: 'center' },
   }: IScrollToArgs) => {
     scrollToRef({ key, options });
-    refs?.current?.[key]?.focus();
+    setTimeout(() => refs?.current?.[key]?.focus(), 500);
   };
 
   return {

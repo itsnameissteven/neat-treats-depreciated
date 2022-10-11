@@ -7,7 +7,7 @@ import {
   getInputValue,
   formReducer,
   getInitialFormState,
-  IInitialFormState,
+  IFormState,
 } from './formHelpers';
 
 export {
@@ -18,6 +18,6 @@ export {
   getInputValue,
   formReducer,
   getInitialFormState,
-  IInitialFormState,
+  IFormState,
   objMap,
 };

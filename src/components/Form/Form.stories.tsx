@@ -41,6 +41,38 @@ export const Primary = () => {
       errorMessage: '',
       required: true,
     },
+    {
+      type: 'input',
+      id: 'name',
+      value: '',
+      label: 'Apt',
+      errorMessage: '',
+      required: true,
+    },
+    {
+      type: 'input',
+      id: 'buy',
+      value: '',
+      label: 'Apt',
+      errorMessage: '',
+      required: true,
+    },
+    {
+      type: 'input',
+      id: 'no',
+      value: '',
+      label: 'Apt',
+      errorMessage: '',
+      required: true,
+    },
+    {
+      type: 'input',
+      id: 'to',
+      value: '',
+      label: 'Apt',
+      errorMessage: '',
+      required: true,
+    },
   ];
 
   return (
