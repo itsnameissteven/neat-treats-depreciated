@@ -54,6 +54,7 @@
 
   &:focus {
     outline: 1px solid #000;
+    outline-offset: -1px;
   }
 }
 
@@ -65,7 +66,7 @@
   overflow: hidden;
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     z-index: 1;
     bottom: 0px;
@@ -78,7 +79,7 @@
   }
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     z-index: 1;
     top: 0;
@@ -99,7 +100,7 @@
 .fancy-round {
   overflow: hidden;
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     z-index: 1;
     bottom: 0px;
@@ -114,7 +115,7 @@
   }
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     z-index: 1;
     top: 0px;
