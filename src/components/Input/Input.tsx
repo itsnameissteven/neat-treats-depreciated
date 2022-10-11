@@ -50,7 +50,8 @@ const Input = forwardRef(
 
     const labelClass = classnames('neat-input__label', {
       'neat-input__label--with-content': value || placeholder,
-      'neat-input__label--error': (value || placeholder) && !!errorMessage,
+      'neat-input__label--error':
+        (value || placeholder || label) && !!errorMessage,
     });
 
     const fieldSetClass = classnames('neat-input', `${className}`, {
