@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDynamicRefs, useForm } from '../../hooks';
 import { Input, Button } from '..';
 import { TFormComponent } from '../../types';
@@ -12,24 +12,14 @@ interface IForm {
 const Form = ({ components, className, withValidate = true }: IForm) => {
   const { setRef, scrollToFocus } = useDynamicRefs();
   const { formState, formDispatch } = useForm(components);
-  const { form, firstError } = formState;
-
-  useEffect(() => {
-    firstError && scrollToFocus({ key: firstError });
-  }, [firstError]);
+  const { form, formIsValid } = formState;
 
   const allInputs = components.map((component) => {
-    const {
-      name,
-      id,
-      type,
-      placeHolder,
-      errorMessage,
-      withLabel,
-      label,
-    } = component;
+    const { name, id, type, placeHolder, errorMessage, withLabel, label } =
+      component;
 
-    const { value, error } = form[id];
+    const { value, isError, isTouched } = form[id];
+    const error = isError && isTouched;
     switch (type) {
       case 'input':
         return (
@@ -48,6 +38,10 @@ const Form = ({ components, className, withValidate = true }: IForm) => {
             onChange={(e) =>
               formDispatch({ type: 'CHANGE', payload: { id, e } })
             }
+            inputProps={{
+              onBlurCapture: () =>
+                formDispatch({ type: 'TOUCH', payload: { id } }),
+            }}
           />
         );
       default:
@@ -56,8 +50,14 @@ const Form = ({ components, className, withValidate = true }: IForm) => {
   });
 
   const onSubmit = () => {
-    withValidate && formDispatch({ type: 'VALIDATE' });
-    firstError && scrollToFocus({ key: firstError });
+    formDispatch({ type: 'VALIDATE' });
+    if (withValidate) {
+      const refId = components.find((c) => formState.form[c.id].isError)?.id;
+      refId && scrollToFocus({ key: refId });
+    }
+    if (!formIsValid) {
+      return;
+    }
   };
 
   return (

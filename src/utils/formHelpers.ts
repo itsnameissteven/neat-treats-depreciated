@@ -4,7 +4,8 @@ import { TFormComponent } from '../types';
 import { objMap } from '.';
 
 export interface IInputState extends TFormComponent {
-  error: boolean;
+  isError: boolean;
+  isTouched: boolean;
 }
 export interface IFormInputs {
   [key: string]: IInputState;
@@ -12,7 +13,7 @@ export interface IFormInputs {
 
 export interface IFormState {
   form: IFormInputs;
-  firstError: string | null;
+  formIsValid: boolean;
 }
 
 export type TFormAction =
@@ -23,20 +24,35 @@ export type TFormAction =
         e: ChangeEvent<HTMLInputElement>;
       };
     }
-  | { type: 'VALIDATE' };
+  | { type: 'VALIDATE' }
+  | {
+      type: 'TOUCH';
+      payload: {
+        id: string;
+      };
+    };
+
+export const getIsValid = (inputs: IFormInputs) => {
+  return !Object.values(inputs).some((input) => input.isError);
+};
+
+export const touchAll = (input: IInputState) => {
+  return { ...input, isTouched: true };
+};
 
 export const getInitialFormState = (data: TFormComponent[]): IFormState => {
   const form = data.reduce((acc: IFormInputs, el) => {
-    const { id } = el;
+    const { id, required } = el;
     acc[id] = {
       ...el,
-      error: false,
+      isError: required === undefined ? false : !el.value,
+      isTouched: false,
     };
     return acc;
   }, {});
   return {
     form,
-    firstError: null,
+    formIsValid: getIsValid(form),
   };
 };
 
@@ -52,32 +68,33 @@ export const formReducer = (state: IFormState, action: TFormAction) => {
   switch (action.type) {
     case 'CHANGE':
       const { id, e } = action.payload;
+      const newForm = {
+        ...state.form,
+        [id]: {
+          ...state.form[id],
+          ...getInputValue(e),
+        },
+      };
+      return {
+        ...state,
+        form: newForm,
+        formIsValid: getIsValid(newForm),
+      };
+    case 'TOUCH':
       return {
         ...state,
         form: {
           ...state.form,
-          [id]: {
-            ...state.form[id],
-            ...getInputValue(e),
+          [action.payload.id]: {
+            ...state.form[action.payload.id],
+            isTouched: true,
           },
         },
-        firstError: null,
       };
     case 'VALIDATE':
-      let firstError: string | null = null;
-      const getIsError = (val: IInputState) => {
-        const isError = val.required ? !val.value : false;
-        if (isError && !firstError) {
-          firstError = val.id;
-        }
-        return {
-          ...val,
-          error: isError,
-        };
-      };
       return {
-        form: objMap(state.form, getIsError),
-        firstError,
+        ...state,
+        form: objMap(state.form, touchAll),
       };
     default:
       return state;

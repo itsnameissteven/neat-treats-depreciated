@@ -19,6 +19,10 @@ interface IInput {
   required?: boolean;
   disabled?: boolean;
   withLabel?: boolean;
+  inputProps?: React.DetailedHTMLProps<
+    React.InputHTMLAttributes<HTMLInputElement>,
+    HTMLInputElement
+  >;
 }
 
 const Input = forwardRef(
@@ -35,6 +39,7 @@ const Input = forwardRef(
       required,
       disabled,
       withLabel,
+      inputProps,
     }: IInput,
     ref: ForwardedRef<HTMLInputElement>
   ) => {
@@ -79,6 +84,7 @@ const Input = forwardRef(
           onFocus={() => setIsInFocus(true)}
           required={required}
           disabled={disabled}
+          {...inputProps}
         />
         {!!errorMessage && (
           <p className="neat-input__error-msg">{errorMessage}</p>
