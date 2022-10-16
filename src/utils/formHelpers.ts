@@ -45,7 +45,7 @@ export const getInitialFormState = (data: TFormComponent[]): IFormState => {
     const { id, required } = el;
     acc[id] = {
       ...el,
-      isError: required === undefined ? false : !el.value,
+      isError: required === undefined ? false : !el.value.trim(),
       isTouched: false,
     };
     return acc;
@@ -56,10 +56,15 @@ export const getInitialFormState = (data: TFormComponent[]): IFormState => {
   };
 };
 
-export const getInputValue = (e: ChangeEvent<HTMLInputElement>) => {
+export const getInputValue = (
+  e: ChangeEvent<HTMLInputElement>,
+  input: IInputState
+) => {
+  const value = getTargetValue(e);
   return {
-    value: getTargetValue(e),
-    error: false,
+    ...input,
+    value,
+    isError: input.required === undefined ? false : !value.trim(),
   };
 };
 
@@ -68,12 +73,10 @@ export const formReducer = (state: IFormState, action: TFormAction) => {
   switch (action.type) {
     case 'CHANGE':
       const { id, e } = action.payload;
+      const input = state.form[id];
       const newForm = {
         ...state.form,
-        [id]: {
-          ...state.form[id],
-          ...getInputValue(e),
-        },
+        [id]: getInputValue(e, input),
       };
       return {
         ...state,

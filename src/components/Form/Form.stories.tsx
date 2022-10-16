@@ -14,8 +14,7 @@ export const Primary = () => {
       type: 'input',
       id: 'firstName',
       value: '',
-      label: 'FirstName',
-      errorMessage: '',
+      label: 'First Name',
       required: true,
     },
     {
@@ -23,7 +22,6 @@ export const Primary = () => {
       id: 'LastName',
       value: '',
       label: 'Last Name',
-      errorMessage: '',
       required: true,
     },
     {
@@ -31,53 +29,47 @@ export const Primary = () => {
       id: 'streetAddress',
       value: '',
       label: 'Street Address',
-      errorMessage: '',
+      required: true,
     },
     {
       type: 'input',
       id: 'apt',
       value: '',
       label: 'Apt',
-      errorMessage: '',
+    },
+    {
+      type: 'input',
+      id: 'city',
+      value: '',
+      label: 'City',
       required: true,
     },
     {
       type: 'input',
-      id: 'name',
+      id: 'state',
       value: '',
-      label: 'Apt',
-      errorMessage: '',
+      label: 'State',
       required: true,
     },
     {
       type: 'input',
-      id: 'buy',
+      id: 'zipCode',
       value: '',
-      label: 'Apt',
-      errorMessage: '',
+      label: 'Zip Code',
       required: true,
     },
     {
       type: 'input',
-      id: 'no',
+      id: 'socialSecurity',
       value: '',
-      label: 'Apt',
-      errorMessage: '',
-      required: true,
-    },
-    {
-      type: 'input',
-      id: 'to',
-      value: '',
-      label: 'Apt',
-      errorMessage: '',
+      label: 'Social Security Number',
       required: true,
     },
   ];
 
   return (
     <div className="white-backing" style={{ width: '600px' }}>
-      <Form components={components} />
+      <Form components={components} title="Storybook Demo Form" />
     </div>
   );
 };

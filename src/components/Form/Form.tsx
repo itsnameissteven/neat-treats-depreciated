@@ -5,11 +5,12 @@ import { TFormComponent } from '../../types';
 
 interface IForm {
   components: TFormComponent[];
+  title?: string;
   className?: string;
   withValidate?: boolean;
 }
 
-const Form = ({ components, className, withValidate = true }: IForm) => {
+const Form = ({ components, className, title, withValidate = true }: IForm) => {
   const { setRef, scrollToFocus } = useDynamicRefs();
   const { formState, formDispatch } = useForm(components);
   const { form, formIsValid } = formState;
@@ -62,6 +63,7 @@ const Form = ({ components, className, withValidate = true }: IForm) => {
 
   return (
     <form className={`form ${className}`} onSubmit={(e) => e.preventDefault()}>
+      {title && <h1 className="form__title">{title}</h1>}
       <div className="form__input-container">{allInputs}</div>
       <div className="form__btn-container">
         <Button round onClick={onSubmit}>
